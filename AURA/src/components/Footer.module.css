@@ -1,0 +1,8 @@
+.footer-continer {
+  padding: 1.5rem 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #dfe5f1; /* gray-500 */
+  border-top: px solid #d1d5db; /* gray-300 */
+}
