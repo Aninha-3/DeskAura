@@ -36,3 +36,9 @@ app.post('/usuarios', async (req, res) => {
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
+ async function main() {
+  const usuarios = await prisma.usuario.findMany();
+  console.log(usuarios);
+}
+
+main();
