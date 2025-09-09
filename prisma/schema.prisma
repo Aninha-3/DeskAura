@@ -1,0 +1,63 @@
+// Este é o seu arquivo de esquema do Prisma.
+// Você pode ler mais sobre ele na documentação: https://pris.ly/d/prisma-schema
+
+// Configura o conector do seu banco de dados.
+// Você pode mudar 'postgresql' para 'sqlite', 'mysql', 'sqlserver', 'cockroachdb' ou 'mongodb'.
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// O gerador do Prisma Client.
+// Ele é responsável por criar o código do cliente que você usará na sua aplicação.
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+// Representa a tabela de usuários.
+// Contém todas as informações básicas de cada pessoa que usa a plataforma.
+model Usuario {
+  id_usuario       String          @id @default(uuid()) // UUID é um bom padrão para IDs únicos.
+  nome             String
+  email            String          @unique // Garante que o e-mail não se repita.
+  senha_hash       String
+  data_cadastro    DateTime        @default(now())
+  ultimo_login     DateTime? // O '?' indica que o campo é opcional e pode ser nulo.
+  perfil           Perfil          @relation(fields: [perfilId], references: [id_perfil])
+  perfilId         String
+  simulacoes       Simulacao[] // Relação 1-para-N (um usuário pode ter muitas simulações).
+}
+
+// Representa a tabela de perfis de acesso.
+// Permite definir diferentes níveis de permissão (ex: produtor, técnico).
+model Perfil {
+  id_perfil        String          @id @default(uuid())
+  nome_perfil      String          @unique
+  descricao        String?
+  usuarios         Usuario[] // Relação 1-para-N (um perfil pode ter muitos usuários).
+}
+
+
+
+// Representa as simulações criadas pelos usuários.
+model Simulacao {
+  id_simulacao     String            @id @default(uuid())
+  titulo           String
+  parametros             Json    
+  resultado            Json
+  data_execucao    DateTime          @default(now())
+  usuario          Usuario           @relation(fields: [id_usuario], references: [id_usuario]) // Conecta a simulação ao usuário.
+  id_usuario       String
+  historico        HistoricoSimulacao[] // Relação 1-para-N (uma simulação pode ter vários registros no histórico).
+}
+
+// Registra o histórico de ações para cada simulação.
+model HistoricoSimulacao {
+  id_historico     String          @id @default(uuid())
+  acao             String
+  data_acao        DateTime        @default(now())
+  detalhes         String?
+  simulacao        Simulacao       @relation(fields: [id_simulacao], references: [id_simulacao]) // Conecta o registro de histórico à simulação.
+  id_simulacao     String
+}
