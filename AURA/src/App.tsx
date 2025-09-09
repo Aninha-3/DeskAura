@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import footer from './components/Footer';
-
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -10,10 +9,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/footer" element={<footer />} />
-         
+          <Route path="/footer" element={<Footer />} />
         </Routes>
-       
       </div>
     </Router>
   );
