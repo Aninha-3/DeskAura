@@ -25,21 +25,11 @@ model Usuario {
   senha_hash    String
   data_cadastro DateTime  @default(now())
   ultimo_login  DateTime?
-  perfil        Perfil    @relation(fields: [perfilId], references: [id_perfil])
-  perfilId      String
   simulacoes    Simulacao[]
 
   @@map("Usuario") // ← nome exato da tabela no MySQL
 }
 
-model Perfil {
-  id_perfil   String    @id @default(uuid())
-  nome_perfil String    @unique
-  descricao   String?
-  usuarios    Usuario[]
-
-  @@map("Perfil")
-}
 
 model Simulacao {
   id_simulacao  String             @id @default(uuid())

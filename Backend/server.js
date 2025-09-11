@@ -38,7 +38,7 @@ app.listen(3000, () => {
 });
  async function main() {
   const usuarios = await prisma.usuario.findMany();
-  console.log(usuarios);
+  
 }
 
 main();
