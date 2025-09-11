@@ -1,8 +1,11 @@
-.footer-continer {
+.footer-container {
   padding: 1.5rem 0;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Adiciona alinhamento vertical */
   text-align: center;
-  color: #dfe5f1; /* gray-500 */
-  border-top: px solid #d1d5db; /* gray-300 */
+  color: #dfe5f1;
+  border-top: 1px solid #d1d5db; /* Adicione a espessura da borda (1px) */
+  width: 100%; /* Garante que ocupe toda a largura */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
