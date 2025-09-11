@@ -11,9 +11,6 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/" element={<Home />} />
           <Route path='/Cadastro' element={<Cadastro />} />
           <Route path="/Footer" element={<Footer />} />
