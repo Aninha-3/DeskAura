@@ -8,10 +8,10 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
-// Listar todos os usuários
+// Listar todo os usuários
 app.get('/usuarios', async (req, res) => {
   try {
-    const usuarios = await prisma.Usuario.findMany(); // <-- aqui mudou de user para Usuario
+    const usuarios = await prisma.Usuario.findMany(); 
     res.json(usuarios);
   } catch (error) {
     console.error(error);

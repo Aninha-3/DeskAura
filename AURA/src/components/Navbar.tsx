@@ -13,7 +13,7 @@ export function Navbar() {
 
         <div className="navButtons">
         <a href="#" className="navButton">Login</a>
-        <a href="#" className="navButton">Cadastro</a>
+        <a href="Cadastro" className="navButton">Cadastro</a>
       </div>
     </header>
   );
