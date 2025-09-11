@@ -8,23 +8,22 @@ export default function Home() {
     <div className="Container">
       <div
         style={{
-         backgroundImage: `url(${fundo})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        width: "100vw",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
+          backgroundImage: `url(${fundo})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-       
       </div>
 
       <Navbar />
-      <main className="flex-1">
-        <Hero />
-      </main>
+
+      <Hero />
+
       <Footer />
     </div>
   );

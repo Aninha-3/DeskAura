@@ -1,21 +1,36 @@
-export function Hero() {
+
+import grafico from '../assets/grafico1.png';
+import './Hero.modules.css';
+
+
+export default function Hero() {
   return (
-    <section className="relative flex flex-col items-center justify-center text-center px-6 py-20">
-      <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-        Bem-vindo ao Aura
-      </h1>
-      <p className="mt-6 max-w-xl text-gray-400">
-        Uma plataforma moderna, rápida e intuitiva, feita para transformar sua
-        experiência digital.
-      </p>
-      <div className="mt-8 flex gap-4">
-        <button className="px-6 py-3 rounded-2xl bg-indigo-500 hover:bg-indigo-600 transition font-medium shadow-lg">
-          Começar agora
-        </button>
-        <button className="px-6 py-3 rounded-2xl border border-gray-600 hover:bg-gray-800 transition font-medium">
-          Saiba mais
-        </button>
+    <>
+      <div className='container-hero'>
+        <div className='container-graf'>
+          <h1 className='Title-graf'>Crescimento das Plantas</h1>
+          <img src={grafico} alt="Crescimento das Plantas" className='graf-img' />
+          <h1 className='descri-graf'>45.868 Plantas</h1>
+          <h1 className='avali-graf'>estátisticas melhores que na passada</h1>
+        </div>
+        <div className='container-temp'>
+          <h1 className='Title-temp'>Temperatura</h1>
+          <h1 className='temp'>22ºC</h1>
+        </div>
+        <div className='container-umid'>
+          <h1 className='Title-umid'>Saúde das Plantas</h1>
+          <div className='box-umid'>
+            <h1 className='umid'>85%</h1>
+          </div>
+          <h1 className='avali-umid'>estátisticas melhores que na passada</h1>
+        </div>
+
+        <h1 className='info-hero'>Acesso a gráficos gerados em tempo real</h1>
+
       </div>
-    </section>
+    </>
+
   );
 }
+export { Hero };
+
