@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import styles from '../pages/Cadastro.module.css';
-//import logo from '../../assets/AURA-logo.png'; // ajuste conforme seu arquivo
-import { Footer } from '../../src/components/Footer';
-//       <img src={logo} alt="Logo AURA" className={styles.logo} />
-
+import React, { useState, useEffect } from 'react';
+import styles from './Cadastro.module.css';
+import { Footer } from '../../components/Footer';
 
 const Cadastro = () => {
   const [nome, setNome] = useState('');
@@ -11,18 +8,30 @@ const Cadastro = () => {
   const [senha, setSenha] = useState('');
   const [confirmacao, setConfirmacao] = useState('');
 
+  // Aplica a classe no <body> quando o componente monta
+  useEffect(() => {
+    document.body.className = styles.page;
+    return () => {
+      document.body.className = ''; // limpa ao desmontar
+    };
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (senha !== confirmacao) {
       alert('As senhas não coincidem.');
       return;
     }
-      //alert(Nome: ${nome}\nEmail: ${email}\nSenha: ${senha});
-   
+    // Aqui você pode enviar os dados para o backend
+    console.log({
+      nome,
+      email,
+      senha
+    });
   };
 
   return (
-    <body className={styles.page}>
+    <div className={styles.container}>
       <div className={styles.card}>
         <h2 className={styles.title}>Cadastro</h2>
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -82,8 +91,8 @@ const Cadastro = () => {
         </form>
       </div>
 
-        <Footer />
-    </body>
+      <Footer />
+    </div>
   );
 };
 

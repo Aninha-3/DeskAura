@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import Cadastro from './pages/Cadastro';
+import Cadastro from './pages/Cadastro/Cadastro';
 import { Footer } from './components/Footer';
 
 function App() {
