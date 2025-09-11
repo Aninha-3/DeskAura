@@ -8,7 +8,6 @@ const Cadastro = () => {
   const [senha, setSenha] = useState('');
   const [confirmacao, setConfirmacao] = useState('');
 
-  // Aplica a classe no <body> quando o componente monta
   useEffect(() => {
     document.body.className = styles.page;
     return () => {

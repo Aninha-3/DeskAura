@@ -1,0 +1,54 @@
+.Nav-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.007); /* leve transparência */
+  padding: 12px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Container do menu */
+.navBar {
+  display: flex;
+  gap: 30px;
+}
+
+/* Links do menu */
+.LinhaNav {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.LinhaNav:hover {
+  color: #ffcc00; /* cor de destaque */
+}
+
+/* Botões (login e cadastro) */
+.navButtons {
+  display: flex;
+  gap: 15px;
+  margin-right: 20px;
+}
+
+.navButton {
+  border: 2px solid #fff;
+  padding: 6px 14px;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.3s;  
+}
+
+.navButton:hover {
+  background: #fff;
+  color: #000;
+}
