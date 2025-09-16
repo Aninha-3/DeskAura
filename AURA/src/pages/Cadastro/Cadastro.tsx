@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
+import { SlArrowLeft } from "react-icons/sl";
 import styles from './Cadastro.module.css';
 import { Footer } from '../../components/Footer';
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +40,7 @@ const Cadastro = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         <button onClick={() => navigate('/')} className={styles.botaoVoltar}>
-          <FaArrowLeft size={20} />
+          <SlArrowLeft size={20} />
         </button>
 
         <h2 className={styles.title}>Cadastro</h2>
