@@ -1,4 +1,4 @@
-import { Hero } from "../components/Hero";
+import Hero from "../components/Hero";
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import fundo from '../assets/img1.png'; // importa a imagem diretamente
