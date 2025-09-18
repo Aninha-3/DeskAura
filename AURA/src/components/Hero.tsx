@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.modules.css';
-import { FaTemperatureHalf } from "react-icons/fa6";
+import { FaTemperatureHalf, FaRegCircleCheck } from "react-icons/fa6";
 
 const Hero: React.FC = () => {
   return (
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
         <div className="box-umid">
           <h1 className="umid">85%</h1>
         </div>
-        <h2 className="avali-umid">Ótima umidade</h2>
+        <h2 className="avali-umid">Ótima</h2>
         <p className="avali-graf">Ideal para crescimento saudável</p>
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: '85%' }}></div>
@@ -44,7 +44,22 @@ const Hero: React.FC = () => {
       </div>
 
       <h1 className="info-hero">Acesso a gráficos gerados em tempo real</h1>
+
+      {/* Seção de contrato */}
+      <div className='contrate-section'>
+        <h1 className='title-cont'>Transforme a sua plantação</h1>
+        <h1 className='subtitle-cont'>Hoje Mesmo</h1>
+        <p className='paragraph-cont'>Junte-se a mais de 5.000 pessoas que já descobriram o futuro da agricultura sustentável</p>
+        <div className='btn-contrate'>
+          <a className='link-btn' href="auraservicosbr@gmail.com"></a>
+        </div>
+        <div className='certificado'>
+          <FaRegCircleCheck />
+          Certificado de Garantia</div>
+
+      </div>
     </div>
+
   );
 };
 
