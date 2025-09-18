@@ -1,5 +1,3 @@
-/* Hero.modules.css */
-
 :root {
   --primary-color: #E9E9E9;
   --secondary-color: #2E8B57;
@@ -38,7 +36,6 @@
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Títulos */
 .title-graf,
 .title-temp,
 .title-umid {
@@ -51,7 +48,6 @@
   padding-bottom: 0.4rem;
 }
 
-/* Gráfico de barras */
 .chart-placeholder {
   display: flex;
   align-items: flex-end;
@@ -73,7 +69,7 @@
   transform: scale(1.1);
 }
 
-/* Textos */
+
 .descri-graf,
 .avali-graf,
 .avali-umid {
@@ -88,7 +84,6 @@
   color: var(--accent-color);
 }
 
-/* Temperatura */
 .temp {
   font-size: 2.5rem;
   font-weight: bold;
@@ -112,7 +107,6 @@
   background: rgba(88, 169, 117, 0.3);
 }
 
-/* Saúde */
 .box-umid {
   margin: 1rem auto;
   padding: 1rem;
@@ -127,7 +121,6 @@
   color: var(--accent-color);
 }
 
-/* Info abaixo */
 .info-hero {
   grid-column: span 3;
   text-align: center;

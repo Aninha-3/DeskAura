@@ -5,8 +5,6 @@ import { FaTemperatureHalf } from "react-icons/fa6";
 const Hero: React.FC = () => {
   return (
     <div className="container-hero">
-
-      {/* Crescimento */}
       <div className="container-graf">
         <h1 className="title-graf"> Crescimento das Plantas</h1>
         <div className="graf-img">
@@ -22,8 +20,6 @@ const Hero: React.FC = () => {
         <h1 className="descri-graf">45.868 Plantas</h1>
         <h2 className="avali-graf">Obteve um desempenho melhor do que o último mês</h2>
       </div>
-
-      {/* Temperatura */}
       <div className="container-temp">
         <h1 className="title-temp">Temperatura</h1>
         <h1 className="temp">22ºC</h1>
@@ -35,14 +31,12 @@ const Hero: React.FC = () => {
           <div className="progress-fill" style={{ width: '70%' }}></div>
         </div>
       </div>
-
-      {/* Saúde/Umidade */}
       <div className="container-umid">
         <h1 className="title-umid"> Saúde das Plantas</h1>
         <div className="box-umid">
           <h1 className="umid">85%</h1>
         </div>
-        <h2 className="avali-umid">Ótima umidade 💧</h2>
+        <h2 className="avali-umid">Ótima umidade</h2>
         <p className="avali-graf">Ideal para crescimento saudável</p>
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: '85%' }}></div>
