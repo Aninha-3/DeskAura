@@ -1,0 +1,71 @@
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+
+const userController = {
+    findAll: async (req, res) => {
+        try {
+            const users = await prisma.Usuario.findMany();
+            res.json(users);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    // Buscar um usuário pelo ID
+    findOne: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const user = await prisma.Usuario.findUnique({ where: { id_usuario: id } });
+            if (!user) {
+                return res.status(404).json({ error: 'Usuário não encontrado' });
+            }
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    // Criar um novo usuário
+    create: async (req, res) => {
+        try {
+            const { nome, email, senha_hash } = req.body;
+            const user = await prisma.Usuario.create({
+                data: { nome, email, senha_hash }
+            });
+            res.status(201).json(user);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    // Atualizar um usuário pelo ID
+    update: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const { nome, email, senha_hash } = req.body;
+            const user = await prisma.Usuario.update({
+                where: { id_usuario: id },
+                data: { nome, email, senha_hash }
+            });
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    // Excluir um usuário pelo ID
+    delete: async (req, res) => {
+        try {
+            const { id } = req.params;
+            await prisma.Usuario.delete({ where: { id_usuario: id } });
+            res.status(204).end();
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+};
+
+
+module.exports = userController;

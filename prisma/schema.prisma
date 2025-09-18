@@ -5,7 +5,7 @@
 // Você pode mudar 'postgresql' para 'sqlite', 'mysql', 'sqlserver', 'cockroachdb' ou 'mongodb'.
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:admin@localhost:3306/DeskAura"
+  url      = "mysql://root:admin@localhost:3306/auradb"
 
 }
 

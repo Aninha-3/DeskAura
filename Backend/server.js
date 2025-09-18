@@ -1,44 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-import { PrismaClient } from '@prisma/client';
-
+const express = require('express');
 const app = express();
-const prisma = new PrismaClient();
+const corsMiddleware = require('./Middleware/corsConfig');
+const userRouter = require('./routers/router');
 
-app.use(cors());
-app.use(express.json());
+app.use(corsMiddleware);           // Middleware de CORS
+app.use(express.json());           // Middleware para JSON
+app.use('/usuarios', userRouter);  // Define o prefixo das rotas
 
-// Listar todo os usuários
-app.get('/usuarios', async (req, res) => {
-  try {
-    const usuarios = await prisma.Usuario.findMany(); 
-    res.json(usuarios);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
+app.listen(3001, () => {
+  console.log('🚀 Servidor rodando na porta 3001');
 });
 
-// Criar usuário
-app.post('/usuarios', async (req, res) => {
-  try {
-    const { nome, email, senha_hash, perfilId } = req.body;
-    const novoUsuario = await prisma.Usuario.create({
-      data: { nome, email, senha_hash, perfilId },
-    });
-    res.json(novoUsuario);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
-});
 
-app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000');
-});
- async function main() {
-  const usuarios = await prisma.usuario.findMany();
-  
-}
-
-main();
+module.exports = app;

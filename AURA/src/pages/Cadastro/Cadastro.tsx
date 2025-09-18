@@ -22,18 +22,29 @@ const Cadastro = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (senha !== confirmacao) {
       alert('As senhas não coincidem.');
       return;
     }
     // Aqui você pode enviar os dados para o backend
-    console.log({
-      nome,
-      email,
-      senha
-    });
+    try {
+      const response = await fetch('http://localhost:3001/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, senha })
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert('Cadastro realizado com sucesso!');
+        navigate('/Login');
+      } else {
+        alert('Erro ao cadastrar: ' + data.message);
+      }
+    } catch (error) {
+      alert('Erro ao contatar o servidor');
+    }
   };
 
   return (
