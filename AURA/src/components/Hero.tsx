@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.modules.css';
-import logoSobre from '../assets/logo (1).png'
+import logoSobre from '../assets/logoVerde.png'
 import { FaTemperatureHalf, FaRegCircleCheck } from "react-icons/fa6";
 
 const Hero: React.FC = () => {
