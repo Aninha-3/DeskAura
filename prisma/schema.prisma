@@ -1,0 +1,47 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+model Usuario {
+  id_usuario    String    @id @default(uuid())
+  nome          String
+  email         String    @unique
+  senha_hash    String
+  data_cadastro DateTime  @default(now())
+  ultimo_login  DateTime?
+  simulacoes    Simulacao[]
+
+  @@map("Usuario") 
+}
+
+
+model Simulacao {
+  id_simulacao  String             @id @default(uuid())
+  titulo        String
+  parametros    Json
+  resultado     Json
+  data_execucao DateTime           @default(now())
+  usuario       Usuario            @relation(fields: [id_usuario], references: [id_usuario])
+  id_usuario    String
+  historico     HistoricoSimulacao[]
+
+  @@map("Simulacao")
+}
+
+model HistoricoSimulacao {
+  id_historico String       @id @default(uuid())
+  acao         String
+  data_acao    DateTime     @default(now())
+  detalhes     String?
+  simulacao    Simulacao    @relation(fields: [id_simulacao], references: [id_simulacao])
+  id_simulacao String
+
+  @@map("HistoricoSimulacao")
+}
