@@ -13,7 +13,7 @@
 
 .container-hero {
     display: grid;
-    grid-template-columns: repeat(3, 3fr);
+    grid-template-columns: repeat(3, 1fr); /* Alterado para 1fr para colunas iguais */
     gap: 1.8rem;
     padding: 2rem;
     margin-top: 3.0rem;
@@ -21,6 +21,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Container principal para os cards */
 .container-graf,
 .container-temp,
 .container-umid {
@@ -33,7 +34,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Distribui o conteúdo uniformemente */
+    min-height: 350px; /* Altura mínima igual para todos */
+    height: 100%; /* Ocupa toda a altura disponível */
 }
 
 .container-graf:hover,
@@ -53,6 +56,19 @@
     letter-spacing: 0.5px;
     border-bottom: 1px solid var(--accent-color);
     padding-bottom: 0.4rem;
+    width: 100%; /* Garante que o título ocupe toda a largura */
+}
+
+/* Conteúdo central dos cards */
+.chart-content,
+.temp-content,
+.umid-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* Permite que o conteúdo central cresça */
+    width: 100%;
 }
 
 .chart-placeholder {
@@ -60,8 +76,9 @@
     align-items: flex-end;
     justify-content: center;
     gap: 0.6rem;
-    height: 180px;
+    height: 150px; /* Altura fixa para o gráfico */
     margin: 1rem 0;
+    width: 100%;
 }
 
 .chart-bar {
@@ -76,31 +93,19 @@
     transform: scale(1.1);
 }
 
-
-.descri-graf,
-.avali-umid {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    color: #b5e2c8;
-}
-
-.avali-graf {
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    color: #b5e2c8;
-}
-
-.descri-graf {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--accent-color);
+/* Conteúdo de temperatura centralizado */
+.temp-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .temp {
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--accent-color);
-    margin: 0.8rem 0;
+    margin: 0.5rem 0;
 }
 
 .temp-icon {
@@ -119,8 +124,16 @@
     background: rgba(88, 169, 117, 0.3);
 }
 
+/* Conteúdo de umidade centralizado */
+.umid-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .box-umid {
-    margin: 1rem auto;
+    margin: 0.5rem auto;
     padding: 1rem;
     background: rgba(88, 169, 117, 0.15);
     border-radius: 1rem;
@@ -133,20 +146,42 @@
     color: var(--accent-color);
 }
 
+.descri-graf,
+.avali-umid {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: #f9fdfb;
+    font-weight: 400;
+}
+
+.avali-graf {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 400;
+    color: #f9fdfb;
+}
+
+.descri-graf {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--accent-color);
+}
+
+
 /* Text graficos*/
 .info-hero {
     grid-column: span 3;
     text-align: center;
-    font-size: 1.rem;
-    margin-top: 2rem;
+    font-size: 3.2rem;
+    margin-top: 4.6rem;
     color: var(--card-bg);
     font-weight: 800;
     opacity: 0.9;
-    font-family: 'Poppins', sans-serif;
+    text-shadow: var(--shadow);
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 /* Seção de contrato */
-
 .contrate-section {
     grid-column: span 3;
     text-align: center;
@@ -163,7 +198,6 @@
     color: var(--light-text);
     margin-bottom: 0.5rem;
     font-family: 'Montserrat Alternates', sans-serif;
-
 }
 
 .subtitle-cont {
@@ -190,11 +224,11 @@
     padding: 1rem 2rem;
     background: var(--primary-color);
     border-radius: 2rem;
-    
     font-weight: 500;
     color: #282828bb;
     font-size: 2rem;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .link-btn:hover {
@@ -214,7 +248,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* espaçamento entre ícone e texto */
+    gap: 10px;
     font-size: 1.2rem;
     color: var(--primary-color);
     margin-top: 1rem;
@@ -226,41 +260,48 @@
 }
 
 /* Sobre Nós */
-/* Container principal */
 .about {
-  display: flex;
-  align-items: center; /* centraliza verticalmente */
-  justify-content: center; /* centraliza horizontalmente se quiser */
-  gap: 4rem; /* espaçamento entre logo e texto */
-  padding: 4rem 2rem;
-  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    grid-column: span 3;
 }
 
-/* Logo */
 .about img {
-  width: 500px; /* ajuste conforme necessário */
-  height: auto;
-  
+    width: 500px;
+    height: auto;
 }
 
-/* Container do texto */
-.about-text-container {
-  max-width: 1rem;
- text-align: right;
-}
-
-/* Título */
 .about-text {
-  font-size: 3.75rem;
-  color: #0a3d00; 
-  font-family: 'Montserrat Alternates', sans-serif;
-  margin-bottom: 1.5rem;
+    font-size: 3.75rem;
+    color: #0a3d00;
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin-bottom: 1.5rem;
 }
 
-/* Parágrafo */
 .about-paragraph {
-  color: #0a3d00;
-  font-weight: 700;
-  line-height: 1.6;
+    color: #0a3d00;
+    font-weight: 700;
+    line-height: 1.6;
 }
 
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container-hero {
+        grid-template-columns: 1fr;
+    }
+    
+    .container-graf,
+    .container-temp,
+    .container-umid {
+        min-height: 300px;
+    }
+    
+    .info-hero,
+    .contrate-section,
+    .about {
+        grid-column: span 1;
+    }
+}
