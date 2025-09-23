@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const userRoutes = require('./routes/userRoutes');
+import express from 'express';
+import cors from 'cors';
+import userRoutes from './Routes/router.js'; // precisa do .js no final
 
 const app = express();
 app.use(cors());
@@ -9,8 +9,10 @@ app.use(express.json());
 // Prefixo para as rotas de usuário
 app.use('/usuarios', userRoutes);
 
-app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000');
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
 
-module.exports = app;   
+export default app;
+  
