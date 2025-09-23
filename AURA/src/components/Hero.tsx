@@ -1,5 +1,6 @@
 import React from 'react';
-import './Hero.modules.css';git pull
+import './Hero.modules.css';
+import logoFooter from '../assets/logoVerde.png'
 import { FaTemperatureHalf, FaRegCircleCheck } from "react-icons/fa6";
 
 const Hero: React.FC = () => {
@@ -75,6 +76,7 @@ const Hero: React.FC = () => {
 
       {/* About */}
       <div className='about'>
+         <img src={logoFooter} alt="Logo da Aura" />
         <h1 className='about-text'>
           Quem somos?
         </h1>

@@ -15,10 +15,22 @@ export default function Home() {
           width: "100vw",
           height: "100vh",
           display: "flex",
-          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "flex-end",
+          paddingBottom: "20px"
         }}
       >
+        <h1
+          style={{
+            color: "white",
+            fontSize: "28px",
+            fontWeight: "300",
+            padding: "5px 10px",
+            margin: "0",
+            fontFamily: "Montserrat"
+          }}>Agricultura Unificada de Registros Analíticos</h1>
       </div>
+
 
       <Navbar />
 

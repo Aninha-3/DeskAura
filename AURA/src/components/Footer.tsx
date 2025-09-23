@@ -1,5 +1,5 @@
 import './Footer.modules.css'
-import logoFooter from '../assets/logoVerde.png'
+
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export function Footer() {
@@ -8,7 +8,7 @@ export function Footer() {
       <div className="footer-content">
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src={logoFooter} alt="Logo da Aura" />
+
             AURA
           </div>
           <p className="footer-text">
@@ -27,17 +27,7 @@ export function Footer() {
               <li><a href="#"><i className="fas fa-chevron-right"></i> Contato</a></li>
             </ul>
           </div>
-          
-          <div className="link-group">
-            <h3>Nossos Serviços</h3>
-            <ul>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Monitoramento</a></li>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Análise de Dados</a></li>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Consultoria</a></li>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Suporte Técnico</a></li>
-            </ul>
-          </div>
-          
+    
           <div className="link-group">
             <h3>Contato</h3>
             <ul>
