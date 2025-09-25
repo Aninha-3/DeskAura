@@ -2,9 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import userRoutes from './Routes/router.js'; // precisa do .js no final
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
 
 // Prefixo para as rotas de usuário
 app.use('/usuarios', userRoutes);

@@ -13,7 +13,7 @@ model Usuario {
   id_usuario    String    @id @default(uuid())
   nome          String
   email         String    @unique
-  senha_hash    String
+  senha         String
   data_cadastro DateTime  @default(now())
   ultimo_login  DateTime?
   simulacoes    Simulacao[]
