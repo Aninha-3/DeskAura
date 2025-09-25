@@ -3,21 +3,20 @@ import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import FormSimulador from "../../components/FormSimulador";
 import ResultadoSimulador from "../../components/ResultadoSimulador";
+import styles from "./Simulador.module.css";
 
 export default function Simulador() {
   const [resultado, setResultado] = useState<any[]>([]);
   const [chartData, setChartData] = useState<any>(null);
 
-  // Função para gerar "respostas" detalhadas sem IA
   function gerarSugestoes(data: any) {
-    // Exemplo de lógica detalhada
     const suggestions = [
       {
         nome: data.desejo || "Alface",
         terra: data.tipoSolo || "arenoso",
         ph: data.nivelPh || "neutro",
         insolacao: data.insolacao || "alta",
-        compatibilidade: Math.floor(Math.random() * 41) + 60, // 60-100%
+        compatibilidade: Math.floor(Math.random() * 41) + 60,
       },
       {
         nome: "Tomate",
@@ -35,7 +34,6 @@ export default function Simulador() {
       },
     ];
 
-    // Preparar dados para ChartJS
     const chart = {
       labels: suggestions.map(s => s.nome),
       datasets: [
@@ -57,7 +55,7 @@ export default function Simulador() {
   }
 
   return (
-    <div style={{ padding: 20 }}>
+    <div className={styles.container}>
       {!resultado.length ? (
         <FormSimulador setResultado={gerarSugestoes} />
       ) : (
