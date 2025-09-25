@@ -7,7 +7,7 @@ export function Navbar() {
         <a href="#" className="LinhaNav">Home</a>
         <a href="#" className="LinhaNav">Contato</a>
         <a href="#" className="LinhaNav">About</a>
-        <a href="#" className="LinhaNav">Simulador</a>
+        <a href="/Simulador" className="LinhaNav">Simulador</a>
       </nav>
 
 

@@ -1,0 +1,76 @@
+/* Garante que a página ocupe 100% da largura e altura */
+:global(html, body, #root) {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container geral */
+.container {
+  min-height: 100vh;       /* altura mínima da janela */
+  width: 100vw;            /* >>> usa toda a largura da viewport <<< */
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* centraliza apenas o conteúdo, não restringe largura */
+  justify-content: flex-start;
+  background: #f7f7f7;     /* cor de fundo */
+  overflow-x: hidden;      /* evita barra de rolagem horizontal */
+  overflow-y: auto;
+}
+
+/* Caixa de formulário/resultado */
+.formBox,
+.resultBox {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;            /* ocupa 100% da largura do container */
+  max-width: 800px;       /* limita em telas muito grandes */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+select, input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: #0a5e0a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #0c7c0c;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
