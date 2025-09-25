@@ -15,7 +15,7 @@ export const findAll = async (req, res) => {
 export const findOne = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await prisma.usuario.findUnique({
+    const user = await prisma.Usuario.findUnique({
       where: { id_usuario: id }
     });
     if (!user) {
@@ -31,7 +31,7 @@ export const findOne = async (req, res) => {
 export const create = async (req, res) => {
   try {
     const { nome, email, senha_hash } = req.body;
-    const user = await prisma.usuario.create({
+    const user = await prisma.Usuario.create({
       data: { nome, email, senha_hash }
     });
     res.status(201).json(user);
@@ -45,7 +45,7 @@ export const update = async (req, res) => {
   try {
     const { id } = req.params;
     const { nome, email, senha_hash, ultimo_login } = req.body;
-    const user = await prisma.usuario.update({
+    const user = await prisma.Usuario.update({
       where: { id_usuario: id },
       data: { nome, email, senha_hash, ultimo_login }
     });
@@ -59,7 +59,7 @@ export const update = async (req, res) => {
 export const remove = async (req, res) => {
   try {
     const { id } = req.params;
-    await prisma.usuario.delete({
+    await prisma.Usuario.delete({
       where: { id_usuario: id }
     });
     res.status(204).end();
