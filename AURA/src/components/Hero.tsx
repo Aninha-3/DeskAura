@@ -1,7 +1,9 @@
 import React from 'react';
 import './Hero.modules.css';
 import logoFooter from '../assets/logoVerde.png'
-import { FaTemperatureHalf, FaRegCircleCheck } from "react-icons/fa6";
+import Historia from '../assets/nossaHist.png'
+import { FaTemperatureHalf, FaRegCircleCheck, FaCheck } from "react-icons/fa6";
+//  <img src={Produto} alt="Dispositivo Aura" />
 
 const Hero: React.FC = () => {
   return (
@@ -86,6 +88,73 @@ const Hero: React.FC = () => {
    Nosso sistema coleta informações em tempo real sobre temperatura, umidade, luminosidade e outras variáveis essenciais, enviando os dados para a nuvem, onde algoritmos processam e geram recomendações personalizadas para o produtor.
         </p>
       </div>
+    {/* Nossa História */}
+<div className="nossa-historia">
+  <div className="historia-overlay"></div>
+  <div className="historia-image">
+    <img src={Historia} alt="História Aura" />
+  </div>
+  <div className="historia-content">
+    <h1 className="historia-title">Nossa História</h1>
+    <p className="historia-paragraph">
+      O AURA nasceu com a missão de levar o acordo com as necessidades todos os produtores, 
+      independentemente em terceiros ou seu proprietário. <br />
+      Percebemos que muitos agricultores não tinham crescer à água, confiáveis sobre suas lavouras, 
+      o que bastava se manifestar dos água, luz e nutrientes. <br /><br />
+      Assim, unimos tecnologia de porta cuja atividade de desacreditação é uma solução prática e excessível.
+    </p>
+  </div>
+</div>
+
+     {/* Seção do Produto */}
+      <div className="produto-section">
+        <div className="produto-image">
+        Imagem do Produto
+        </div>
+        
+        <div className="produto-content">
+          <h1 className="produto-title">AUONE FOI CRIADO PARA MELHORAR SUA PRODUTIVIDADE RURAL</h1>
+          
+          <p className="produto-description">
+           Nossos sensores captam os dados do ambiente com precisão, e o dispositivo realiza a filtragem inteligente dessas informações. Tudo é transmitido via tecnologia LoRa pela internet, armazenado com segurança e disponibilizado diretamente no seu celular, oferecendo acesso rápido e prático à coleta realizada.
+          </p>
+
+          <div className="produto-divider"></div>
+
+          <div className="vantagens-section">
+            <h3 className="vantagens-title">Vantagens do Nosso Dispositivo</h3>
+            <ul className="vantagens-list">
+              <li className="vantagem-item">
+                <FaCheck className="vantagem-icon" />
+                <span>Monitor de variação de ambientes</span>
+              </li>
+              <li className="vantagem-item">
+                <FaCheck className="vantagem-icon" />
+                <span>Envio de dados automaticamente para a plataforma online</span>
+              </li>
+              <li className="vantagem-item">
+                <FaCheck className="vantagem-icon" />
+                <span>Fornece análises históricas e previsões simples</span>
+              </li>
+              <li className="vantagem-item">
+                <FaCheck className="vantagem-icon" />
+                <span>Emite alertas e recomendações para melhorar sua produzividade</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="produto-divider"></div>
+
+          <div className="produto-buttons">
+            <button className="btn-primary">Adquirir AUONE</button>
+            <button className="btn-secondary">Ver meus resultados</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      
     </div>
   );
 };

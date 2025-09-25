@@ -305,3 +305,372 @@
         grid-column: span 1;
     }
 }
+
+/* Nossa História */
+.nossa-historia {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  overflow: hidden;
+  grid-column: span 3; 
+  width: 100%; 
+  margin-top: 2rem; 
+  border-radius: 1.5rem;
+}
+
+.historia-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.historia-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.historia-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 65%;
+  height: 100%;
+  width: 60%;
+  background-color: #043b00ec;
+  clip-path: ellipse(75% 85% at 0% 50%);
+  z-index: 1;
+  border-radius: 0 50% 50% 0 / 0 20% 20% 0; 
+}
+
+.historia-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  max-width: 600px;
+  padding: 3rem;
+}
+
+.historia-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+.historia-paragraph {
+  font-size: 1rem;
+  line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+  color: #FFFDF4;
+}
+/* RESPONSIVIDADE */
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container-hero {
+        grid-template-columns: 1fr;
+    }
+    
+    .container-graf,
+    .container-temp,
+    .container-umid {
+        min-height: 300px;
+    }
+    
+    .info-hero,
+    .contrate-section,
+    .about,
+    .nossa-historia { /* ADICIONE AQUI */
+        grid-column: span 1;
+    }
+    
+    /* Estilos específicos para mobile na seção Nossa História */
+    .nossa-historia {
+        min-height: 400px;
+        flex-direction: column;
+    }
+    
+    .historia-overlay {
+        width: 100%;
+        clip-path: ellipse(100% 85% at 50% 0%);
+    }
+    
+    .historia-content {
+        max-width: 100%;
+        padding: 2rem;
+    }
+}
+/* Seção do Produto */
+.produto-section {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 4rem 3rem;
+  border-radius: 2rem;
+  margin-top: 2rem;
+  background: linear-gradient(145deg, var(--card-bg), var(--card-bg2));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(88, 169, 117, 0.1);
+}
+
+.produto-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(88, 169, 117, 0.1), rgba(46, 139, 87, 0.2));
+  border: 2px dashed var(--accent-color);
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.image-placeholder:hover {
+  background: linear-gradient(135deg, rgba(88, 169, 117, 0.2), rgba(46, 139, 87, 0.3));
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.produto-content {
+  color: var(--light-text);
+}
+
+.produto-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--light-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  font-family: 'Montserrat Alternates', sans-serif;
+  background: linear-gradient(45deg, var(--light-text), var(--grenn-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.produto-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.produto-divider {
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--accent-color), 
+    var(--secondary-color), 
+    var(--accent-color), 
+    transparent
+  );
+  margin: 2.5rem 0;
+  opacity: 0.6;
+}
+
+.vantagens-section {
+  margin-bottom: 2rem;
+}
+
+.vantagens-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--light-text);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(88, 169, 117, 0.1);
+  border-radius: 0.5rem;
+  border-left: 4px solid var(--accent-color);
+}
+
+.vantagens-list {
+  list-style: none;
+  padding: 0;
+}
+
+.vantagem-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  color: var(--primary-color);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.vantagem-item:hover {
+  background: rgba(88, 169, 117, 0.05);
+  transform: translateX(5px);
+}
+
+.vantagem-icon-container {
+  background: rgba(88, 169, 117, 0.2);
+  border-radius: 50%;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.vantagem-icon {
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+.produto-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  color: var(--light-text);
+  border: none;
+  padding: 1.2rem 2.5rem;
+  border-radius: 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.082), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(88, 169, 117, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--light-text);
+  border: 2px solid var(--secondary-color);
+  padding: 1.2rem 2.5rem;
+  border-radius: 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+  transition: left 0.5s;
+  opacity: 0.2;
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary:hover {
+  background: rgba(88, 169, 117, 0.1);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .produto-section {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  .produto-title {
+    font-size: 2rem;
+  }
+  
+  .produto-buttons {
+    justify-content: center;
+  }
+  
+  .vantagem-item {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  .image-placeholder {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .produto-section {
+    padding: 2rem 1.5rem;
+  }
+  
+  .produto-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    min-width: auto;
+  }
+  
+  .produto-title {
+    font-size: 1.8rem;
+  }
+  
+  .produto-description {
+    font-size: 1rem;
+    text-align: left;
+  }
+}
