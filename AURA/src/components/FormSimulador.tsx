@@ -1,71 +1,114 @@
-import { useState } from "react";
+import { useState } from 'react';
+import styles from '../pages/Simulador/Simulador.module.css';
 
 interface Props {
   setResultado: (data: any) => void;
 }
 
 export default function FormSimulador({ setResultado }: Props) {
-  const [tipoSolo, setTipoSolo] = useState("");
-  const [nivelPh, setNivelPh] = useState("");
-  const [insolacao, setInsolacao] = useState("");
-  const [desejo, setDesejo] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    tipoSolo: '',
+    nivelPh: '',
+    insolacao: '',
+    desejo: ''
+  });
 
-  function analisar() {
-    setLoading(true);
-
-    const dadosFormulario = { tipoSolo, nivelPh, insolacao, desejo };
-
-    try {
-      // Chama a função do frontend que gera sugestões simuladas
-      setResultado(dadosFormulario);
-    } catch (err) {
-      console.error(err);
-      alert("Erro ao gerar sugestões.");
-    } finally {
-      setLoading(false);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.tipoSolo && formData.nivelPh && formData.insolacao) {
+      setResultado(formData);
+    } else {
+      alert('Por favor, preencha todos os campos obrigatórios.');
     }
-  }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   return (
-    <div>
-      <h1>Simulador Inteligente de Plantio</h1>
+    <div className={styles.formContainer}>
+      <h2 className={styles.formTitle}>Informe as características do seu solo</h2>
+      
+      <form onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>
+            <strong>Tipo de solo:</strong>
+          </label>
+          <select 
+            className={styles.formSelect}
+            name="tipoSolo"
+            value={formData.tipoSolo}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecione o tipo de terra</option>
+            <option value="arenoso">Arenoso</option>
+            <option value="argiloso">Argiloso</option>
+            <option value="humoso">Humoso</option>
+            <option value="calcario">Calcário</option>
+          </select>
+        </div>
 
-      <label>Tipo de solo:</label>
-      <select value={tipoSolo} onChange={e => setTipoSolo(e.target.value)}>
-        <option value="">Selecione</option>
-        <option value="arenoso">Arenoso</option>
-        <option value="argiloso">Argiloso</option>
-        <option value="misturado">Misturado</option>
-      </select>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>
+            <strong>Nível de pH do Solo:</strong>
+          </label>
+          <select 
+            className={styles.formSelect}
+            name="nivelPh"
+            value={formData.nivelPh}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecione o nível de pH</option>
+            <option value="acido">Ácido (pH 4.5-6.0)</option>
+            <option value="levemente-acido">Levemente Ácido (pH 6.0-6.5)</option>
+            <option value="neutro">Neutro (pH 6.5-7.5)</option>
+            <option value="alcalino">Alcalino (pH 7.5-9.0)</option>
+          </select>
+        </div>
 
-      <label>Nível de pH:</label>
-      <select value={nivelPh} onChange={e => setNivelPh(e.target.value)}>
-        <option value="">Selecione</option>
-        <option value="ácido">Ácido</option>
-        <option value="neutro">Neutro</option>
-        <option value="alcalino">Alcalino</option>
-      </select>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>
+            <strong>Nível de Insolação:</strong>
+          </label>
+          <select 
+            className={styles.formSelect}
+            name="insolacao"
+            value={formData.insolacao}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecione a insolação</option>
+            <option value="baixa">Baixa (2-4 horas/dia)</option>
+            <option value="media">Média (4-6 horas/dia)</option>
+            <option value="alta">Alta (6+ horas/dia)</option>
+          </select>
+        </div>
 
-      <label>Insolação:</label>
-      <select value={insolacao} onChange={e => setInsolacao(e.target.value)}>
-        <option value="">Selecione</option>
-        <option value="baixa">Baixa</option>
-        <option value="média">Média</option>
-        <option value="alta">Alta</option>
-      </select>
+        <div className={styles.formGroup}>
+          <label className={styles.formLabel}>
+            <strong>O que você gostaria de plantar? (opcional):</strong>
+          </label>
+          <input
+            className={styles.formInput}
+            type="text"
+            name="desejo"
+            value={formData.desejo}
+            onChange={handleChange}
+            placeholder="Ex. Alface, Tomate, Feijão..."
+          />
+        </div>
 
-      <label>Desejo de plantar (opcional):</label>
-      <input
-        type="text"
-        value={desejo}
-        onChange={e => setDesejo(e.target.value)}
-        placeholder="Ex: Alface, Tomate..."
-      />
-
-      <button onClick={analisar} disabled={loading}>
-        {loading ? "Analisando..." : "Analisar"}
-      </button>
+        <button type="submit" className={styles.analyzeButton}>
+          Analisar possibilidades de plantio
+        </button>
+      </form>
     </div>
   );
 }
