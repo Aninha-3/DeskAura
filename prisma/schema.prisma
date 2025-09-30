@@ -1,23 +1,14 @@
-// Este é o seu arquivo de esquema do Prisma.
-// Você pode ler mais sobre ele na documentação: https://pris.ly/d/prisma-schema
-
-// Configura o conector do seu banco de dados.
-// Você pode mudar 'postgresql' para 'sqlite', 'mysql', 'sqlserver', 'cockroachdb' ou 'mongodb'.
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:admin@localhost:3306/DeskAura"
-
+  url      = env("DATABASE_URL")
 }
 
-// O gerador do Prisma Client.
-// Ele é responsável por criar o código do cliente que você usará na sua aplicação.
 generator client {
   provider = "prisma-client-js"
 }
 
 
-// Representa a tabela de usuários.
-// Contém todas as informações básicas de cada pessoa que usa a plataforma.
+
 model Usuario {
   id_usuario    String    @id @default(uuid())
   nome          String
@@ -27,7 +18,7 @@ model Usuario {
   ultimo_login  DateTime?
   simulacoes    Simulacao[]
 
-  @@map("Usuario") // ← nome exato da tabela no MySQL
+  @@map("Usuario") 
 }
 
 
