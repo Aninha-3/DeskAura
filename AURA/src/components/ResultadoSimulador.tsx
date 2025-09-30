@@ -10,7 +10,8 @@ export default function ResultadoSimulador({ resultado, resetar }: Props) {
       <ul>
         {resultado.map((r, idx) => (
           <li key={idx}>
-            <strong>{r.nome}</strong> - Solo: {r.terra}, pH: {r.ph}, Insolação: {r.insolacao} - Compatibilidade: {r.compatibilidade}%
+            <strong>{r.nome}</strong> – Solo: {r.terra}, pH: {r.ph},
+            Insolação: {r.insolacao} – Compatibilidade: {r.compatibilidade}%
           </li>
         ))}
       </ul>
