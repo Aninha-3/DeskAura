@@ -35,6 +35,8 @@
 
 .LinhaNav:hover {
   color: #ffffff;
+  transition:10ms;
+  transform: scale(1.1);
 }
 
 /* Botões (login e cadastro) */
@@ -55,7 +57,8 @@
 }
 
 .navButton:hover {
-    border: 2px solid #f1faf5;
-  background: #2E8B57;
-  color: #000;
+  border: 2px solid #f1faf562;
+   transform: scale(1.1);
+  background: #0e482743;
+  color: #ffff;
 }

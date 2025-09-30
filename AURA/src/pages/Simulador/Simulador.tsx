@@ -1,115 +1,175 @@
 import { useState } from "react";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import FormSimulador from "../../components/FormSimulador";
+import ResultadoSimulador from "../../components/ResultadoSimulador";
 import styles from "./Simulador.module.css";
 
-type Solo = "arenoso" | "argiloso" | "misturado" | "";
-type PH = "ácido" | "neutro" | "alcalino" | "";
-type Insolacao = "baixa" | "média" | "alta" | "";
-
-interface Sugestao {
-  nome: string;
-  terra: string;
-  ph: string;
-  insolacao: string;
-  compatibilidade: number;
-}
+// Registrando componentes do Chart.js
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function Simulador() {
-  const [tipoSolo, setTipoSolo] = useState<Solo>("");
-  const [nivelPh, setNivelPh] = useState<PH>("");
-  const [insolacao, setInsolacao] = useState<Insolacao>("");
-  const [desejo, setDesejo] = useState("");
-  const [resultado, setResultado] = useState<Sugestao[] | null>(null);
+  const [resultado, setResultado] = useState<any[]>([]);
+  const [chartData, setChartData] = useState<any>(null);
 
-  function analisar() {
-    // Simulação simples – em um projeto real você chamaria uma API
-    const dados: Sugestao[] = [
-      { nome: "Cenoura", terra: "arenoso", ph: "neutro", insolacao: "alta", compatibilidade: 95 },
-      { nome: "Batata", terra: "argiloso", ph: "ácido", insolacao: "média", compatibilidade: 85 },
-      { nome: "Feijão", terra: "misturado", ph: "neutro", insolacao: "alta", compatibilidade: 78 },
-      { nome: "Ervilha", terra: "arenoso", ph: "neutro", insolacao: "baixa", compatibilidade: 60 },
-      { nome: "Alface", terra: "argiloso", ph: "alcalino", insolacao: "baixa", compatibilidade: 40 },
+  function gerarSugestoes(data: any) {
+    const suggestions = [
+      {
+        nome: data.desejo || "Alface",
+        terra: data.tipoSolo || "arenoso",
+        ph: data.nivelPh || "neutro",
+        insolacao: data.insolacao || "alta",
+        compatibilidade: Math.floor(Math.random() * 41) + 60,
+      },
+      {
+        nome: "Tomate",
+        terra: "argiloso",
+        ph: "neutro",
+        insolacao: "alta",
+        compatibilidade: 85,
+      },
+      {
+        nome: "Cenoura",
+        terra: "arenoso",
+        ph: "neutro",
+        insolacao: "média",
+        compatibilidade: 75,
+      },
+      {
+        nome: "Feijão",
+        terra: "argiloso",
+        ph: "levemente ácido",
+        insolacao: "alta",
+        compatibilidade: 80,
+      },
+      {
+        nome: "Batata",
+        terra: "arenoso",
+        ph: "ácido",
+        insolacao: "média",
+        compatibilidade: 70,
+      },
+      {
+        nome: "Couve",
+        terra: "argiloso",
+        ph: "neutro",
+        insolacao: "alta",
+        compatibilidade: 90,
+      }
     ];
 
-    // Exemplo de filtro simples
-    const filtrado = dados
-      .map(item => ({
-        ...item,
-        compatibilidade: item.compatibilidade -
-          (tipoSolo && item.terra !== tipoSolo ? 20 : 0) -
-          (nivelPh && item.ph !== nivelPh ? 20 : 0) -
-          (insolacao && item.insolacao !== insolacao ? 20 : 0),
-      }))
-      .sort((a, b) => b.compatibilidade - a.compatibilidade);
+    const chart = {
+      labels: suggestions.map((s) => s.nome),
+      datasets: [
+        {
+          label: "Compatibilidade (%)",
+          data: suggestions.map((s) => s.compatibilidade),
+          backgroundColor: '#58A975',
+          borderColor: '#4a8c63',
+          borderWidth: 1,
+          borderRadius: 8,
+        },
+      ],
+    };
 
-    setResultado(filtrado);
+    setResultado(suggestions);
+    setChartData(chart);
   }
 
   function resetar() {
-    setResultado(null);
-    setTipoSolo("");
-    setNivelPh("");
-    setInsolacao("");
-    setDesejo("");
+    setResultado([]);
+    setChartData(null);
   }
+
+  const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' as const,
+      },
+      title: {
+        display: false,
+      },
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {
+          callback: function(value: any) {
+            return value + '%';
+          }
+        }
+      },
+    },
+  };
 
   return (
     <div className={styles.container}>
-      {!resultado ? (
-        <div className={styles.formBox}>
-          <h1>Simulador de Plantio Inteligente</h1>
-          <p>Descubra o que plantar em seu tipo de terra e receba orientações personalizadas</p>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Simulador de Plantio Inteligente</h1>
+        <p className={styles.subtitle}>
+          {!resultado.length 
+            ? "Descubra o que plantar em seu tipo de terra e receba orientações personalizadas"
+            : "Descubra o que plantar em seu tipo de terra e receba orientações personalizadas"
+          }
+        </p>
+      </header>
 
-          <label>Tipo de solo:</label>
-          <select value={tipoSolo} onChange={e => setTipoSolo(e.target.value as Solo)}>
-            <option value="">Selecione</option>
-            <option value="arenoso">Arenoso</option>
-            <option value="argiloso">Argiloso</option>
-            <option value="misturado">Misturado</option>
-          </select>
-
-          <label>Nível de pH do Solo:</label>
-          <select value={nivelPh} onChange={e => setNivelPh(e.target.value as PH)}>
-            <option value="">Selecione</option>
-            <option value="ácido">Ácido</option>
-            <option value="neutro">Neutro</option>
-            <option value="alcalino">Alcalino</option>
-          </select>
-
-          <label>Nível de Insolação:</label>
-          <select value={insolacao} onChange={e => setInsolacao(e.target.value as Insolacao)}>
-            <option value="">Selecione</option>
-            <option value="baixa">Baixa</option>
-            <option value="média">Média</option>
-            <option value="alta">Alta</option>
-          </select>
-
-          <label>O que você gostaria de plantar? (opcional)</label>
-          <input
-            type="text"
-            value={desejo}
-            onChange={e => setDesejo(e.target.value)}
-            placeholder="Ex: Alface, Tomates..."
-          />
-
-          <button onClick={analisar}>Analisar possibilidades de plantio</button>
-        </div>
+      {!resultado.length ? (
+        <FormSimulador setResultado={gerarSugestoes} />
       ) : (
-        <div className={styles.resultBox}>
-          <h1>Sugestões de Plantio para Seu Solo</h1>
-          <p>Baseado nas informações inseridas:</p>
+        <div className={styles.resultsContainer}>
+          <ResultadoSimulador resultado={resultado} resetar={resetar} />
+          
+          {chartData && (
+            <div className={styles.chartContainer}>
+              <h3 className={styles.chartTitle}>Compatibilidade das Culturas</h3>
+              <div style={{ height: '400px' }}>
+                <Bar data={chartData} options={chartOptions} />
+              </div>
+            </div>
+          )}
 
-          <ul>
-            {resultado.map((r, idx) => (
-              <li key={idx} className={styles.item}>
-                <span>{r.nome}</span>
-                <span>{r.compatibilidade}%</span>
-              </li>
-            ))}
-          </ul>
-
-          <button onClick={resetar}>Voltar</button>
+          <div className={styles.soilPreparation}>
+            <h3 className={styles.soilPreparationTitle}>Data de Preparação para o Solo</h3>
+            <p className={styles.soilPreparationDate}>
+              {new Date().toLocaleDateString('pt-BR', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+              })}
+            </p>
+          </div>
         </div>
       )}
+
+      <footer className={styles.footer}>
+        <div className={styles.brand}>AURA</div>
+        <p className={styles.copyright}>
+          Revolucionando com inteligência artificial e sustentabilidade.
+          <br />
+          © 2025 AURA Todos os direitos reservados
+          <br />
+          Termos de uso e políticas
+        </p>
+      </footer>
     </div>
   );
 }

@@ -2,8 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro/Cadastro';
 import Simulador from './pages/Simulador/Simulador';
-import Chatbot from './components/Assistente'; // certifique-se que o arquivo se chama Chatbot.tsx
+import Chatbot from './components/Assistente'; 
 import { Footer } from './components/Footer';
+
 
 function App() {
   return (

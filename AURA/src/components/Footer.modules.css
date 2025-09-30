@@ -1,19 +1,25 @@
+/* Container geral ocupa 100% da tela */
 .footer-container {
-    background-color: #0a3d00;
+    min-height: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #0a3d00, #001a0a);
     color: #f0f7ee;
-    padding: 40px 20px 20px;
+    padding: 60px 40px;
     border-top: 4px solid #58A975;
-    margin-top: 40px;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: inset 0 0 50px #58A97544;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 1200px;
-    margin: 0 auto 30px;
+    max-width: 1400px;
+    margin: 0 auto;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
 }
 
 .footer-brand {
@@ -24,21 +30,22 @@
 .footer-logo {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
-    font-size: 2rem;
-    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #58A975;
 }
 
 .footer-logo img {
-    margin-right: 10px;
-    height: 40px;
+    margin-right: 15px;
+    height: 50px;
 }
 
 .footer-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 400px;
-    color: #c8d9ce;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 450px;
+    color: #a0f0c0;
 }
 
 .footer-links {
@@ -46,19 +53,22 @@
     flex: 2;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
 }
 
 .link-group {
-    min-width: 180px;
+    min-width: 200px;
 }
 
 .link-group h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
-    color: #c8d9ce;
+    color: #58A975;
     position: relative;
     padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
 }
 
 .link-group h3::after {
@@ -66,9 +76,10 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 40px;
-    height: 2px;
+    width: 50px;
+    height: 3px;
     background-color: #58A975;
+   
 }
 
 .link-group ul {
@@ -76,85 +87,88 @@
 }
 
 .link-group ul li {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .link-group ul li a {
-    color: #c8d9ce;
+    color: #a0f0c0;
     text-decoration: none;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
+    font-weight: 500;
 }
 
 .link-group ul li a:hover {
-    color: #58A975;
-    transform: translateX(5px);
+    color: #58ffa0;
+    transform: translateX(5px); 
 }
-
 .link-group ul li a i {
-    margin-right: 8px;
-    font-size: 0.9rem;
+    margin-right: 10px;
+    font-size: 1rem;
 }
 
 .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 30px;
     border-top: 1px solid #1a5a1a;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
 }
 
 .footer-bottom p {
-    color: #c8d9ce;
-    font-size: 0.95rem;
+    color: #a0f0c0;
+    font-size: 1rem;
 }
 
 .footer-bottom a {
-    color: #c8d9ce;
+    color: #a0f0c0;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-bottom a:hover {
-    color: #58A975;
+    color: #58ffa0;
     text-decoration: underline;
 }
 
 .social-links {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    background-color: #1a5a1a;
+    width: 45px;
+    height: 45px;
+    background-color: #001a0a;
     border-radius: 50%;
-    color: #c8d9ce;
+    color: #a0f0c0;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    background-color: #58A975;
-    transform: translateY(-3px);
+    background-color: #00ff99;
+    color: #001a0a;
+    transform: translateY(-5px) scale(1.1);
 }
 
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
+        align-items: center;
     }
     
     .footer-links {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
+        gap: 20px;
     }
     
     .footer-bottom {
