@@ -1,12 +1,16 @@
 import './Hero.modules.css';
 import logoFooter from '../assets/logoVerde.png'
 import Historia from '../assets/nossaHist.png'
+import TopButton from './TopButton';
 import { FaTemperatureHalf, FaRegCircleCheck, FaCheck } from "react-icons/fa6";
 //  <img src={Produto} alt="Dispositivo Aura" />
 
 export function Hero() {
   return (
     <div className="container-hero">
+
+       <TopButton />
+
       {/* Gráfico */}
       <div className="container-graf">
         <h1 className="title-graf"> Crescimento das Plantas</h1>
@@ -184,6 +188,7 @@ export function Hero() {
         </div>
       </div>
 
+       
     </div>
   );
 }

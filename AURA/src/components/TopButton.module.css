@@ -1,0 +1,28 @@
+.scrollToTopBtn {
+  /* O display: none; será gerido pelo React para mostrar/esconder o botão */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 24px;
+  width: 50px;
+  height: 55px;
+  border: none;
+  background-color: #2E8B57;
+  color: white;
+  cursor: pointer;
+  border-radius: 56%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+  transition: all 0.3s ease-in-out;
+}
+
+.scrollToTopBtn:hover {
+  border: 2px solid #f1faf562;
+  transform: scale(1.2);
+  background: #0e4827c6;
+  color: #ffff;
+}
