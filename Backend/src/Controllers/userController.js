@@ -1,13 +1,19 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
 // Buscar todos os usuários
 export const findAll = async (req, res) => {
   try {
-    const users = await prisma.Usuario.findMany();
+    const users = await prisma.Usuario.findMany({
+      select: {
+        id_usuario: true,
+        nome: true,
+        email: true,
+        ultimo_login: true
+      }
+    });
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -19,7 +25,13 @@ export const findOne = async (req, res) => {
   try {
     const { id } = req.params;
     const user = await prisma.Usuario.findUnique({
-      where: { id_usuario: parseInt(id) }
+      where: { id_usuario: parseInt(id) },
+      select: {
+        id_usuario: true,
+        nome: true,
+        email: true,
+        ultimo_login: true
+      }
     });
     if (!user) {
       return res.status(404).json({ error: 'Usuário não encontrado' });
@@ -46,39 +58,43 @@ export const create = async (req, res) => {
     const senha_hash = await bcrypt.hash(senha, 10);
 
     const user = await prisma.Usuario.create({
-      data: { nome, email, senha_hash }
+      data: { nome, email, senha_hash },
+      select: {
+        id_usuario: true,
+        nome: true,
+        email: true,
+        ultimo_login: true
+      }
     });
 
-    // payload -> Conteudo de dentro so JWT
-    const payload = {
-      id: userEncontrado.id,
-      nome: userEncontrado.nome
-    }
-
-    //token vai sobreviver po 1h
-    //palavra secreta -> Marcos aurelo passar para base64 -> TWFyY29zIGF1cmVsbw==
-    const token = jwt.sign(payload, 'TWFyY29zIGF1cmVsbw==', {
-      expiresIn: '1d' // Tempo de expiração do token
-    })
+    res.status(201).json(user);
   } catch (error) {
     console.error(error); 
     res.status(500).json({ error: error.message });
-  };
+  }
 };
+
 // Atualizar um usuário pelo ID
 export const update = async (req, res) => {
   try {
     const { id } = req.params;
     const { nome, email, senha, ultimo_login } = req.body;
 
-    let senha_hash;
+    let dataToUpdate = { nome, email, ultimo_login };
+    
     if (senha) {
-      senha_hash = await bcrypt.hash(senha, 10);
+      dataToUpdate.senha_hash = await bcrypt.hash(senha, 10);
     }
 
     const user = await prisma.Usuario.update({
       where: { id_usuario: parseInt(id) },
-      data: { nome, email, senha_hash, ultimo_login }
+      data: dataToUpdate,
+      select: {
+        id_usuario: true,
+        nome: true,
+        email: true,
+        ultimo_login: true
+      }
     });
 
     res.json(user);
@@ -100,4 +116,3 @@ export const remove = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
