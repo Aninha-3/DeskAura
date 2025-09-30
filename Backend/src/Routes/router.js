@@ -1,13 +1,13 @@
 // src/routes/router.js
 import express from "express";
 import * as userController from "../Controllers/userController.js";
-import { register, login, me, authMiddleware } from "../Controllers/auth.js";
+import {  login, me, authMiddleware, Cadastro } from "../Middlewares/authMiddleware.js";
 
 const router = express.Router();
 
 // 🔓 Rotas públicas
-router.post("/usuarios", register);   // cadastro
-router.post("/auth/login", login);    // login
+router.post("/usuarios", Cadastro);   // cadastro
+router.post("/login", login);    // login
 
 // 🔒 Rotas protegidas
 router.get("/auth/me", authMiddleware, me);
@@ -22,7 +22,7 @@ router.delete("/usuarios/:id", authMiddleware, userController.remove);
 export default router;
 
 
-/////////////////////////////////////////////////////////////////////////
+//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/
 
 
 

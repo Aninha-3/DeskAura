@@ -26,6 +26,7 @@ export const findOne = async (req, res) => {
     }
     res.json(user);
   } catch (error) {
+    console.error(error); 
     res.status(500).json({ error: error.message });
   }
 };
@@ -60,6 +61,7 @@ export const create = async (req, res) => {
       expiresIn: '1d' // Tempo de expiração do token
     })
   } catch (error) {
+    console.error(error); 
     res.status(500).json({ error: error.message });
   };
 };
@@ -81,6 +83,7 @@ export const update = async (req, res) => {
 
     res.json(user);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: error.message });
   }
 };
