@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { Bar } from "react-chartjs-2";
+import Chart from "chart.js/auto";
+import FormSimulador from "../../components/FormSimulador";
+import ResultadoSimulador from "../../components/ResultadoSimulador";
 import styles from "./Simulador.module.css";
 
+<<<<<<< HEAD
 // Ícones do React
 import { 
   FaSeedling, 
@@ -25,43 +30,55 @@ interface Sugestao {
   compatibilidade: number;
 }
 
+=======
+>>>>>>> 4de3884c8a55e1cbf7b983369161b4782db77196
 export default function Simulador() {
-  const [tipoSolo, setTipoSolo] = useState<Solo>("");
-  const [nivelPh, setNivelPh] = useState<PH>("");
-  const [insolacao, setInsolacao] = useState<Insolacao>("");
-  const [desejo, setDesejo] = useState("");
-  const [resultado, setResultado] = useState<Sugestao[] | null>(null);
+  const [resultado, setResultado] = useState<any[]>([]);
+  const [chartData, setChartData] = useState<any>(null);
 
-  function analisar() {
-    // Simulação simples – em um projeto real você chamaria uma API
-    const dados: Sugestao[] = [
-      { nome: "Cenoura", terra: "arenoso", ph: "neutro", insolacao: "alta", compatibilidade: 95 },
-      { nome: "Batata", terra: "argiloso", ph: "ácido", insolacao: "média", compatibilidade: 85 },
-      { nome: "Feijão", terra: "misturado", ph: "neutro", insolacao: "alta", compatibilidade: 78 },
-      { nome: "Ervilha", terra: "arenoso", ph: "neutro", insolacao: "baixa", compatibilidade: 60 },
-      { nome: "Alface", terra: "argiloso", ph: "alcalino", insolacao: "baixa", compatibilidade: 40 },
+  function gerarSugestoes(data: any) {
+    const suggestions = [
+      {
+        nome: data.desejo || "Alface",
+        terra: data.tipoSolo || "arenoso",
+        ph: data.nivelPh || "neutro",
+        insolacao: data.insolacao || "alta",
+        compatibilidade: Math.floor(Math.random() * 41) + 60,
+      },
+      {
+        nome: "Tomate",
+        terra: "argiloso",
+        ph: "neutro",
+        insolacao: "alta",
+        compatibilidade: 85,
+      },
+      {
+        nome: "Cenoura",
+        terra: "arenoso",
+        ph: "neutro",
+        insolacao: "média",
+        compatibilidade: 75,
+      },
     ];
 
-    // Exemplo de filtro simples
-    const filtrado = dados
-      .map(item => ({
-        ...item,
-        compatibilidade: item.compatibilidade -
-          (tipoSolo && item.terra !== tipoSolo ? 20 : 0) -
-          (nivelPh && item.ph !== nivelPh ? 20 : 0) -
-          (insolacao && item.insolacao !== insolacao ? 20 : 0),
-      }))
-      .sort((a, b) => b.compatibilidade - a.compatibilidade);
+    const chart = {
+      labels: suggestions.map(s => s.nome),
+      datasets: [
+        {
+          label: "Compatibilidade (%)",
+          data: suggestions.map(s => s.compatibilidade),
+          backgroundColor: "#58A975",
+        },
+      ],
+    };
 
-    setResultado(filtrado);
+    setResultado(suggestions);
+    setChartData(chart);
   }
 
   function resetar() {
-    setResultado(null);
-    setTipoSolo("");
-    setNivelPh("");
-    setInsolacao("");
-    setDesejo("");
+    setResultado([]);
+    setChartData(null);
   }
 
   // Função para obter ícone baseado na compatibilidade
@@ -80,6 +97,7 @@ export default function Simulador() {
 
   return (
     <div className={styles.container}>
+<<<<<<< HEAD
       {!resultado ? (
         <div className={styles.formBox}>
           <div className={styles.header}>
@@ -187,6 +205,18 @@ export default function Simulador() {
             <FaArrowLeft className={styles.buttonIcon} />
             Voltar
           </button>
+=======
+      {!resultado.length ? (
+        <FormSimulador setResultado={gerarSugestoes} />
+      ) : (
+        <div>
+          <ResultadoSimulador resultado={resultado} resetar={resetar} />
+          {chartData && (
+            <div style={{ width: 600, height: 400, marginTop: 20 }}>
+              <Bar data={chartData} />
+            </div>
+          )}
+>>>>>>> 4de3884c8a55e1cbf7b983369161b4782db77196
         </div>
       )}
     </div>

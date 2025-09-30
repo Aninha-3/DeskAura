@@ -6,6 +6,7 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import Simulador from './pages/Simulador/Simulador';
 
 
+
 function App() {
   return (
     <Router>
