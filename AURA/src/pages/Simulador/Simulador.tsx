@@ -165,7 +165,7 @@ export default function Simulador() {
         <p className={styles.copyright}>
           Revolucionando com inteligência artificial e sustentabilidade.
           <br />
-          © 2022 AURA Todos os direitos reservados
+          © 2025 AURA Todos os direitos reservados
           <br />
           Termos de uso e políticas
         </p>
