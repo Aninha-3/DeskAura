@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import styles from './Login.module.css'
-import { CgPassword } from "react-icons/cg";
+import { form } from "framer-motion/client";
 
 function Login () {
 
@@ -20,7 +20,7 @@ setSenha(event.target.value)
 }
 
 //Essa função vai ser usada pra quando o formulário for enviado
-const handleLoginSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 }
 
@@ -30,6 +30,20 @@ console.log('Email:', email, 'Senha:', password);
 
 //Preciso puxar a api/link do backend 
 
+
+return (
+    <form onSubmit={handleLoginSubmit}>
+    <div>
+        <label htmlFor="email">Email:</label>
+<input>
+id="email"
+type="email"
+value={email}
+</input>
+
+    </div>
+    </form>
+)
 
 }
 
