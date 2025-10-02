@@ -170,6 +170,7 @@
   margin-bottom: 40px;
   font-weight: 800;
   position: relative;
+  text-align: center;
 }
 
 .resultsTitle::after {
@@ -188,12 +189,23 @@
 .suggestionsGrid {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 50px;  
+}
+
+.resultContainer {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+
 }
 
 .suggestionCategory {
   background: #ffffff;
-  padding: 25px;
+  padding: 90px;
   border-radius: 18px;
   border-left: 6px solid;
   border-image: linear-gradient(to bottom, #7abf5f, #2d5016) 1;
