@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastro/Cadastro';
 import Simulador from './pages/Simulador/Simulador';
@@ -7,6 +7,14 @@ import { Footer } from './components/Footer';
 
 
 function App() {
+  
+  const location = useLocation();
+
+  // Definir rotas que NÃO devem ter footer
+  const noFooterRoutes = ['/cadastro', '/login'];
+
+  const showFooter = !noFooterRoutes.includes(location.pathname);
+  
   return (
     <Router>
       <div className="App">
@@ -19,7 +27,7 @@ function App() {
 
         {/* Sempre visível em todas as páginas */}
         <Chatbot />
-        <Footer />
+           {showFooter && <Footer />}
       </div>
     </Router>
   );
