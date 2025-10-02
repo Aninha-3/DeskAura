@@ -1,24 +1,48 @@
 import './Hero.modules.css';
 import logoFooter from '../assets/logoVerde.png';
 import Historia from '../assets/nossaHist.png';
-import Aurelio from '../assets/auraMaisAurelio.png'
+import Aurelio from '../assets/auraMaisAurelio.png';
 import TopButton from './TopButton';
+
 import { FaTemperatureHalf, FaRegCircleCheck, FaCheck, FaChartSimple } from "react-icons/fa6";
 import { TbTargetArrow } from "react-icons/tb";
 import { PiPlantDuotone } from "react-icons/pi";
 import { GrSatellite } from "react-icons/gr";
 import { AiTwotoneAlert } from "react-icons/ai";
 import { RxRocket } from "react-icons/rx";
-//  <img src={Produto} alt="Dispositivo Aura" />
+
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export function Hero() {
+  // Ref para rastrear a seção 'About' e aplicar o parallax
+  const aboutRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: aboutRef,
+    offset: ["start end", "end start"],
+  });
+  const yParallax = useTransform(scrollYProgress, [0, 1], [-120, 120]);
+
+  // Variação para o efeito de fade-in
+  const fadeInVariants = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+  };
+
   return (
     <div className="container-hero">
 
       <TopButton />
 
       {/* Gráfico */}
-      <div className="container-graf">
+      <motion.div
+        className="container-graf"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <h1 className="title-graf"> Crescimento das Plantas</h1>
         <div className="graf-img">
           <div className="chart-placeholder">
@@ -32,10 +56,17 @@ export function Hero() {
         </div>
         <h1 className="descri-graf">45.868 Plantas</h1>
         <h2 className="avali-graf">Obteve um desempenho melhor do que o último mês</h2>
-      </div>
+      </motion.div>
 
       {/* Temperatura */}
-      <div className="container-temp">
+      <motion.div
+        className="container-temp"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <h1 className="title-temp">Temperatura</h1>
         <h1 className="temp">22ºC</h1>
         <div className="temp-icon">
@@ -45,10 +76,17 @@ export function Hero() {
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: '70%' }}></div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Saúde das Plantas */}
-      <div className="container-umid">
+      <motion.div
+        className="container-umid"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 0.4 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <h1 className="title-umid"> Saúde das Plantas</h1>
         <div className="box-umid">
           <h1 className="umid">85%</h1>
@@ -58,49 +96,78 @@ export function Hero() {
         <div className="progress-bar">
           <div className="progress-fill" style={{ width: '85%' }}></div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Texto informativo */}
-      <h1 className="info-hero">Acesso a gráficos gerados em tempo real</h1>
+      <motion.h1
+        className="info-hero"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 0.6 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        Acesso a gráficos gerados em tempo real
+      </motion.h1>
 
       {/* Seção de contrato */}
-      <div className='contrate-section'>
+      <motion.div
+        className='contrate-section'
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.5, delay: 0.5 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <h1 className='title-cont'>Transforme a sua plantação</h1>
         <h1 className='subtitle-cont'>Hoje Mesmo</h1>
         <p className='paragraph-cont'>
           Junte-se a mais de 5.000 pessoas que já descobriram o futuro da agricultura sustentável
         </p>
-
-        {/* Botão com email */}
         <div className='btn-contrate'>
-          <a className='link-btn' href="auraservicosbr@gmail.com">
+          <a className='link-btn' href="mailto:auraservicosbr@gmail.com">
             auraservicosbr@gmail.com
           </a>
         </div>
-
-        {/* Certificado */}
         <div className='certificado'>
           <FaRegCircleCheck />
           <span>Certificado de Garantia</span>
         </div>
-      </div>
+      </motion.div>
 
-      {/* About */}
-      <div className='about'>
-        <img src={logoFooter} alt="Logo da Aura" />
-        <h1 className='about-text'>
-          Quem somos?
-        </h1>
-        <p className='about-paragraph'>
+      {/* About (com efeito de parallax) */}
+      <div className='about' ref={aboutRef}>
+        <motion.img
+          src={logoFooter}
+          alt="Logo da Aura"
+          style={{ y: yParallax }}
+          transition={{ duration: 0.5 }}
+        />
+        <motion.h1
+          className='about-text'
+          style={{ y: yParallax }}
+        >
+          O que fazemos?
+        </motion.h1>
+        <motion.p
+          className='about-paragraph'
+          style={{ y: yParallax }}
+        >
           Desenvolvemos um sistema de monitoramento ambiental inteligente, utilizando sensores integrados a plataformas embarcadas (Arduino, ESP32 e LoRa).
           <br /><br />
           Nosso sistema coleta informações em tempo real sobre temperatura, umidade, luminosidade e outras variáveis essenciais, enviando os dados para a nuvem, onde algoritmos processam e geram recomendações personalizadas para o produtor.
-          Nosso sistema coleta informações em tempo real sobre temperatura, umidade, luminosidade e outras variáveis essenciais, enviando os dados para a nuvem, onde algoritmos processam e geram recomendações personalizadas para o produtor.
-          Nosso sistema coleta informações em tempo real sobre temperatura, umidade, luminosidade e outras variáveis essenciais, enviando os dados para a nuvem, onde algoritmos processam e geram recomendações personalizadas para o produtor.
-        </p>
+        </motion.p>
       </div>
+
       {/* Nossa História */}
-      <div className="nossa-historia">
+      <motion.div
+        className="nossa-historia"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 1.0 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <div className="historia-overlay"></div>
         <div className="historia-image">
           <img src={Historia} alt="História Aura" />
@@ -108,56 +175,97 @@ export function Hero() {
         <div className="historia-content">
           <h1 className="historia-title">Nossa História</h1>
           <p className="historia-paragraph">
-            O AURA nasceu com a missão de levar o acordo com as necessidades todos os produtores,
-            independentemente em terceiros ou seu proprietário. <br />
-            Percebemos que muitos agricultores não tinham crescer à água, confiáveis sobre suas lavouras,
-            o que bastava se manifestar dos água, luz e nutrientes. <br /><br />
-            Assim, unimos tecnologia de porta cuja atividade de desacreditação é uma solução prática e excessível.
+            O AURA nasceu com a missão de levar tecnologia sustentável a todos os produtores,
+            garantindo monitoramento confiável de água, luz e nutrientes para suas lavouras. <br /><br />
+            Assim, unimos inovação e praticidade em uma solução acessível que transforma o futuro da agricultura.
           </p>
         </div>
-      </div>
+      </motion.div>
 
-
-
-
-      {/*Seção do Screen */}
+      {/* Seção do Screen */}
       <div className="screen-section">
         <div className="screen-oneline">
           <div className="screen">
             <div className="mb-2"><FaChartSimple /></div>
-            <h2  className="text-screen">Resultados em tempo real </h2>
+            <h2 className="text-screen">Resultados em tempo real</h2>
           </div>
           <div className="screen">
             <div className="mb-2"><TbTargetArrow /></div>
-            <h2  className="text-screen">Capacitar agricultores com dados confiáveis para otimizar o uso de recursos e aumentar a produtividade.</h2>
+            <h2 className="text-screen">
+              Capacitar agricultores com dados confiáveis para otimizar o uso de recursos e aumentar a produtividade.
+            </h2>
           </div>
           <div className="screen">
             <div className="mb-2"><GrSatellite /></div>
-            <h2  className="text-screen">Dados precisos de acordo com seu ambiente</h2>
+            <h2 className="text-screen">Dados precisos de acordo com seu ambiente</h2>
           </div>
         </div>
         <div className="screen-center">
           <div className="screen">
             <div className="mb-2"><PiPlantDuotone /></div>
-            <h2  className="text-screen">Sistema sustentável <br></br> Sem desperdícios</h2>
-
+            <h2 className="text-screen">Sistema sustentável <br /> Sem desperdícios</h2>
           </div>
           <div className="Aurelio">
             <img src={Aurelio} alt="Logo Aura com Aurelio" />
           </div>
           <div className="screen">
             <div className="mb-2"><AiTwotoneAlert /></div>
-            <h2 className="text-screen">Graficos, alertas e recomendações</h2>
+            <h2 className="text-screen">Gráficos, alertas e recomendações</h2>
           </div>
         </div>
         <div className='screen-missao'>
           <div className="mb-2"><RxRocket /></div>
-          <h2  className="text-screen">Ser a principal ferramenta de monitoramento ambiental que torna a agricultura mais eficiente e sustentável.</h2>
+          <h2 className="text-screen">
+            Ser a principal ferramenta de monitoramento ambiental que torna a agricultura mais eficiente e sustentável.
+          </h2>
         </div>
       </div>
 
+      {/* Seção do Screen (alternativa em blocos) */}
+      <motion.div
+        className="screen-section"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 1.2 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <div className="Block-screen1">
+          <div className="mb-2">☑️</div>
+          <h2>Resultados em tempo real</h2>
+        </div>
+        <div className="Block-screen2">
+          <div className="mb-2">🎯</div>
+          <h2>Capacitar agricultores com dados confiáveis para otimizar o uso de recursos e aumentar a produtividade.</h2>
+        </div>
+        <div className="Block-screen3">
+          <div className="mb-2">📡</div>
+          <h2>Dados precisos de acordo com seu ambiente</h2>
+        </div>
+        <div className="Block-screen4">
+          <div className="mb-2">🌱</div>
+          <h2>Sistema sustentável <br /> Sem desperdícios</h2>
+        </div>
+        <div className="Logo-central"></div>
+        <div className="Block-screen5">
+          <div className="mb-2">📊</div>
+          <h2>Ser a principal ferramenta de monitoramento ambiental que torna a agricultura mais eficiente e sustentável.</h2>
+        </div>
+        <div className="Block-screen6">
+          <div className="mb-2">📢</div>
+          <h2>Gráficos, alertas e recomendações</h2>
+        </div>
+      </motion.div>
+
       {/* Seção do Produto */}
-      <div className="produto-section">
+      <motion.div
+        className="produto-section"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.5, delay: 0.4 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <div className="produto-image">
           Imagem do Produto
         </div>
@@ -166,7 +274,9 @@ export function Hero() {
           <h1 className="produto-title">AUONE FOI CRIADO PARA MELHORAR SUA PRODUTIVIDADE RURAL</h1>
 
           <p className="produto-description">
-            Nossos sensores captam os dados do ambiente com precisão, e o dispositivo realiza a filtragem inteligente dessas informações. Tudo é transmitido via tecnologia LoRa pela internet, armazenado com segurança e disponibilizado diretamente no seu celular, oferecendo acesso rápido e prático à coleta realizada.
+            Nossos sensores captam os dados do ambiente com precisão, e o dispositivo realiza a filtragem inteligente dessas informações. 
+            Tudo é transmitido via tecnologia LoRa pela internet, armazenado com segurança e disponibilizado diretamente no seu celular, 
+            oferecendo acesso rápido e prático à coleta realizada.
           </p>
 
           <div className="produto-divider"></div>
@@ -188,7 +298,7 @@ export function Hero() {
               </li>
               <li className="vantagem-item">
                 <FaCheck className="vantagem-icon" />
-                <span>Emite alertas e recomendações para melhorar sua produzividade</span>
+                <span>Emite alertas e recomendações para melhorar sua produtividade</span>
               </li>
             </ul>
           </div>
@@ -200,9 +310,7 @@ export function Hero() {
             <button className="btn-secondary">Ver meus resultados</button>
           </div>
         </div>
-      </div>
-
-
+      </motion.div>
     </div>
   );
 }

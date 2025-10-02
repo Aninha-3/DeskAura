@@ -12,6 +12,7 @@
 }
 
 .container-hero {
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* Alterado para 1fr para colunas iguais */
@@ -20,6 +21,16 @@
   margin-top: 3.0rem;
   color: var(--text-color);
   font-family: 'Poppins', sans-serif;
+
+    overflow-y: auto; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Alterado para 1fr para colunas iguais */
+    gap: 1.8rem;
+    padding: 2rem;
+    margin-top: 3.0rem;
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+
 }
 
 /* Container principal para os cards */
@@ -53,6 +64,7 @@
 .title-graf,
 .title-temp,
 .title-umid {
+
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--primary-color);
@@ -62,12 +74,23 @@
   padding-bottom: 0.4rem;
   width: 100%;
   /* Garante que o título ocupe toda a largura */
+
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 0.4rem;
+    width: 100%; 
+
 }
 
 /* Conteúdo central dos cards */
 .chart-content,
 .temp-content,
 .umid-content {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,6 +109,24 @@
   /* Altura fixa para o gráfico */
   margin: 1rem 0;
   width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.chart-placeholder {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.6rem;
+    height: 150px; 
+    margin: 1rem 0;
+    width: 100%;
+
 }
 
 .chart-bar {
@@ -268,12 +309,21 @@
 
 /* Sobre Nós */
 .about {
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4rem;
   padding: 4rem 2rem;
   grid-column: span 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    margin-top: 1.5rem;
+    grid-column: span 3;
+
 }
 
 .about img {

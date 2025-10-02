@@ -24,7 +24,7 @@ export default function ResultadoSimulador({ resultado, resetar }: Props) {
   ];
 
   return (
-    <div>
+    <div className={styles.resultContainer}>
       <h2 className={styles.resultsTitle}>Sugestões de Plantio para Seu Solo</h2>
       <p style={{ textAlign: 'center', color: '#666', marginBottom: '30px' }}>
         Com base nas características informadas, estas plantas são mais compatíveis:

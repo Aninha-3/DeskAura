@@ -1,310 +1,345 @@
-/* Container principal */
 .container {
-  width: 100vw; /* largura da viewport */
-  max-width: 100vw; /* remove limite */
+  width: 100vw;
+  max-width: 100vw;
   margin: 0;
-  padding: 0; /* remove padding lateral */
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #e8effb 0%, #EEEEEE 100%);
   min-height: 100vh;
+  box-sizing: border-box;
+  background-attachment: fixed;
+  /* Efeito de paralaxe suave */
+}
+
+.contentWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-/* Formulário e resultados ocupando 100% */
 .formContainer,
 .resultsContainer,
 .chartContainer {
-  width: 100%;
+  width: 95%;
   max-width: 100%;
-  margin: 0 auto; /* opcional, centraliza verticalmente se quiser */
-  padding: 20px; /* ou padding horizontal menor se quiser ocupar totalmente */
+  margin: 20px auto;
+  padding: 40px;
   box-sizing: border-box;
-  border-radius: 0; /* se quiser que vá até as bordas */
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 10px 40px rgba(71, 70, 70, 0.15);
+  backdrop-filter: blur(12px);
 }
 
-/* Grid de sugestões */
-.suggestionsGrid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  width: 100%;
-  margin: 0;
-  gap: 20px;
-}
-
-
-/* Header Styles */
+/* Header Styles - Mais impacto */
 .header {
   text-align: center;
-  margin-bottom: 40px;
-  padding: 30px 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  margin-bottom: 50px;
+  padding: 40px 20px;
+  background: #ffffff;
+  border-radius: 30px;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'Montserrat Alternates', sans-serif;
   color: #2d5016;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, #58A975, #2d5016);
+  margin-bottom: 5px;
+  background: linear-gradient(135deg, #7abf5f 0%, #2d5016 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: #666;
-  font-weight: 400;
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 500;
+  font-family: 'Montserrat Alternates', sans-serif;
   line-height: 1.6;
 }
 
-/* Form Styles */
+/* Formulário e Títulos */
 .formContainer {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  margin-bottom: 40px;
+  max-width: 650px;
 }
 
 .formTitle {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #2d5016;
-  margin-bottom: 30px;
-  font-weight: 600;
-  border-left: 4px solid #58A975;
-  padding-left: 15px;
-}
+  margin-bottom: 35px;
+  font-weight: 700;
+  border-left: none;
+  border-bottom: 2px solid #58A975;
+  padding-bottom: 10px;
+  padding-left: 0;
+  text-align: center;
+    font-family: 'Montserrat', sans-serif ;
 
-.formGroup {
-  margin-bottom: 25px;
 }
 
 .formLabel {
   display: block;
   font-weight: 600;
-  color: #2d5016;
-  margin-bottom: 8px;
-  font-size: 1rem;
+  color: #386641;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
 }
 
-.formSelect, .formInput {
+/* Estilos de Input e Select - Mais interativos */
+.formSelect,
+.formInput {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid #e1e8ed;
-  border-radius: 10px;
-  font-size: 1rem;
-  background: white;
-  transition: all 0.3s ease;
+  padding: 14px 18px;
+  border: 1px solid #C8D9CE;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  background: #fdfefe;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.formSelect:focus, .formInput:focus {
+.formSelect:hover,
+.formInput:hover {
+  border-color: #a3bfa8;
+}
+
+/* Efeito de "Glowing" ao focar */
+.formSelect:focus,
+.formInput:focus {
   outline: none;
-  border-color: #58A975;
-  box-shadow: 0 0 0 3px rgba(88, 169, 117, 0.1);
+  border-color: #58a975;
+  /* Efeito de box-shadow 'glowing' */
+  box-shadow: 0 0 0 4px rgba(88, 169, 117, 0.25);
+  color: #2d5016;
 }
 
+/* Estilo do Select customizado com seta */
+.formSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* Adiciona ícone de seta customizado */
+  background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Cpath%20fill%3D%22%232d5016%22%20d%3D%22M6%209l-4-4h8z%22%2F%3E%3C%2Fsvg%3E") no-repeat right 15px center;
+  background-size: 12px;
+  padding-right: 40px;
+  color: #2d5016;
+}
+
+/* Botão de Análise - Mais destacado */
 .analyzeButton {
-  background: linear-gradient(135deg, #58A975, #4a8c63);
+  /* Gradiente mais profundo */
+  background: linear-gradient(135deg, #4a8c63 0%, #2d5016 100%);
   color: white;
   border: none;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 10px;
+  padding: 18px 50px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 15px;
+  /* Mais arredondado */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: block;
-  margin: 40px auto 0;
-  box-shadow: 0 4px 15px rgba(88, 169, 117, 0.3);
+  margin: 50px auto 0;
+  /* Sombra de botão "flutuante" */
+  box-shadow: 0 8px 25px rgba(45, 80, 22, 0.4);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .analyzeButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(88, 169, 117, 0.4);
+  transform: translateY(-3px);
+  /* Elevação maior */
+  box-shadow: 0 12px 30px rgba(45, 80, 22, 0.55);
 }
 
 .analyzeButton:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(45, 80, 22, 0.3);
 }
 
 /* Results Styles */
-.resultsContainer {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+.resultsTitle {
+  font-size: 2.2rem;
+  color: #2d5016;
+  margin-bottom: 40px;
+  font-weight: 800;
+  position: relative;
+  text-align: center;
 }
 
-.resultsTitle {
-  font-size: 1.8rem;
-  color: #2d5016;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: 700;
+.resultsTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #58A975, #2d5016);
+  border-radius: 2px;
 }
+
 
 .suggestionsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;  
+}
+
+.resultContainer {
+  margin-top: 20px;
   margin-bottom: 40px;
+  padding: 30px;
+  background: #f9f9f9;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+
 }
 
 .suggestionCategory {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 15px;
-  border-left: 4px solid #58A975;
+  background: #ffffff;
+  padding: 90px;
+  border-radius: 18px;
+  border-left: 6px solid;
+  border-image: linear-gradient(to bottom, #7abf5f, #2d5016) 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.suggestionCategory:hover {
+  transform: translateY(-3px);
+  /* Leve elevação ao passar o mouse */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .categoryTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #2d5016;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.suggestionList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #386641;
+  margin-bottom: 18px;
+  border-bottom: 1px dashed #e9ecef;
+  padding-bottom: 10px;
 }
 
 .suggestionItem {
-  padding: 8px 0;
-  border-bottom: 1px solid #e9ecef;
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #444;
+  font-size: 1rem;
 }
 
-.suggestionItem:last-child {
-  border-bottom: none;
-}
 
-/* Chart Container */
 .chartContainer {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  margin-top: 30px;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
 }
 
-.chartTitle {
-  font-size: 1.3rem;
-  color: #2d5016;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: 600;
-}
 
-/* Soil Preparation */
 .soilPreparation {
-  background: linear-gradient(135deg, #58A975, #4a8c63);
+  /* Gradiente mais intenso */
+  background: linear-gradient(135deg, #4a8c63 0%, #2d5016 100%);
   color: white;
-  padding: 25px;
-  border-radius: 15px;
-  margin-top: 30px;
-  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 40px;
+  box-shadow: 0 8px 30px rgba(45, 80, 22, 0.4);
 }
 
 .soilPreparationTitle {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
 }
 
 .soilPreparationDate {
-  font-size: 1.1rem;
-  opacity: 0.9;
+  font-size: 1.2rem;
+  opacity: 1;
+  font-weight: 300;
 }
 
-/* Back Button */
+/* Back Button - Mais profissional */
 .backButton {
-  background: #6c757d;
+  background: #95a5a6;
+  /* Cinza mais moderno */
   color: white;
   border: none;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 20px;
+  padding: 14px 35px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .backButton:hover {
-  background: #5a6268;
-  transform: translateY(-1px);
+  background: #7f8c8d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 50px;
-  padding: 20px;
-  color: #666;
-  font-size: 0.9rem;
-}
 
-.brand {
-  font-weight: 600;
-  color: #58A975;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.copyright {
-  opacity: 0.7;
-  line-height: 1.5;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .container {
-    padding: 15px;
+  .header {
+    padding: 30px 15px;
+    border-radius: 20px;
   }
-  
+
   .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
-  
-  .formContainer, .resultsContainer {
-    padding: 25px;
+
+  .subtitle {
+    font-size: 1.1rem;
   }
-  
-  .suggestionsGrid {
-    grid-template-columns: 1fr;
-  }
-  
+
+  .formContainer,
+  .resultsContainer,
   .chartContainer {
-    padding: 20px;
+    padding: 25px;
+    margin: 15px auto;
+    border-radius: 15px;
+  }
+
+  .formTitle {
+    font-size: 1.6rem;
+  }
+
+  .suggestionsGrid {
+    gap: 20px;
+  }
+
+  .analyzeButton {
+    padding: 15px 30px;
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
-  
-  .formContainer, .resultsContainer {
+
+  .formContainer,
+  .resultsContainer,
+  .chartContainer {
     padding: 20px;
   }
-  
+
   .analyzeButton {
     width: 100%;
-    padding: 12px 20px;
+    padding: 14px 20px;
+    margin: 30px auto 0;
   }
 }

@@ -1,28 +1,44 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import Cadastro from './pages/Cadastro/Cadastro';
+import Login from './pages/Login/Login';
 import Simulador from './pages/Simulador/Simulador';
 import Chatbot from './components/Assistente'; 
+import Cadastro from './pages/Cadastro/Cadastro';
+//import Perfil from '../../AURA/src/pages/Perfil/perfil'
+//        <Route path="/perfil" element={<Perfil />} />
 import { Footer } from './components/Footer';
 
+// Layout com lógica do footer
+function Layout() {
+  const location = useLocation();
 
-function App() {
+  // Rotas que não terão footer
+  const noFooterRoutes = ['/cadastro', '/login'];
+  const showFooter = !noFooterRoutes.includes(location.pathname.toLowerCase());
+
   return (
-    <Router>
-      <div className="App">
-        {/* Routes principais */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/simulador" element={<Simulador />} />
-        </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-        {/* Sempre visível em todas as páginas */}
-        <Chatbot />
-        <Footer />
-      </div>
-    </Router>
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/simulador" element={<Simulador />} />
+
+        <Route path="/cadastro" element={<Cadastro />} />
+      
+      </Routes>
+
+      <Chatbot />
+      {showFooter && <Footer />}
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <Layout />
+    </Router>
+  );
+}

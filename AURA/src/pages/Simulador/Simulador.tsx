@@ -9,9 +9,9 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import FormSimulador from "../../components/FormSimulador";
-import ResultadoSimulador from "../../components/ResultadoSimulador";
 import styles from "./Simulador.module.css";
+import FormSimulador from '../../components/FormSimulador';
+import ResultadoSimulador from '../../components/ResultadoSimulador';
 
 // Registrando componentes do Chart.js
 ChartJS.register(
@@ -79,8 +79,8 @@ export default function Simulador() {
         {
           label: "Compatibilidade (%)",
           data: suggestions.map((s) => s.compatibilidade),
-          backgroundColor: '#58A975',
-          borderColor: '#4a8c63',
+          backgroundColor: '#077354',
+          borderColor: '#365040ff',
           borderWidth: 1,
           borderRadius: 8,
         },
@@ -98,13 +98,20 @@ export default function Simulador() {
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          font: { size: 14, family: 'Segoe UI' }
+        }
       },
-      title: {
-        display: false,
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        bodyFont: { family: 'Segoe UI' },
+        titleFont: { family: 'Segoe UI' }
       },
+      title: { display: false },
     },
     scales: {
       y: {
@@ -113,9 +120,15 @@ export default function Simulador() {
         ticks: {
           callback: function(value: any) {
             return value + '%';
-          }
-        }
+          },
+          font: { family: 'Segoe UI' }
+        },
+        grid: { color: '#e0e0e0', borderColor: '#e0e0e0' }
       },
+      x: {
+        ticks: { font: { family: 'Segoe UI' } },
+        grid: { display: false }
+      }
     },
   };
 
@@ -159,17 +172,6 @@ export default function Simulador() {
           </div>
         </div>
       )}
-
-      <footer className={styles.footer}>
-        <div className={styles.brand}>AURA</div>
-        <p className={styles.copyright}>
-          Revolucionando com inteligência artificial e sustentabilidade.
-          <br />
-          © 2025 AURA Todos os direitos reservados
-          <br />
-          Termos de uso e políticas
-        </p>
-      </footer>
     </div>
   );
 }
