@@ -2,10 +2,14 @@ import '../components/navBarPerfil.modules.css';
 import perfil from '../assets/perfil.jpg';
 
 
+
+/*DEPOIS TEM QUE IMPORAR A NAVBAR PERFIL NO COMPONENTE DO FORM SIMULADOR*/
+
+
 export function NavBarPerfil() {
     return (
         <header className="NavBarPerfil">
-        <nav className="navBarPerfil">
+        <nav className="BarPerfil">
             <a href="#" className="LinhaNavPerfil">Home</a>
             <a href="#" className="LinhaNavPerfil">Contato</a>
             <a href="/Simulador" className="LinhaNavPerfil">Simulador</a>
