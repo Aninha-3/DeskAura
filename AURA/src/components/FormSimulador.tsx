@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from '../pages/Simulador/Simulador.module.css';
+import styles from '../pages/Simulador/Simulador.module.css'; // Caminho para o seu CSS
 
 interface Props {
   setResultado: (data: any) => void;
@@ -13,37 +13,31 @@ export default function FormSimulador({ setResultado }: Props) {
     desejo: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formData.tipoSolo && formData.nivelPh && formData.insolacao) {
-      setResultado(formData);
-    } else {
-      alert('Por favor, preencha todos os campos obrigatórios.');
-    }
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.tipoSolo || !formData.nivelPh || !formData.insolacao) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    setResultado(formData);
   };
 
   return (
     <div className={styles.formContainer}>
       <h2 className={styles.formTitle}>Informe as características do seu solo</h2>
-      
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label className={styles.formLabel}>
-            <strong>Tipo de solo:</strong>
-          </label>
-          <select 
-            className={styles.formSelect}
+          <label className={styles.formLabel}><strong>Tipo de solo:</strong></label>
+          <select
             name="tipoSolo"
             value={formData.tipoSolo}
             onChange={handleChange}
+            className={styles.formSelect}
             required
           >
             <option value="">Selecione o tipo de terra</option>
@@ -55,14 +49,12 @@ export default function FormSimulador({ setResultado }: Props) {
         </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.formLabel}>
-            <strong>Nível de pH do Solo:</strong>
-          </label>
-          <select 
-            className={styles.formSelect}
+          <label className={styles.formLabel}><strong>Nível de pH do Solo:</strong></label>
+          <select
             name="nivelPh"
             value={formData.nivelPh}
             onChange={handleChange}
+            className={styles.formSelect}
             required
           >
             <option value="">Selecione o nível de pH</option>
@@ -74,14 +66,12 @@ export default function FormSimulador({ setResultado }: Props) {
         </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.formLabel}>
-            <strong>Nível de Insolação:</strong>
-          </label>
-          <select 
-            className={styles.formSelect}
+          <label className={styles.formLabel}><strong>Nível de Insolação:</strong></label>
+          <select
             name="insolacao"
             value={formData.insolacao}
             onChange={handleChange}
+            className={styles.formSelect}
             required
           >
             <option value="">Selecione a insolação</option>
@@ -92,16 +82,14 @@ export default function FormSimulador({ setResultado }: Props) {
         </div>
 
         <div className={styles.formGroup}>
-          <label className={styles.formLabel}>
-            <strong>O que você gostaria de plantar? (opcional):</strong>
-          </label>
+          <label className={styles.formLabel}><strong>O que você gostaria de plantar? (opcional):</strong></label>
           <input
-            className={styles.formInput}
             type="text"
             name="desejo"
             value={formData.desejo}
             onChange={handleChange}
             placeholder="Ex. Alface, Tomate, Feijão..."
+            className={styles.formInput}
           />
         </div>
 

@@ -6,34 +6,20 @@ interface Props {
 }
 
 export default function ResultadoSimulador({ resultado, resetar }: Props) {
-  // Agrupar sugestões por tipo de solo compatível
+
+  // Agrupar sugestões em categorias inteligentes
   const sugestoesAgrupadas = [
     {
-      titulo: "SOLO ARENOSO",
-      plantas: resultado.filter(r => r.terra === 'arenoso').slice(0, 4)
+      titulo: "MAIOR COMPATIBILIDADE",
+      plantas: resultado.filter(r => r.compatibilidade >= 80)
     },
     {
-      titulo: "SOLO ARGILOSO", 
-      plantas: resultado.filter(r => r.terra === 'argiloso').slice(0, 4)
+      titulo: "COMPATIBILIDADE MÉDIA",
+      plantas: resultado.filter(r => r.compatibilidade >= 60 && r.compatibilidade < 80)
     },
     {
-      titulo: "SOLO HUMOSO",
-      plantas: resultado.filter(r => r.terra === 'humoso').slice(0, 4)
-    },
-    {
-      titulo: "CULTURAS DE ALTA INSOLAÇÃO",
-      plantas: resultado.filter(r => r.insolacao === 'alta').slice(0, 3)
-    },
-    {
-      titulo: "CULTURAS VERSÁTEIS",
-      plantas: resultado.filter(r => r.compatibilidade >= 80).slice(0, 3)
-    },
-    {
-      titulo: "PLANTAS RÁPIDAS",
-      plantas: resultado.slice(0, 3).map(planta => ({
-        ...planta,
-        ciclo: "45-60 dias"
-      }))
+      titulo: "SUGESTÕES ADICIONAIS",
+      plantas: resultado
     }
   ];
 
@@ -48,18 +34,24 @@ export default function ResultadoSimulador({ resultado, resetar }: Props) {
         {sugestoesAgrupadas.map((grupo, index) => (
           <div key={index} className={styles.suggestionCategory}>
             <h3 className={styles.categoryTitle}>{grupo.titulo}</h3>
-            <ul className={styles.suggestionList}>
-              {grupo.plantas.map((planta, idx) => (
-                <li key={idx} className={styles.suggestionItem}>
-                  <strong>{planta.nome}</strong> | 
-                  Solo: {planta.terra} | 
-                  pH: {planta.ph} | 
-                  Insolação: {planta.insolacao}
-                  {planta.ciclo && ` | Ciclo: ${planta.ciclo}`}
-                  {planta.compatibilidade && ` | Compatibilidade: ${planta.compatibilidade}%`}
-                </li>
-              ))}
-            </ul>
+            {grupo.plantas.length > 0 ? (
+              <ul className={styles.suggestionList}>
+                {grupo.plantas.map((planta, idx) => (
+                  <li key={idx} className={styles.suggestionItem}>
+                    <strong>{planta.nome}</strong> | 
+                    Solo: {planta.terra} | 
+                    pH: {planta.ph} | 
+                    Insolação: {planta.insolacao} | 
+                    Compatibilidade: {planta.compatibilidade}%
+                    {planta.ciclo && ` | Ciclo: ${planta.ciclo}`}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p style={{ color: '#999', fontStyle: 'italic' }}>
+                Nenhuma planta encontrada para esta categoria.
+              </p>
+            )}
           </div>
         ))}
       </div>
