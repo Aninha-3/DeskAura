@@ -12,6 +12,7 @@
 }
 
 .container-hero {
+    overflow-y: auto; 
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Alterado para 1fr para colunas iguais */
     gap: 1.8rem;
@@ -56,7 +57,7 @@
     letter-spacing: 0.5px;
     border-bottom: 1px solid var(--accent-color);
     padding-bottom: 0.4rem;
-    width: 100%; /* Garante que o título ocupe toda a largura */
+    width: 100%; 
 }
 
 /* Conteúdo central dos cards */
@@ -67,7 +68,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* Permite que o conteúdo central cresça */
+    flex-grow: 1;
     width: 100%;
 }
 
@@ -76,7 +77,7 @@
     align-items: flex-end;
     justify-content: center;
     gap: 0.6rem;
-    height: 150px; /* Altura fixa para o gráfico */
+    height: 150px; 
     margin: 1rem 0;
     width: 100%;
 }
@@ -266,6 +267,7 @@
     justify-content: center;
     gap: 4rem;
     padding: 4rem 2rem;
+    margin-top: 1.5rem;
     grid-column: span 3;
 }
 
