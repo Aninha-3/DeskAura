@@ -13,9 +13,15 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "framer-motion": "^12.23.22",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.3"
   },
   "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/react-router-dom": "^5.3.3",
     "prisma": "^6.16.2"
   }
 }

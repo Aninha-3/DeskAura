@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import Cadastro from './pages/Cadastro/Cadastro';
 import Login from './pages/Login/Login';
 import Simulador from './pages/Simulador/Simulador';
 import Chatbot from './components/Assistente'; 
+//import Perfil from '../../AURA/src/pages/Perfil/perfil'
+//        <Route path="/perfil" element={<Perfil />} />
 import { Footer } from './components/Footer';
 
 // Layout com lógica do footer
@@ -18,8 +19,9 @@ function Layout() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cadastro" element={<Cadastro />} />
+
         <Route path="/login" element={<Login />} />
+
         <Route path="/simulador" element={<Simulador />} />
       </Routes>
 
