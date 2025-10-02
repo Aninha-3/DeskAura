@@ -1,8 +1,14 @@
 import './Hero.modules.css';
-import logoFooter from '../assets/logoVerde.png'
-import Historia from '../assets/nossaHist.png'
+import logoFooter from '../assets/logoVerde.png';
+import Historia from '../assets/nossaHist.png';
+import Aurelio from '../assets/auraMaisAurelio.png'
 import TopButton from './TopButton';
-import { FaTemperatureHalf, FaRegCircleCheck, FaCheck } from "react-icons/fa6";
+import { FaTemperatureHalf, FaRegCircleCheck, FaCheck, FaChartSimple } from "react-icons/fa6";
+import { TbTargetArrow } from "react-icons/tb";
+import { PiPlantDuotone } from "react-icons/pi";
+import { GrSatellite } from "react-icons/gr";
+import { AiTwotoneAlert } from "react-icons/ai";
+import { RxRocket } from "react-icons/rx";
 //  <img src={Produto} alt="Dispositivo Aura" />
 
 export function Hero() {
@@ -110,34 +116,44 @@ export function Hero() {
           </p>
         </div>
       </div>
+
+
+
+
       {/*Seção do Screen */}
       <div className="screen-section">
-        <div className="Block-screen1">
-          <div className="mb-2">☑️↔️</div>
-          <h2>Resultados em tempo real </h2>
+        <div className="screen-oneline">
+          <div className="screen">
+            <div className="mb-2"><FaChartSimple /></div>
+            <h2  className="text-screen">Resultados em tempo real </h2>
+          </div>
+          <div className="screen">
+            <div className="mb-2"><TbTargetArrow /></div>
+            <h2  className="text-screen">Capacitar agricultores com dados confiáveis para otimizar o uso de recursos e aumentar a produtividade.</h2>
+          </div>
+          <div className="screen">
+            <div className="mb-2"><GrSatellite /></div>
+            <h2  className="text-screen">Dados precisos de acordo com seu ambiente</h2>
+          </div>
         </div>
-        <div className="Block-screen2">
-          <div className="mb-2">🎯</div>
-          <h2>Capacitar agricultores com dados confiáveis para otimizar o uso de recursos e aumentar a produtividade.</h2>
-        </div>
-        <div className="Block-screen3">
-          <div className="mb-2">📡</div>
-          <h2>Dados precisos de acordo com seu ambiente</h2>
-        </div>
-        <div className="Block-screen4">
-          <div className="mb-2">🌱🗑️</div>
-          <h2>Sistema sustentável <br></br> Sem desperdícios</h2>
-        </div>
-        <div className="Logo-central'"></div>
-        <div className="Block-screen5">
-          <div className="mb-2">📊</div>
-          <h2>Ser a principal ferramenta de monitoramento ambiental que torna a agricultura mais eficiente e sustentável.</h2>
-        </div>
-        <div className="Block-screen6">
-          <div className="mb-2"><img></img></div>
-          <h2>Graficos, alertas e recomendações</h2>
-        </div>
+        <div className="screen-center">
+          <div className="screen">
+            <div className="mb-2"><PiPlantDuotone /></div>
+            <h2  className="text-screen">Sistema sustentável <br></br> Sem desperdícios</h2>
 
+          </div>
+          <div className="Aurelio">
+            <img src={Aurelio} alt="Logo Aura com Aurelio" />
+          </div>
+          <div className="screen">
+            <div className="mb-2"><AiTwotoneAlert /></div>
+            <h2 className="text-screen">Graficos, alertas e recomendações</h2>
+          </div>
+        </div>
+        <div className='screen-missao'>
+          <div className="mb-2"><RxRocket /></div>
+          <h2  className="text-screen">Ser a principal ferramenta de monitoramento ambiental que torna a agricultura mais eficiente e sustentável.</h2>
+        </div>
       </div>
 
       {/* Seção do Produto */}
