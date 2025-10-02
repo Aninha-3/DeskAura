@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Simulador from './pages/Simulador/Simulador';
 import Chatbot from './components/Assistente'; 
+import Cadastro from './pages/Cadastro/Cadastro';
 //import Perfil from '../../AURA/src/pages/Perfil/perfil'
 //        <Route path="/perfil" element={<Perfil />} />
 import { Footer } from './components/Footer';
@@ -23,6 +24,9 @@ function Layout() {
         <Route path="/login" element={<Login />} />
 
         <Route path="/simulador" element={<Simulador />} />
+
+        <Route path="/cadastro" element={<Cadastro />} />
+      
       </Routes>
 
       <Chatbot />
