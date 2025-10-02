@@ -22,5 +22,9 @@ setSenha(event.target.value)
 const handleLoginSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
 }
+
+//Teste provisório para ver se as variaveis estão funcionando
+console.log('Email:', email, 'Senha:', senha);
+
 }
 
