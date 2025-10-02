@@ -1,11 +1,12 @@
 import React, {useState,useEffect} from "react";
 import styles from './Login.module.css'
+import { CgPassword } from "react-icons/cg";
 
 function Login () {
 
     //Criando variaveis de estado
 const [email, setEmail] = useState('')
-const [senha, setSenha] = useState('')
+const [password, setSenha] = useState('')
 
 
 //Essa função lida com a mudança no campo de email
@@ -14,7 +15,7 @@ const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 };
 
 //Fazendo o mesmo para a senha
-const handleSenhaChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 setSenha(event.target.value)
 }
 
@@ -24,7 +25,11 @@ const handleLoginSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
 }
 
 //Teste provisório para ver se as variaveis estão funcionando
-console.log('Email:', email, 'Senha:', senha);
+console.log('Email:', email, 'Senha:', password);
+
+
+//Preciso puxar a api/link do backend 
+
 
 }
 
