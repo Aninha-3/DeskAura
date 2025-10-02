@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { SlArrowLeft } from "react-icons/sl";
-import styles from './Cadastro.module.css';
-import { Footer } from '../../components/Footer';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { cadastrarUsuario } from "../../services.ts/api";
 
+function Cadastro() {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
-//Criação de variaveis de estado
-const Cadastro = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const navigate = useNavigate();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
 
+      //Chama a api e espera a resposta
+      const resposta = await cadastrarUsuario(nome, email, senha);
+      setMensagem("Cadastro realizado com sucesso!");
+      console.log(resposta);
+    } catch (error) {
+      setMensagem("Erro ao cadastrar usuário");
+      console.error(error);
+    }
+  };
 
-  const handleSubmit = async (e: React.FormEvent) =>{
-e.preventDefault();
-
-  }
-  
-
-
-
-
-
+ 
 }
-
-
-
 
 export default Cadastro;
