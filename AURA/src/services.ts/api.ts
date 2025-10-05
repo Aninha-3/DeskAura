@@ -24,3 +24,23 @@ export async function cadastrarUsuario(nome: string, email: string, senha: strin
     throw error;
   }
 }
+
+export async function loginUsuario(email: string, senha: string) {
+  try {
+    const response = await fetch(`${API_URL}/api/login`, {                              
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, senha }),
+    });
+    if (!response.ok) {
+      throw new Error("Erro ao fazer login");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Erro no login:", error);
+    throw error;
+  }
+}

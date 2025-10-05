@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { loginUsuario } from '../../services.ts/api';
 import styles from './Login.module.css'
 import { form } from "framer-motion/client";
 
@@ -22,6 +23,8 @@ function Login() {
     //Essa função vai ser usada pra quando o formulário for enviado
     const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+
+        //Chamando a função de login que veio do back
     }
 
     //Teste provisório para ver se as variaveis estão funcionando
