@@ -1,14 +1,16 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { Navbar } from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
-import Simulador from './pages/Simulador/Simulador';
-import Chatbot from './components/Assistente'; 
 import Cadastro from './pages/Cadastro/Cadastro';
-//import Perfil from '../../AURA/src/pages/Perfil/perfil'
-//        <Route path="/perfil" element={<Perfil />} />
+import Simulador from './pages/Simulador/Simulador';
+import { PrivateRoute } from './components/PrivateRoute';
 import { Footer } from './components/Footer';
+import Chatbot from './components/Assistente';
 
-// Layout com lógica do footer
+// Componente Layout que controla o footer
 function Layout() {
   const location = useLocation();
 
@@ -20,13 +22,16 @@ function Layout() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/login" element={<Login />} />
-
-        <Route path="/simulador" element={<Simulador />} />
-
         <Route path="/cadastro" element={<Cadastro />} />
-      
+        <Route
+          path="/simulador"
+          element={
+            <PrivateRoute>
+              <Simulador />
+            </PrivateRoute>
+          }
+        />
       </Routes>
 
       <Chatbot />
@@ -37,8 +42,11 @@ function Layout() {
 
 export default function App() {
   return (
-    <Router>
-      <Layout />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Layout />
+      </Router>
+    </AuthProvider>
   );
 }
