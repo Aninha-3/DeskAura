@@ -1,7 +1,5 @@
 import './NavBar.modules.css'
 
-const user = JSON.parse(localStorage.getItem('user') || 'null');
-
 export function Navbar() {
   return (
     <header className="Nav-bar">
