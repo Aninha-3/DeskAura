@@ -1,28 +1,60 @@
+/* TopButton.module.css */
 .scrollToTopBtn {
-  /* O display: none; será gerido pelo React para mostrar/esconder o botão */
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 99;
-  font-size: 24px;
-  width: 50px;
-  height: 55px;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1001; /* Maior que o chatbot (1000) */
+  width: 56px;
+  height: 56px;
   border: none;
   background-color: #2E8B57;
   color: white;
   cursor: pointer;
-  border-radius: 56%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
 }
 
 .scrollToTopBtn:hover {
-  border: 2px solid #f1faf562;
-  transform: scale(1.2);
-  background: #0e4827c6;
-  color: #ffff;
+  border: 2px solid #f1faf5;
+  transform: scale(1.1);
+  background: #0e4827;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.scrollToTopBtn:active {
+  transform: scale(0.95);
+}
+
+/* Animação suave ao aparecer */
+.scrollToTopBtn {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+  .scrollToTopBtn {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+  
+  .scrollToTopBtn:hover {
+    transform: scale(1.05);
+  }
 }

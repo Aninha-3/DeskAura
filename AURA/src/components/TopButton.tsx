@@ -1,8 +1,9 @@
+// TopButton.tsx
 import { useState, useEffect } from 'react';
+import { FiArrowUp } from 'react-icons/fi';
 import styles from './TopButton.module.css';
-import { FiArrowUp } from 'react-icons/fi'; 
 
-function ScrollToTopButton() {
+function TopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
@@ -28,6 +29,19 @@ function ScrollToTopButton() {
     };
   }, []);
 
+ // Efeito para ajustar o chatbot quando o botão aparece
+useEffect(() => {
+  const chatbotContainer = document.querySelector('.container');
+  if (chatbotContainer && chatbotContainer instanceof HTMLElement) {
+    if (isVisible) {
+      chatbotContainer.style.bottom = '90px';
+      chatbotContainer.style.transition = 'bottom 0.3s ease-in-out';
+    } else {
+      chatbotContainer.style.bottom = '24px';
+    }
+  }
+}, [isVisible]);
+
   return (
     <>
       {isVisible && (
@@ -35,13 +49,13 @@ function ScrollToTopButton() {
           onClick={scrollToTop}
           className={styles.scrollToTopBtn}
           title="Voltar ao topo"
+          aria-label="Voltar ao topo da página"
         >
-          {/* Use o componente do ícone aqui */}
-          <FiArrowUp size={24} color="#fff" />
+          <FiArrowUp size={20} color="#fff" />
         </button>
       )}
     </>
   );
 }
 
-export default ScrollToTopButton;
+export default TopButton;
