@@ -1,13 +1,15 @@
 // src/services/api.ts
 
-const API_URL = "http://localhost:3000"; 
+
+const API_URL = "https://deskaura-backend.onrender.com/api";
+ 
 
 //Importação do backend no nosso front
 export async function cadastrarUsuario(nome: string, email: string, senha: string) {
   try {
 
     //Fetch - Envia requisições HTTP / Method: POST - Envia dados para o servidor
-    const response = await fetch(`${API_URL}/api/cadastro`, {
+    const response = await fetch(`${API_URL}/cadastro`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +29,7 @@ export async function cadastrarUsuario(nome: string, email: string, senha: strin
 
 export async function loginUsuario(email: string, senha: string) {
   try {
-    const response = await fetch(`${API_URL}/api/login`, {                              
+    const response = await fetch(`${API_URL}/login`, {                              
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,3 +46,4 @@ export async function loginUsuario(email: string, senha: string) {
     throw error;
   }
 }
+
