@@ -1,7 +1,5 @@
 import './Footer.modules.css'
 
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-
 export function Footer() {
   return (
     <footer className="footer-container">
