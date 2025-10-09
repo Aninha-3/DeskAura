@@ -8,6 +8,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import Chatbot from './components/Assistente';
+import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
   const location = useLocation();

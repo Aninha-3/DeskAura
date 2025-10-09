@@ -12,17 +12,18 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      const data = await loginUsuario(email, password);
-      auth?.login(data); // Atualiza contexto
-      setMensagem('Login feito com sucesso!');
-      navigate('/simulador');
-    } catch (error) {
-      console.error(error);
-      setMensagem('Email ou senha inválidos');
-    }
-  };
+  event.preventDefault();
+  try {
+    const data = await loginUsuario(email, password);
+    // Chama a função de login do contexto passando o user e o token
+    auth?.login({ user: data.user, token: data.token });
+    setMensagem('Login feito com sucesso!');
+    navigate('/simulador');
+  } catch (error) {
+    console.error(error);
+    setMensagem('Email ou senha inválidos');
+  }
+};
 
   return (
     <form onSubmit={handleLoginSubmit}>
