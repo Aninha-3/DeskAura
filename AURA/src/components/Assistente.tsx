@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { FormEvent } from 'react';
-import { FaTimes, FaRobot } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
+import { RiRobot3Line } from "react-icons/ri";
 import { IoSend } from 'react-icons/io5';
 import Aurelio from '../assets/aurelio.png';
 import styles from './Assistente.module.css';
@@ -11,29 +12,45 @@ import BotaoChat from '../assets/ButtonAss.png';
 interface Message {
   role: 'user' | 'assistant' | '';
   content: string;
-  error?: boolean; // flag para mensagem de erro
+  error?: boolean;
 }
 
-const predefinedQA: { question: string; answer: string }[] = [
+interface QA {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+const predefinedQA: QA[] = [
   {
-    question: '1',
-    answer: 'Para se cadastrar, clique no botão "Cadastro" e preencha todos os campos obrigatórios.'
+    id: '1',
+    question: 'Como eu adquiro o AUONE?',
+    answer: 'Para adquirir o AUONE, acesse nosso site oficial e siga as instruções na seção "Como comprar".'
   },
   {
-    question: '2',
-    answer: 'Você pode redefinir sua senha clicando em "Esqueci minha senha" na tela de login.'
+    id: '2',
+    question: 'Como o sistema funciona?',
+    answer: 'O sistema funciona através de sensores conectados ao hub central, que envia dados para o aplicativo em tempo real.'
   },
   {
-    question: '3',
-    answer: 'Atualmente, suportamos sensores de umidade, luminosidade e temperatura.'
+    id: '3',
+    question: 'Para que serve?',
+    answer: 'O AUONE serve para monitorar ambientes residenciais, oferecendo dados de temperatura, umidade e luminosidade.'
   },
   {
-    question: '4',
-    answer: 'Na aba "Gráficos", você pode ver as leituras de todos os sensores em tempo real ou nas últimas 24 horas.'
+    id: '4',
+    question: 'Quem são os colaboradores?',
+    answer: 'O projeto foi desenvolvido pela equipe AuOne, composta por engenheiros, designers e especialistas em IoT.'
   },
   {
-    question: '5',
-    answer: 'O AURA foi desenvolvido pela equipe AuOne, com foco em automação residencial e monitoramento ambiental.'
+    id: '5',
+    question: 'Como surgiu a ideia do AURA?',
+    answer: 'A ideia surgiu da necessidade de monitoramento ambiental acessível e integrado à automação residencial.'
+  },
+  {
+    id: '6',
+    question: 'Como conectar com o dispositivo?',
+    answer: 'Você pode conectar o dispositivo via Wi-Fi seguindo o tutorial na aba "Configurações" do aplicativo.'
   }
 ];
 
@@ -60,15 +77,15 @@ const Assistent = () => {
     setIsLoading(true);
 
     setTimeout(() => {
-      const found = predefinedQA.find(q =>
-        input.toLowerCase().includes(q.question.toLowerCase())
-      );
+      const found = predefinedQA.find(q => q.id === input.trim());
 
-      const reply: Message = {
-        role: 'assistant',
-        content: found?.answer || 'Desculpe, não temos essa função ainda 😔. Pode reformular a pergunta?',
-        error: !found // marca como erro se não encontrou
-      };
+      const reply: Message = found
+        ? { role: 'assistant', content: found.answer }
+        : {
+            role: 'assistant',
+            content: `Desculpe, não reconheço essa opção. Tente usar um número de 1 a ${predefinedQA.length}.`,
+            error: true
+          };
 
       setMessages((prev) => [...prev, reply]);
       setIsLoading(false);
@@ -96,18 +113,15 @@ const Assistent = () => {
           {/* Messages */}
           <div className={styles.messages}>
             <div className={styles.welcomeMessage}>
-              <p>Boa tarde usuário 😁</p>
+              <p>Olá</p>
               <p>Eu sou o Aurélio e estou aqui para te ajudar com qualquer dúvida!</p>
             </div>
 
             <div className={styles.questionMessage}>
               <p className={styles.titleMessage}>Escolha uma pergunta:</p>
-              <p>1. Como eu adquiro o AUONE?</p>
-              <p>2. Como o sistema funciona?</p>
-              <p>3. Para que serve?</p>
-              <p>4. Quem são os colaboradores?</p>
-              <p>5. Como surgiu a ideia do AURA?</p>
-              <p>6. Como conectar com o dispositivo?</p>
+              {predefinedQA.map((q) => (
+                <p key={q.id}>{q.id}. {q.question}</p>
+              ))}
             </div>
 
             {messages.map((msg, index) => (
@@ -117,7 +131,7 @@ const Assistent = () => {
               >
                 {msg.role === 'assistant' && (
                   <div className={styles.botIcon}>
-                    <FaRobot />
+                    <RiRobot3Line />
                   </div>
                 )}
                 <div className={styles.messageContent}>
@@ -136,7 +150,7 @@ const Assistent = () => {
             {isLoading && (
               <div className={`${styles.message} ${styles.assistant}`}>
                 <div className={styles.botIcon}>
-                  <FaRobot />
+                  <RiRobot3Line />
                 </div>
                 <div className={styles.typingIndicator}>
                   <span></span>
@@ -154,7 +168,7 @@ const Assistent = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Digite o número da sua mensagem..."
+              placeholder={`Digite um número de 1 a ${predefinedQA.length}...`}
               disabled={isLoading}
               autoFocus
             />
