@@ -30,13 +30,13 @@
   text-transform: uppercase;
   font-size: 16px;
   transition: 0.3s;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
 }
 
 .LinhaNav:hover {
   color: #ffffff;
   transition:10ms;
-  transform: scale(1.1);
+  transform: scale(1);
 }
 
 /* Botões (login e cadastro) */

@@ -444,7 +444,6 @@
   .contrate-section,
   .about,
   .nossa-historia {
-    /* ADICIONE AQUI */
     grid-column: span 1;
   }
 
@@ -735,7 +734,7 @@
   }
 }
 
-
+/* Seção infoormações*/
 .screen-section {
   width: 80%;
   margin-left: 240px;
@@ -748,6 +747,7 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  gap: 2rem;  
 }
 
 .screen-center {
@@ -763,7 +763,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* centraliza verticalmente */
 }
 
 .Aurelio img {
@@ -823,11 +822,11 @@
 
 .screen-missao {
   text-align: center;
-  border: 3px solid #0c5;
+   border: 2px solid #1db954;
   border-radius: 20px;
   height: 220px;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .mb-2 {

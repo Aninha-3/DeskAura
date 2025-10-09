@@ -12,8 +12,7 @@ export function Footer() {
             AURA
           </div>
           <p className="footer-text">
-            Revolucionando com inteligência artificial e sustentabilidade. 
-            Desenvolvemos soluções inovadoras para o futuro da agricultura sustentável.
+            Revolucionando o futuro da agricultura sustentável.
           </p>
         </div>
         
@@ -41,12 +40,6 @@ export function Footer() {
       
       <div className="footer-bottom">
         <p>© 2025 AURA Todos os direitos reservados</p>
-        <div className="social-links">
-          <a href="#"><FaFacebookF /></a>
-          <a href="#"><FaTwitter /></a>
-          <a href="#"><FaInstagram /></a>
-          <a href="#"><FaLinkedinIn /></a>
-        </div>
         <a href="/TermosDePrivacidade">Termos de uso e privacidade</a>
       </div>
     </footer>

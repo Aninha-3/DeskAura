@@ -1,5 +1,4 @@
 import Hero from "../components/Hero";
-import { Navbar } from "../components/Navbar";
 import fundo from '../assets/img1.png'; 
 
 export default function Home() {
@@ -29,9 +28,6 @@ export default function Home() {
             fontFamily: "Montserrat"
           }}>Agricultura Unificada de Registros Analíticos</h1>
       </div>
-
-
-      <Navbar />
 
       <Hero />
 

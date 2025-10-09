@@ -132,31 +132,8 @@
 }
 
 .footer-bottom a:hover {
-    color: #58ffa0;
+    color: #b4b9b6;
     text-decoration: underline;
-}
-
-.social-links {
-    display: flex;
-    gap: 20px;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background-color: #001a0a;
-    border-radius: 50%;
-    color: #a0f0c0;
-    transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-    background-color: #00ff99;
-    color: #001a0a;
-    transform: translateY(-5px) scale(1.1);
 }
 
 @media (max-width: 768px) {
