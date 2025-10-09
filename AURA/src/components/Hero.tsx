@@ -221,42 +221,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Seção do Screen (alternativa em blocos) */}
-      <motion.div
-        className="screen-section"
-        variants={fadeInVariants}
-        initial="initial"
-        whileInView="whileInView"
-        transition={{ duration: 0.8, delay: 1.2 }}
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <div className="Block-screen1">
-          <div className="mb-2">☑️</div>
-          <h2>Resultados em tempo real</h2>
-        </div>
-        <div className="Block-screen2">
-          <div className="mb-2">🎯</div>
-          <h2>Capacitar agricultores com dados confiáveis para otimizar o uso de recursos e aumentar a produtividade.</h2>
-        </div>
-        <div className="Block-screen3">
-          <div className="mb-2">📡</div>
-          <h2>Dados precisos de acordo com seu ambiente</h2>
-        </div>
-        <div className="Block-screen4">
-          <div className="mb-2">🌱</div>
-          <h2>Sistema sustentável <br /> Sem desperdícios</h2>
-        </div>
-        <div className="Logo-central"></div>
-        <div className="Block-screen5">
-          <div className="mb-2">📊</div>
-          <h2>Ser a principal ferramenta de monitoramento ambiental que torna a agricultura mais eficiente e sustentável.</h2>
-        </div>
-        <div className="Block-screen6">
-          <div className="mb-2">📢</div>
-          <h2>Gráficos, alertas e recomendações</h2>
-        </div>
-      </motion.div>
-
       {/* Seção do Produto */}
       <motion.div
         className="produto-section"
