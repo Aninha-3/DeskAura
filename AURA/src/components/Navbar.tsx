@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import './NavBar.modules.css';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -15,9 +15,10 @@ export function Navbar() {
   return (
     <header className="Nav-bar">
       <nav className="navBar">
-        <a href="/" className="LinhaNav">Home</a>
+        <a href="/" className="LinhaNav">Inicio</a>
         <a href="#" className="LinhaNav">Contato</a>
-        <a href="#" className="LinhaNav">About</a>
+        <a href="#" className="LinhaNav">Sobre</a>
+        <a href="#" className='LinhaNav'>Produto</a>
         <a href="/simulador" className="LinhaNav">Simulador</a>
       </nav>
 
