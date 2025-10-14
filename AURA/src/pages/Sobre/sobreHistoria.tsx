@@ -21,7 +21,7 @@ export default function About() {
 
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-white">
+    <div ref={containerRef} className="w-screen">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-900 to-emerald-800">
         <div className="absolute inset-0 bg-black/30 z-10"></div>
@@ -90,6 +90,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="bg-green-800 rounded-lg h-80 flex items-center justify-center">
+              {/* Sugestão: Substituir por um componente de imagem */}
               <span className="text-green-200 text-lg">Imagem da nossa história</span>
             </div>
             <div>
