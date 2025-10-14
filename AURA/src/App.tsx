@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
+import Sobre from './pages/Sobre/sobreHistoria'
 import Simulador from './pages/Simulador/Simulador';
 import { PrivateRoute } from './components/PrivateRoute';
 import { Navbar } from './components/Navbar';
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/sobre" element={<Sobre />} />
         <Route
           path="/simulador"
           element={

@@ -17,7 +17,7 @@ export function Navbar() {
       <nav className="navBar">
         <a href="/" className="LinhaNav">Inicio</a>
         <a href="#" className="LinhaNav">Contato</a>
-        <a href="#" className="LinhaNav">Sobre</a>
+        <a href="/sobre" className="LinhaNav">Sobre</a>
         <a href="#" className='LinhaNav'>Produto</a>
         <a href="/simulador" className="LinhaNav">Simulador</a>
       </nav>
