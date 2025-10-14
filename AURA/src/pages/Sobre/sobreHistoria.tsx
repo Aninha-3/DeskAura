@@ -19,10 +19,6 @@ export default function About() {
 
   const yParallax = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
-  const fadeInVariants = {
-    initial: { opacity: 0, y: 50 },
-    whileInView: { opacity: 1, y: 0 }
-  };
 
   return (
     <div ref={containerRef} className="min-h-screen bg-white">
