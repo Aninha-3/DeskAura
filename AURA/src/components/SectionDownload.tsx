@@ -1,19 +1,9 @@
-import { FaApple, FaGooglePlay } from "react-icons/fa";
 import { TbDownload } from "react-icons/tb";
 
 
 export function SectionDownload() {
   const containerBg = 'bg-gray-100';
   const cardBg = 'bg-[#58A975] ';
-
-  // Componente de ícone do celular (representação simples)
-  const PhoneIcon = () => (
-    <div className="relative w-16 h-28 md:w-20 md:h-36 border-[4px] border-white rounded-xl flex items-center justify-center">
-      <div className="w-2 h-2 bg-white rounded-full absolute top-2"></div>
-      <div className="w-10 h-16 bg-white bg-opacity-10 rounded-md"></div>
-      <div className="w-1/2 h-1 bg-white rounded-full absolute bottom-2"></div>
-    </div>
-  );
 
   // Dados das estatísticas
   const stats = [
