@@ -1,9 +1,11 @@
 import { TbDownload } from "react-icons/tb";
 
+import phoneImage from '../assets/download.png';
+
 
 export function SectionDownload() {
   const containerBg = 'bg-gray-100';
-  const cardBg = 'bg-[#58A975] ';
+  const cardBg = 'bg-[#499F6D] ';
 
   // Dados das estatísticas
   const stats = [
@@ -19,7 +21,7 @@ export function SectionDownload() {
     `}>
 
       {/* Título Principal */}
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 ">
+      <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 text-center align-items-center justify-center">
         Baixe o App AUONE
       </h1>
 
@@ -43,22 +45,29 @@ export function SectionDownload() {
               </p>
 
               {/* Botões de Download */}
-              <div className="flex flex-col text-center justify-center mt-[10px] sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+<div className="flex flex-col text-center justify-center mt-[10px] sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
 
-                {/* Botão Google Play (Android) */}
-                <a
-                  href="#" // Substitua # pelo link real da Google Play
-                  style={{ textDecoration: 'none', color: 'white' }}
-                  className="flex items-center p-3 justify-center bg-[#042b00] hover:bg-gray-700 text-[#f4f4f4] px-(8rem) py-(2rem) font-semibold y3 px-6 rounded-lg transition duration-300 shadow-lg"
-                >
-                  <TbDownload className="mr-2 text-lg text-[#f4f4f4] " />
-                  Fazer o Download
-                </a>
-              </div>
-            </div>
+  {/* Botão Google Play (Android) */}
+  <a
+    href="#" // Substitua # pelo link real da Google Play
+    style={{ textDecoration: 'none', color: 'white' }}
+    className="flex items-center p-3 justify-center bg-[#042b00] hover:bg-gray-700 text-[#f4f4f4] px-(8rem) py-(2rem) font-semibold y3 px-6 rounded-lg transition duration-300 shadow-lg"
+  >
+    <TbDownload className="mr-2 text-lg text-[#f4f4f4] " />
+    Fazer o Download
+  </a>
+</div>
+</div>
 
-            <div>Imagem</div>
-          </div>
+<div className="w-full flex justify-center items-center py-8">
+  <img 
+    src={phoneImage} 
+    alt="App AUONE" 
+    className="w-56 h-auto md:w-72 lg:w-96 xl:w-[28rem] max-w-full object-contain" 
+  />
+</div>
+
+</div>
 
 
 
@@ -67,10 +76,10 @@ export function SectionDownload() {
       </div>
 
       {/* Seção de Estatísticas */}
-      <div className="mt-(30px) grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+      <div className="mt-(30px) grid grid-cols-1 md:grid-cols-3 gap-2 text-center">
         {stats.map((stat, index) => (
           <div key={index} className="text-gray-800">
-            <h3 className="text-2xl md:text-4xl font-bold text-green-700">
+            <h3 className="text-4xl md:text-5xl font-bold text-green-700">
               {stat.value}
             </h3>
             <p className="text-sm md:text-base text-gray-600 mt-1">
