@@ -14,7 +14,6 @@ import { AuthProvider } from './context/AuthContext';
 export default function App() {
   const location = useLocation();
 
-  // Rotas que não terão footer nem navbar
   const noFooterRoutes = ['/cadastro', '/login'];
   const noNavbarRoutes = ['/cadastro', '/login'];
 
@@ -22,26 +21,32 @@ export default function App() {
   const showNavbar = !noNavbarRoutes.includes(location.pathname.toLowerCase());
 
   return (
-    <>
+    // 1. Container principal que organiza tudo em uma coluna flexível
+    // e garante que a altura mínima seja a da tela.
+    <div className="flex flex-col min-h-screen">
       {showNavbar && <Navbar />}
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route
-          path="/simulador"
-          element={
-            <PrivateRoute>
-              <Simulador />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
+      {/* 2. Conteúdo principal que "cresce" para ocupar o espaço disponível */}
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route
+            path="/simulador"
+            element={
+              <PrivateRoute>
+                <Simulador />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </main>
 
+      {/* O Chatbot e o Footer ficam fora do <main> para não rolarem com a página, se desejado */}
       <Chatbot />
       {showFooter && <Footer />}
-    </>
+    </div>
   );
 }
