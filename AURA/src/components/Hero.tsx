@@ -165,29 +165,6 @@ export function Hero() {
         </motion.p>
       </div>
 
-      {/* Nossa História */}
-      <motion.div
-        className="nossa-historia"
-        variants={fadeInVariants}
-        initial="initial"
-        whileInView="whileInView"
-        transition={{ duration: 0.8, delay: 1.0 }}
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        <div className="historia-overlay"></div>
-        <div className="historia-image">
-          <img src={Historia} alt="História Aura" />
-        </div>
-        <div className="historia-content">
-          <h1 className="historia-title">Nossa História</h1>
-          <p className="historia-paragraph">
-            O AURA nasceu com a missão de levar tecnologia sustentável a todos os produtores,
-            garantindo monitoramento confiável de água, luz e nutrientes para suas lavouras. <br /><br />
-            Assim, unimos inovação e praticidade em uma solução acessível que transforma o futuro da agricultura.
-          </p>
-        </div>
-      </motion.div>
-
       {/* Seção do Screen */}
       <div className="screen-section">
         <div className="screen-oneline">
