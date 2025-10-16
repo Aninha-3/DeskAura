@@ -3,6 +3,8 @@ import logoFooter from '../assets/logoVerde.png';
 import Historia from '../assets/nossaHist.png';
 import Aurelio from '../assets/auraMaisAurelio.png';
 import TopButton from './TopButton';
+import SectionDownload from './SectionDownload';
+
 
 import { FaTemperatureHalf, FaRegCircleCheck, FaCheck, FaChartSimple } from "react-icons/fa6";
 import { TbTargetArrow } from "react-icons/tb";
@@ -134,6 +136,10 @@ export function Hero() {
           <span>Certificado de Garantia</span>
         </div>
       </motion.div>
+      
+    
+    <SectionDownload /> 
+
 
       {/* About (com efeito de parallax) */}
       <div className='about' ref={aboutRef}>

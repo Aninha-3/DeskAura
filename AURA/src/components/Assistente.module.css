@@ -13,12 +13,7 @@
   --error: #a02828;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-}
+
 
 .container {
   position: fixed;
