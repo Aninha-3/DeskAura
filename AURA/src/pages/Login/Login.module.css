@@ -1,0 +1,170 @@
+/* Garante que a página ocupe toda a tela sem margens inesperadas */
+:global(body) {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container principal que cria a divisão da tela */
+.loginPage {
+    display: flex;
+    width: 100vw; /* Ocupa 100% da largura da tela */
+    min-height: 100vh;
+    background-color: #ffffff;
+}
+
+/* --- ESTILOS DO PAINEL ESQUERDO (COM VÍDEO) --- */
+.leftPanel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    color: white;
+    position: relative; /* Essencial para posicionar o vídeo e o overlay */
+    overflow: hidden; /* Garante que o vídeo não "vaze" para fora */
+}
+
+.videoBg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; /* Camada mais baixa */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Efeito de escurecimento */
+    z-index: 2; /* Fica entre o vídeo e o conteúdo */
+}
+
+.content {
+    position: relative;
+    z-index: 3; /* Fica na camada de cima, sobre tudo */
+}
+
+.content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.content p {
+    font-size: 1.2rem;
+    max-width: 450px;
+    line-height: 1.6;
+}
+
+/* --- ESTILOS DO PAINEL DIREITO (FORMULÁRIO) --- */
+.rightPanel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box; /* Garante que o padding não afete o tamanho */
+}
+
+.form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    color: #1a1a1a;
+}
+
+.inputGroup {
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input::placeholder {
+    color: #a0a0a0;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+.button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.button:hover {
+    background-color: #333;
+}
+
+.successMessage {
+    color: #28a745; /* Cor verde para sucesso */
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.signupLink {
+    text-align: center;
+    margin-top: 2rem;
+    color: #555;
+}
+
+.signupLink a {
+    color: #1a1a1a;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.signupLink a:hover {
+    text-decoration: underline;
+}
+
+/* Media query para telas menores (celulares) */
+@media (max-width: 768px) {
+    .loginPage {
+        flex-direction: column;
+    }
+
+    .leftPanel {
+        display: none;
+    }
+
+    .rightPanel {
+        min-height: 100vh;
+        width: 100%;
+    }
+}
+
