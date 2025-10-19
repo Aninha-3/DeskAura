@@ -34,13 +34,11 @@ export function Hero() {
   };
 
   return (
-       
-
-
-    <div className="container-hero w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div className="container-hero w-full mx-auto px-4 sm:px-6 lg:px-8">
       <TopButton />
 
-      {/* Seção Plataforma de Cursos - Substituindo os gráficos */}
+      {/* Seção Plataforma de Cursos */}
       <div className="plataformaCursos mb-12">
         <motion.h2 
           className="scroll-animation text-2xl md:text-3xl lg:text-4xl font-bold text-center text-gray-800 mb-12"
@@ -131,7 +129,7 @@ export function Hero() {
 
         {/* Seção Comunidade Ativa */}
         <motion.div 
-          className="comunidadeContent bg-gradient-to-r from-green-500 to-blue-600 rounded-3xl p-8 mt-12 text-white"
+          className="comunidadeContent bg-gradient-to-r from-green-700 to-green-800 rounded-3xl p-8 mt-12 text-white"
           variants={fadeInVariants}
           initial="initial"
           whileInView="whileInView"
@@ -149,7 +147,7 @@ export function Hero() {
               </p>
             </div>
             <button
-              className="comunidadeButton bg-white text-green-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300"
+              className="comunidadeButton bg-white text-green-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300"
               onClick={() => window.location.href = "/comunidade"}
             >
               Acessar Comunidade
@@ -158,33 +156,21 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Resto do código permanece igual */}
-      <motion.h1
-        className="info-hero text-2xl md:text-3xl lg:text-4xl font-bold text-center text-gray-800 my-12"
-        variants={fadeInVariants}
-        initial="initial"
-        whileInView="whileInView"
-        transition={{ duration: 0.8, delay: 0.6 }}
-        viewport={{ once: true, amount: 0.5 }}
-      >
-        Acesso a dados gerados em tempo real
-      </motion.h1>
-
       {/* Seção de contrato */}
       <motion.div
-        className='contrate-section bg-gradient-to-r from-green-500 to-blue-600 rounded-3xl p-8 text-center text-white mb-12'
+        className='contrate-section bg-gradient-to-r from-green-700  rounded-3xl p-8 text-center text-white mb-12'
         variants={fadeInVariants}
         initial="initial"
         whileInView="whileInView"
         transition={{ duration: 0.5, delay: 0.5 }}
         viewport={{ once: true, amount: 0.5 }}
       >
-        <h1 className='title-cont text-2xl md:text-3xl font-bold mb-2'>Transforme a sua plantação</h1>
+        <h1 className='title-cont text-center font-bold'>Transforme a sua plantação</h1>
         <h1 className='subtitle-cont text-3xl md:text-4xl font-bold mb-4'>Hoje Mesmo</h1>
         <p className='paragraph-cont text-lg md:text-xl mb-6 max-w-2xl mx-auto'>
           Junte-se a mais de 5.000 pessoas que já descobriram o futuro da agricultura sustentável
         </p>
-        <div className='btn-contrate bg-white text-green-600 font-bold py-3 px-8 rounded-full inline-block hover:bg-gray-100 transition duration-300 mb-4'>
+        <div className='btn-contrate text-green-600 font-bold py-3 px-8 rounded-full inline-block hover:bg-gray-100 transition duration-300 mb-4'>
           <a className='link-btn' href="mailto:auraservicosbr@gmail.com">
             auraservicosbr@gmail.com
           </a>
@@ -295,7 +281,7 @@ export function Hero() {
 
       {/* Seção do Produto */}
       <motion.div
-        className="produto-section bg-white rounded-3xl shadow-xl overflow-hidden mb-12"
+        className="produto-section bg-white rounded-3xl shadow-xl mb-12"
         variants={fadeInVariants}
         initial="initial"
         whileInView="whileInView"
