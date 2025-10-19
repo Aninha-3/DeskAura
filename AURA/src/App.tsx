@@ -9,6 +9,7 @@ import { PrivateRoute } from './components/PrivateRoute';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import Chatbot from './components/Assistente';
+import PrivacyPolicy from './pages/Politica/PrivacyPolicy';
 import { AuthProvider } from './context/AuthContext';
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/privacidade" element={<PrivacyPolicy />} />
           <Route
             path="/simulador"
             element={
