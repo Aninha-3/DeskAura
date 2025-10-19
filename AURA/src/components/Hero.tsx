@@ -34,6 +34,9 @@ export function Hero() {
   };
 
   return (
+       
+
+
     <div className="container-hero w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
       <TopButton />
 

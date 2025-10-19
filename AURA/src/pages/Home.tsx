@@ -13,9 +13,8 @@ export default function Home() {
     <div className="w-full overflow-x-hidden"> {/* Container principal para evitar overflow */}
       <div style={{
         position: "relative",
-        width: "100%", // Mudado de 100vw para 100%
-        height: "100vh",
-        overflow: "hidden"
+        width: "100%",
+        height: "100%",
       }}>
         {/* Vídeo como fundo */}
         <video
