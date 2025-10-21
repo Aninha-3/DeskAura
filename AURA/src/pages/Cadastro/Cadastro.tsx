@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { cadastrarUsuario } from "../../services.ts/api";
 import { AuthContext } from '../../context/AuthContext';
 import { SlArrowLeft } from "react-icons/sl";
@@ -41,10 +41,10 @@ function Cadastro() {
     try {
       // Chama a API para cadastrar
       const resposta = await cadastrarUsuario(nome, email, senha);
-      
+
       // Sua nova lógica de auto-login!
       auth?.login({ user: resposta.user, token: resposta.token });
-      
+
       setMensagemSucesso("Cadastro realizado com sucesso! Redirecionando...");
 
       // Redireciona para a página principal após um breve delay
@@ -104,10 +104,13 @@ function Cadastro() {
           required
           disabled={carregando}
         />
-        
+        <div className={styles.cadastro_subtexto}>
+           <p>Já tem uma conta? <Link to="/login">Login</Link></p>
+        </div>
+
         {mensagemErro && <p className={styles.cadastro_mensagemErro}>{mensagemErro}</p>}
         {mensagemSucesso && <p className={styles.cadastro_mensagemSucesso}>{mensagemSucesso}</p>}
-        
+
         <button type="submit" className={styles.cadastro_botao} disabled={carregando}>
           {carregando ? "Cadastrando..." : "Cadastrar"}
         </button>

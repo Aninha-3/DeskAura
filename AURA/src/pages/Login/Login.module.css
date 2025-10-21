@@ -1,170 +1,155 @@
-/* Garante que a página ocupe toda a tela sem margens inesperadas */
-:global(body) {
+/* src/components/Login/Login.module.css */
+
+:root {
+  --cor-primaria: #2E8B57; /* Verde Marinho (Mantido do cadastro) */
+  --cor-erro: #d32f2f;
+  --cor-sucesso: #2e7d32;
+  --cor-texto-claro: #555;
+}
+
+.login_voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-primaria);
+  transition: color 0.2s;
+}
+
+/* Container principal do formulário de login */
+.login_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 25px;
+  max-width: 420px;
+
+  /* Centralização na página */
+  margin: 80px auto;
+  margin-top: 11pc;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 90%;
+}
+
+/* Título principal "Login" */
+.login_titulo {
+  color: var(--cor-primaria);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  align-self: flex-start;
+  width: 100%;
+  text-align: center;
+}
+
+/* O formulário em si */
+.login_formulario {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Campos de input (Email e Senha) */
+.login_input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1.5px solid var(--cor-primaria);
+  border-radius: 25px; /* Cantos bem arredondados */
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.login_input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2); /* Sombra com a cor primária */
+  border-color: var(--cor-primaria);
+}
+
+/* Botão de "Entrar" */
+.login_botao {
+  width: 100%;
+  padding: 15px;
+  border-radius: 25px;
+  border: 1.5px solid var(--cor-primaria);
+  background-color: #fff;
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 10px;
+}
+
+.login_botao:hover:not(:disabled) {
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
+.login_botao:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mensagens de erro ou sucesso */
+.login_mensagemErro,
+.login_mensagemSucesso {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
+  margin-top: 10px; /* Adicionado para separar do botão */
+}
+
+.login_mensagemErro {
+  color: var(--cor-erro);
+}
+
+.login_mensagemSucesso {
+  color: var(--cor-sucesso);
+}
+
+/* Link para a página de cadastro */
+.login_signupLink {
+  font-size: 0.9rem;
+  color: var(--cor-texto-claro);
+  text-align: center;
+  margin-top: 25px;
+}
+
+.login_signupLink a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+
+/* ========================================= */
+/* CSS RESPONSIVO (MOBILE)                   */
+/* ========================================= */
+
+@media (max-width: 600px) {
+  .login_container {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Container principal que cria a divisão da tela */
-.loginPage {
-    display: flex;
-    width: 100vw; /* Ocupa 100% da largura da tela */
-    min-height: 100vh;
-    background-color: #ffffff;
-}
-
-/* --- ESTILOS DO PAINEL ESQUERDO (COM VÍDEO) --- */
-.leftPanel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem;
-    color: white;
-    position: relative; /* Essencial para posicionar o vídeo e o overlay */
-    overflow: hidden; /* Garante que o vídeo não "vaze" para fora */
-}
-
-.videoBg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: 1; /* Camada mais baixa */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+    padding: 30px 20px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Efeito de escurecimento */
-    z-index: 2; /* Fica entre o vídeo e o conteúdo */
-}
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
 
-.content {
-    position: relative;
-    z-index: 3; /* Fica na camada de cima, sobre tudo */
-}
+  .login_titulo {
+    font-size: 2rem; /* 32px */
+  }
 
-.content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.content p {
-    font-size: 1.2rem;
-    max-width: 450px;
-    line-height: 1.6;
-}
-
-/* --- ESTILOS DO PAINEL DIREITO (FORMULÁRIO) --- */
-.rightPanel {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    box-sizing: border-box; /* Garante que o padding não afete o tamanho */
-}
-
-.form {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 2.5rem;
-    color: #1a1a1a;
-}
-
-.inputGroup {
-    margin-bottom: 1.5rem;
-}
-
-.input {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+  .login_botao {
     font-size: 1rem;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  }
 }
-
-.input::placeholder {
-    color: #a0a0a0;
-}
-
-.input:focus {
-    outline: none;
-    border-color: #333;
-    box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
-}
-
-.button {
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #1a1a1a;
-    color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
-}
-
-.button:hover {
-    background-color: #333;
-}
-
-.successMessage {
-    color: #28a745; /* Cor verde para sucesso */
-    margin-top: 1rem;
-    text-align: center;
-    font-weight: 600;
-}
-
-.signupLink {
-    text-align: center;
-    margin-top: 2rem;
-    color: #555;
-}
-
-.signupLink a {
-    color: #1a1a1a;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.signupLink a:hover {
-    text-decoration: underline;
-}
-
-/* Media query para telas menores (celulares) */
-@media (max-width: 768px) {
-    .loginPage {
-        flex-direction: column;
-    }
-
-    .leftPanel {
-        display: none;
-    }
-
-    .rightPanel {
-        min-height: 100vh;
-        width: 100%;
-    }
-}
-
