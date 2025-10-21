@@ -1,44 +1,36 @@
 import './Footer.modules.css'
+import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
-    <footer className="footer-container">
+    <footer className="footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <div className="footer-logo">
-
-            AURA
-          </div>
-          <p className="footer-text">
-            Revolucionando o futuro da agricultura sustentável.
-          </p>
+          <h2 className="logo">AURA</h2>
+          <p>Revolucionando o futuro da agricultura sustentável.</p>
         </div>
         
         <div className="footer-links">
           <div className="link-group">
-            <h3>Links Rápidos</h3>
-            <ul>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Página Inicial</a></li>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Sobre Nós</a></li>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Serviços</a></li>
-              <li><a href="#"><i className="fas fa-chevron-right"></i> Contato</a></li>
-            </ul>
+            <h3>Links</h3>
+            <a href="#">Página Inicial</a>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Serviços</a>
+            <a href="#">Contato</a>
           </div>
-    
+          
           <div className="link-group">
             <h3>Contato</h3>
-            <ul>
-              <li><a href="#"><i className="fas fa-map-marker-alt"></i> São Paulo, Brasil</a></li>
-              <li><a href="#"><i className="fas fa-phone"></i> +55 (11) 99999-9999</a></li>
-              <li><a href="#"><i className="fas fa-envelope"></i> auraservicosbr@gmail.com</a></li>
-            </ul>
+            <p>São Paulo, Brasil</p>
+            <p>+55 (11) 99999-9999</p>
+            <p>auraservicosbr@gmail.com</p>
           </div>
         </div>
       </div>
       
       <div className="footer-bottom">
-        <p>© 2025 AURA Todos os direitos reservados</p>
-        <a href="/TermosDePrivacidade">Termos de uso e privacidade</a>
+        <p>© 2025 AURA. Todos os direitos reservados.</p>
+        <Link to="/privacidade">Política de Privacidade</Link>
       </div>
     </footer>
   )

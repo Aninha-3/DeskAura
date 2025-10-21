@@ -9,11 +9,8 @@ body {
   box-sizing: border-box;
 }
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
+:root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -67,11 +64,52 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+
+@media (min-width: 1440px) {
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+  
+    body {
+      font-size: 18px;
+    }
+
   }
-  a:hover {
-    color: #747bff;
+
+  @media (min-width: 1600px) {
+    .section {
+      padding: 4rem 2rem;
+    }
+  
+    .grid {
+      gap: 3rem;
+    }
   }
-  button {
-    background-color: #f9f9f9;
+
+  @media (min-width: 1400px) {
+    .sidebar {
+      display: block;
+    }
+  
+    .extra-info {
+      display: flex;
+    }
+  }
+  @media (min-width: 1800px) {
+    h1 {
+      font-size: 3rem;
+    }
+  
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+    }
+  }
+  @media (min-width: 1600px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
   }
 }

@@ -10,10 +10,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="Container">
+    <div className="w-full overflow-x-hidden"> {/* Container principal para evitar overflow */}
       <div style={{
         position: "relative",
-        width: "100vw",
+        width: "100%", // Mudado de 100vw para 100%
         height: "100vh",
         overflow: "hidden"
       }}>
@@ -78,7 +78,9 @@ export default function Home() {
           justifyContent: "flex-end",
           alignItems: "center",
           textAlign: "center",
-          padding: "40px 20px 120px 20px"
+          padding: "40px 20px 120px 20px",
+          maxWidth: "100vw", // Adicionado para limitar largura
+          margin: "0 auto" // Centralizar conteúdo
         }}>
 
           {/* Container com animação de entrada */}
@@ -90,18 +92,21 @@ export default function Home() {
             marginBottom: "60px",
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+            transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+            width: "100%", // Garantir que não ultrapasse
+            maxWidth: "1200px", // Limitar largura máxima
+            padding: "0 20px" // Padding lateral
           }}>
 
             {/* AURA limpa e única - SEM FUNDO */}
             <h1 style={{
               color: "white",
-              fontSize: "clamp(70px, 12vw, 140px)",
+              fontSize: "clamp(60px, 10vw, 120px)", // Reduzido um pouco
               fontWeight: "400",
               fontStyle: "italic",
               fontFamily: "'Playfair Display', 'Georgia', serif",
               margin: "0 0 30px 0",
-              letterSpacing: "8px",
+              letterSpacing: "6px", // Reduzido
               textTransform: "uppercase",
               lineHeight: "1.1",
               textShadow: `
@@ -110,7 +115,9 @@ export default function Home() {
               `,
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s'
+              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s',
+              wordWrap: "break-word", // Quebrar palavra se necessário
+              overflowWrap: "break-word"
             }}>
               AURA
             </h1>
@@ -119,12 +126,14 @@ export default function Home() {
             <div style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s'
+              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
+              width: "100%",
+              maxWidth: "800px" // Limitar largura do subtítulo
             }}>
               {/* Linha decorativa animada */}
               <div style={{
-                width: "100px",
-                height: "3px",
+                width: "80px", // Reduzido
+                height: "2px", // Reduzido
                 background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)",
                 margin: "0 auto 20px auto",
                 borderRadius: "1px",
@@ -134,13 +143,15 @@ export default function Home() {
 
               <p style={{
                 color: "white",
-                fontSize: "clamp(16px, 1.8vw, 20px)",
+                fontSize: "clamp(14px, 1.5vw, 18px)", // Reduzido
                 fontWeight: "300",
                 fontFamily: "Montserrat",
                 margin: "0 0 12px 0",
-                letterSpacing: "4px",
+                letterSpacing: "3px", // Reduzido
                 textTransform: "uppercase",
-                opacity: "0.9"
+                opacity: "0.9",
+                padding: "0 10px", // Padding para não colar nas bordas
+                lineHeight: "1.4"
               }}>
                 Agricultura Unificada de Registros Analíticos
               </p>
@@ -186,15 +197,16 @@ export default function Home() {
           left: "0",
           width: "100%",
           textAlign: "center",
-          zIndex: 2
+          zIndex: 2,
+          padding: "0 20px" // Adicionado padding
         }}>
           <h2 style={{
             color: "rgba(255,255,255,0.8)",
-            fontSize: "clamp(12px, 1.5vw, 16px)",
+            fontSize: "clamp(11px, 1.3vw, 14px)", // Reduzido
             fontWeight: "300",
             fontFamily: "Montserrat",
             margin: "0 0 6px 0",
-            letterSpacing: "2px",
+            letterSpacing: "1.5px", // Reduzido
             textTransform: "uppercase"
           }}>
             Sistema Integrado
@@ -202,8 +214,7 @@ export default function Home() {
         </div>
 
       </div>
-
       <Hero />
-    </div>
+    </div>      
   );
 }
