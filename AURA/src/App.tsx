@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
+import RedefinirSenha from './pages/Redefinirsenha/RedefinirSenha';
 import Sobre from './pages/Sobre/sobreHistoria'
 import Simulador from './pages/Simulador/Simulador';
 import { PrivateRoute } from './components/PrivateRoute';
@@ -15,8 +16,8 @@ import { AuthProvider } from './context/AuthContext';
 export default function App() {
   const location = useLocation();
 
-  const noFooterRoutes = ['/cadastro', '/login'];
-  const noNavbarRoutes = ['/cadastro', '/login'];
+  const noFooterRoutes = ['/cadastro', '/login', '/redefinirsenha'];
+  const noNavbarRoutes = ['/cadastro', '/login', '/redefinirsenha'];
 
   const showFooter = !noFooterRoutes.includes(location.pathname.toLowerCase());
   const showNavbar = !noNavbarRoutes.includes(location.pathname.toLowerCase());
@@ -30,6 +31,7 @@ export default function App() {
       {/* 2. Conteúdo principal que "cresce" para ocupar o espaço disponível */}
       <main className="flex-grow">
         <Routes>
+          <Route path="/redefinirsenha" element={<RedefinirSenha />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
