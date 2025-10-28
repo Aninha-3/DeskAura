@@ -1,64 +1,130 @@
-/* src/components/RedefinirSenha/RedefinirSenha.module.css */
-
-.container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 2rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+:root {
+  --cor-primaria: #2E8B57; /* Verde dos inputs e botões */
+  --cor-erro: #d32f2f;
+  --cor-sucesso: #2e7d32;
+  --cor-texto-claro: #fff; /* texto claro para contraste no fundo verde */
 }
 
-.container h2 {
-  text-align: center;
-  margin-bottom: 1rem;
+.cadastro_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 25px;
+  max-width: 420px;
+  margin: 80px auto;
+  margin-top: 11pc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 10px;
+
+  background-color: var(--cor-primaria); /* Fundo verde */
+  width: 90%;
+  color: var(--cor-texto-claro); /* texto branco por padrão */
 }
 
-.container form div {
-  margin-bottom: 1rem;
-}
-
-.container label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.container input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.container button {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #007bff;
-  color: white;
+.cadastro_voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
+  color: #fff; /* ícone branco para contraste */
+  transition: color 0.2s;
 }
 
-.container button:disabled {
-  background-color: #aaa;
+.cadastro_logo {
+  max-width: 200px;
+  margin: 0 auto 25px auto;
+  display: block;
+}
+
+.cadastro_titulo {
+  color: #fff; /* título branco */
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 100%;
+}
+
+.cadastro_formulario {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cadastro_input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1.5px solid #fff; /* borda branca */
+  border-radius: 25px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  background-color: #fff; /* fundo branco */
+  color: var(--cor-primaria); /* texto verde */
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.cadastro_input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
+  border-color: #fff;
+}
+
+.cadastro_botao {
+  width: 100%;
+  padding: 15px;
+  border-radius: 25px;
+  border: 1.5px solid #fff;
+  background-color: #fff;
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 10px;
+}
+
+.cadastro_botao:hover:not(:disabled) {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border-color: #fff;
+}
+
+.cadastro_botao:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  border-color: #ccc;
   cursor: not-allowed;
 }
 
-.sucesso {
-  color: green;
-  margin-top: 1rem;
+.cadastro_mensagemErro,
+.cadastro_mensagemSucesso {
   text-align: center;
+  margin-bottom: 15px;
+  font-weight: 500;
 }
+.cadastro_mensagemErro { color: #ffb3b3; }
+.cadastro_mensagemSucesso { color: #b2ffb2; }
 
-.erro {
-  color: red;
-  margin-top: 1rem;
-  text-align: center;
-}
+/* Responsivo */
+@media (max-width: 600px) {
+  .cadastro_container {
+    margin: 0;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
 
-.voltarLogin {
-  text-align: center;
-  margin-top: 1.5rem;
+  .cadastro_titulo {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .cadastro_botao {
+    font-size: 1rem;
+  }
 }
