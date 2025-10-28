@@ -23,7 +23,7 @@ export default function About() {
   return (
     <div ref={containerRef} className="w-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-950 to-emerald-800">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-700 to-emerald-800">
         <div className="absolute inset-0 bg-black/30 z-10"></div>
         <motion.div 
           className="relative z-20 text-center px-6 max-w-4xl"
