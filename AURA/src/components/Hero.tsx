@@ -1,7 +1,7 @@
 import './Hero.modules.css';
 import logoFooter from '../assets/logoVerde.png';
 import CookieBanner from "../components/CookieBanner";
-import TopButton from './TopButton';
+//import TopButton from './TopButton';
 import SectionDownload from './SectionDownload';
 
 
@@ -27,7 +27,7 @@ export function Hero() {
 
   return (
     <div className="container-hero w-full mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
-      <TopButton />
+  
 
       {/* Seção Plataforma de Cursos */}
       <div className="plataformaCursos mb-16 mt-14">

@@ -23,7 +23,7 @@ export default function About() {
   return (
     <div ref={containerRef} className="w-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-900 to-emerald-800">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-950 to-emerald-800">
         <div className="absolute inset-0 bg-black/30 z-10"></div>
         <motion.div 
           className="relative z-20 text-center px-6 max-w-4xl"
@@ -90,8 +90,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="bg-green-800 rounded-lg h-80 flex items-center justify-center">
-              {/* Sugestão: Substituir por um componente de imagem */}
-              <span className="text-green-200 text-lg">Imagem da nossa história</span>
+              {/*<img src={nossaHistoria}/>*/}
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Nossa História</h2>
