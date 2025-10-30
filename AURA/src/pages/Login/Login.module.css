@@ -119,7 +119,7 @@
 /* Link para a página de cadastro */
 .login_signupLink {
   font-size: 0.9rem;
-  color: var(--cor-texto-claro);
+ color: #2d5016;
   text-align: center;
   margin-top: 25px;
 }

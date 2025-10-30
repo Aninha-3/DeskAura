@@ -68,7 +68,7 @@ function Login() {
         </button>
 
         <div className={styles.login_signupLink}>
-          <p>Já tem uma conta?   <Link to="/Redefinirsenha">Esqueci a senha</Link></p>
+          <p>Já tem uma conta?     <Link to="/Redefinir-senha">Esqueci a senha</Link></p>
           <p>Não tem uma conta? <Link to="/Cadastro">Crie uma agora</Link></p>
         </div>
       </form>

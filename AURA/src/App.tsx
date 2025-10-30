@@ -16,8 +16,8 @@ import { AuthProvider } from './context/AuthContext';
 export default function App() {
   const location = useLocation();
 
-  const noFooterRoutes = ['/cadastro', '/login', '/redefinirsenha'];
-  const noNavbarRoutes = ['/cadastro', '/login', '/redefinirsenha'];
+  const noFooterRoutes = ['/cadastro', '/login', '/redefinir-senha'];
+  const noNavbarRoutes = ['/cadastro', '/login', '/redefinir-senha'];
 
   const showFooter = !noFooterRoutes.includes(location.pathname.toLowerCase());
   const showNavbar = !noNavbarRoutes.includes(location.pathname.toLowerCase());
@@ -31,7 +31,7 @@ export default function App() {
       {/* 2. Conteúdo principal que "cresce" para ocupar o espaço disponível */}
       <main className="flex-grow">
         <Routes>
-          <Route path="/redefinirsenha" element={<RedefinirSenha />} />
+          <Route path="/redefinir-senha" element={<RedefinirSenha />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
