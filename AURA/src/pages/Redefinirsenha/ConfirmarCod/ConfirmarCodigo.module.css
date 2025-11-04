@@ -1,0 +1,119 @@
+:root {
+  --cor-primaria: #2E8B57;
+  --cor-erro: #d32f2f;
+  --cor-sucesso: #2e7d32;
+  --cor-texto-claro: #555;
+}
+
+.redefinir_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 25px;
+  max-width: 420px;
+  margin: 80px auto;
+  margin-top: 11pc;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 10px;
+  background-color: #ffffff;
+  width: 90%;
+}
+
+.redefinir_voltar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cor-primaria);
+}
+
+.redefinir_titulo {
+  color: var(--cor-primaria);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.redefinir_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.redefinir_form input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1.5px solid var(--cor-primaria);
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.redefinir_form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 100, 107, 0.2);
+  border-color: var(--cor-primaria);
+}
+
+.redefinir_form button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 25px;
+  border: 1.5px solid var(--cor-primaria);
+  background-color: #fff;
+  color: var(--cor-primaria);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.redefinir_form button:hover:not(:disabled) {
+  background-color: var(--cor-primaria);
+  color: #fff;
+}
+
+.redefinir_form button:disabled {
+  background-color: #f0f0f0;
+  color: #aaa;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.redefinir_sucesso {
+  color: var(--cor-sucesso);
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.redefinir_erro {
+  color: var(--cor-erro);
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .redefinir_container {
+    margin: 0;
+    padding: 30px 20px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .redefinir_titulo {
+    font-size: 2rem;
+  }
+
+  .redefinir_form button {
+    font-size: 1rem;
+  }
+}

@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
 import RedefinirSenha from './pages/Redefinirsenha/RedefinirSenha';
+import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
+import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
 import Sobre from './pages/Sobre/sobreHistoria'
 import Simulador from './pages/Simulador/Simulador';
 import { PrivateRoute } from './components/PrivateRoute';
@@ -16,8 +18,8 @@ import { AuthProvider } from './context/AuthContext';
 export default function App() {
   const location = useLocation();
 
-  const noFooterRoutes = ['/cadastro', '/login', '/redefinir-senha'];
-  const noNavbarRoutes = ['/cadastro', '/login', '/redefinir-senha'];
+  const noFooterRoutes = ['/cadastro', '/login', '/redefinir-senha', '/redefinir/nova-senha', '/redefinir/confirmar-codigo', '/simulador'];
+  const noNavbarRoutes = ['/cadastro', '/login', '/redefinir-senha', '/redefinir/nova-senha', '/redefinir/confirmar-codigo'];
 
   const showFooter = !noFooterRoutes.includes(location.pathname.toLowerCase());
   const showNavbar = !noNavbarRoutes.includes(location.pathname.toLowerCase());
@@ -31,6 +33,8 @@ export default function App() {
       {/* 2. Conteúdo principal que "cresce" para ocupar o espaço disponível */}
       <main className="flex-grow">
         <Routes>
+          <Route path="/redefinir/nova-senha" element={<NovaSenha />} />
+          <Route path="/redefinir/confirmar-codigo" element={<ConfirmarCodigo />} />
           <Route path="/redefinir-senha" element={<RedefinirSenha />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
