@@ -34,7 +34,7 @@ const Produto = () => {
           <div className={styles.botoes}>
             {/* Botão de contato (WhatsApp ou página de contato) */}
             <a
-              href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20AUONE"
+              href="https://wa.me/5511916204211?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20AUONE"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.botaoContato}

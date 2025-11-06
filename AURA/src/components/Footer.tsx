@@ -22,7 +22,7 @@ export function Footer() {
           <div className="link-group">
             <h3>Contato</h3>
             <p>São Paulo, Brasil</p>
-            <p>+55 (11) 99999-9999</p>
+            <p>+55 (11) 91620-4211</p>
             <p>auraservicosbr@gmail.com</p>
           </div>
         </div>
