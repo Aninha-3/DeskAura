@@ -19,11 +19,11 @@ export function SectionDownload() {
 
       {/* Título Principal */}
       <div className="text-center max-w-3xl px-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-          Baixe o App AUONE
+        <h1 className="text-4xl md:text-5xl font-extrabold text-[#042B00] mb-4 leading-tight">
+          Transforme sua fazenda com o App AUONE
         </h1>
         <p className="text-base md:text-lg text-gray-600 mb-10">
-          Disponível para iOS e Android. Comece a transformar sua gestão agrícola hoje mesmo.
+          Disponível para iOS e Android. Comece a revolucionar sua gestão agrícola agora mesmo.
         </p>
       </div>
 
@@ -58,7 +58,7 @@ export function SectionDownload() {
             <img 
               src={phoneImage} 
               alt="App AUONE" 
-              className="h-full max-h-[800px] md:max-h-[900px] object-contain" 
+              className="h-full max-h-[1000px] md:max-h-[1100px] object-contain" 
             />
           </div>
 
@@ -66,23 +66,23 @@ export function SectionDownload() {
       </div>
 
       {/* Seção de Estatísticas Centralizada */}
-     <div className="mt-12 w-full flex justify-center">
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl w-full">
-    {stats.map((stat, index) => (
-      <div
-        key={index}
-        className="flex flex-col items-center justify-center text-center text-gray-800"
-      >
-        <h3 className="text-4xl md:text-5xl font-bold text-green-700">
-          {stat.value}
-        </h3>
-        <p className="text-sm md:text-base text-gray-600 mt-1">
-          {stat.label}
-        </p>
+      <div className="mt-12 w-full flex justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl w-full">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center text-center text-gray-800"
+            >
+              <h3 className="text-4xl md:text-5xl font-bold text-green-700">
+                {stat.value}
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 mt-1">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
 
     </section>
   );
