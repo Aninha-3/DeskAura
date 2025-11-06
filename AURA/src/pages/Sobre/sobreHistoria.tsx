@@ -13,6 +13,7 @@ import { FiActivity } from "react-icons/fi";
 import { BsDatabase } from "react-icons/bs";
 
 import Aurora from '../../components/aurora/aurora';
+import History from '../../assets/nossaHistoria.jpg'
 
 
 export default function SobreHistoria() {
@@ -121,23 +122,43 @@ export default function SobreHistoria() {
       <section className="py-20 px-6 bg-green-900 text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-green-800 rounded-lg h-80 flex items-center justify-center">
-              <span className="text-green-300">Placeholder para Imagem</span>
+            <div className=" flex items-center justify-center">
+              <img src={History} alt="Historia" className="rounded-2xl" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Nossa História</h2>
-              <p className="text-lg text-green-100 leading-relaxed mb-6">
-                O <strong>AURA</strong> nasceu com a missão de levar <strong>tecnologia sustentável</strong> a todos os produtores,
-                garantindo monitoramento confiável de água, luz e nutrientes para suas lavouras.
+              <p className="text-lg text-green-100 leading-relaxed mb-3">
+                O <strong className="text-green-300">AURA</strong> nasceu com uma missão clara: democratizar a
+                <strong className=" "> tecnologia sustentável </strong>para todos os produtores rurais.
               </p>
-              <p className="text-lg text-green-100 leading-relaxed mb-8">
-                Assim, unimos <strong>inovação</strong> e <strong>praticidade</strong> em uma solução acessível que transforma
-                o futuro da agricultura.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <span className="bg-green-800 px-4 py-2 rounded-full text-sm">Sustentabilidade</span>
-                <span className="bg-green-800 px-4 py-2 rounded-full text-sm">Inovação</span>
-                <span className="bg-green-800 px-4 py-2 rounded-full text-sm">Acessibilidade</span>
+              <div className="pl-6 border-l-4 space-y-4 text-green-100 text-lg mb-3">
+                <p>
+                  Acreditamos que <strong> todo agricultor </strong> deve ter acesso a <strong> monitoramento confiável </strong> de água, luz e nutrientes.
+                  Para isso, unimos <strong> inovação tecnológica e praticidade, </strong> criando uma <strong> solução acessível </strong> que impulsiona a agricultura brasileira.
+                </p>
+              </div>
+              <div className="p-6 rounded-2xl bg-green-200/5 border border-green-300/20 mb-6">
+                <p className="text-base leading-relaxed text-foreground font-medium">
+                  "Nosso compromisso é empoderar produtores com dados precisos e insights acionáveis, promovendo uma
+                  agricultura mais inteligente, sustentável e lucrativa."
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-10 pt-2">
+                <div className="group px-5 py-3 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 border border-green-300/20 hover:border-green-400/60 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-sm text-foreground text-green-100">Sustentabilidade</strong>
+                  </div>
+                </div>
+                <div className="group px-5 py-3 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 border  border-green-300/20 hover:border-green-400/60 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-sm text-foreground  text-green-100">Inovação</strong>
+                  </div>
+                </div>
+                <div className="group px-5 py-3 rounded-full bg-gradient-to-r from-primary/10 to-primary/5 border  border-green-300/20 hover:border-green-400/60 transition-all duration-300 hover:shadow-lg hover:scale-105">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-sm text-foreground  text-green-100">Acessibilidade</strong>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
