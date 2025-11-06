@@ -18,7 +18,7 @@ export function Navbar() {
         <Link to="/" className="LinhaNav">Início</Link>
         <Link to="/contato" className="LinhaNav">Contato</Link>
         <Link to="/sobre" className="LinhaNav">Sobre</Link>
-        <Link to="/produto" className="LinhaNav">Produto</Link>
+        <Link to="/Produto" className="LinhaNav">Produto</Link>
         <Link to="/simulador" className="LinhaNav">Simulador</Link>
       </nav>
 

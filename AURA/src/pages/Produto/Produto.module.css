@@ -7,9 +7,14 @@
 
 .container {
   max-width: 72rem; /* equivalente ao max-w-6xl */
-  margin: 3rem auto;
-  padding: 1rem;
-  font-family: 'Inter', sans-serif;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+
+  /* 🔑 garante que a página ocupe toda a altura da tela */
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* centraliza verticalmente */
 }
 
 .card {
@@ -19,6 +24,7 @@
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -86,37 +92,6 @@
   }
 }
 
-.botaoPrimario {
-  flex: 1;
-  padding: 1rem 2rem;
-  background-color: var(--verde-medio);
-  color: #fff;
-  font-size: 1.125rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  border: 1px solid var(--verde-medio);
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
-}
-
-.botaoPrimario:hover {
-  background-color: #256d47;
-  transform: translateY(-2px);
-}
-
-.botaoSecundario {
-  flex: 1;
-  padding: 1rem 2rem;
-  background-color: var(--verde-claro);
-  color: var(--verde-escuro);
-  font-size: 1.125rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  border: 1px solid var(--verde-claro);
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
-}
-
 .botaoContato {
   flex: 1;
   padding: 1rem 2rem;
@@ -128,7 +103,11 @@
   border: 1px solid var(--verde-escuro);
   cursor: pointer;
   transition: transform 0.2s, background-color 0.3s;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
+
 .botaoContato:hover {
   background-color: #031a00;
   transform: translateY(-2px);
@@ -147,8 +126,8 @@
   transition: transform 0.2s, background-color 0.3s;
 }
 
-.botaoSecundario:hover {
-  background-color: #4a9463;
+.botaoInfo:hover {
+  background-color: #b0c5b6;
   transform: translateY(-2px);
 }
 

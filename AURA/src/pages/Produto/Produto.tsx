@@ -1,13 +1,12 @@
-import type { FC } from "react";
+import React from "react";
 import styles from "./Produto.module.css";
-import { Link } from "react-router-dom";
 
-const Produto: FC = () => {
+const Produto = () => {
   const produto = {
     nome: "AUONE",
     descricao:
       "Kit de irrigação automatizada 'faça você mesmo' (DIY). Monitore a umidade do solo e regue suas plantas de forma inteligente com este sistema baseado em microcontrolador.",
-    preco: "R$ 499,99",
+    
     imagemUrl:
       "https://placehold.co/600x600/e2e8f0/4a5568?text=Imagem+do+AUONE",
     altText: "Kit de irrigação automatizada AUONE",
@@ -16,7 +15,7 @@ const Produto: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        {/* Imagem */}
+        {/* Coluna da Imagem */}
         <div className={styles.imageSection}>
           <img
             src={produto.imagemUrl}
@@ -25,19 +24,29 @@ const Produto: FC = () => {
           />
         </div>
 
-        {/* Conteúdo */}
+        {/* Coluna do Conteúdo */}
         <div className={styles.content}>
           <h1 className={styles.titulo}>{produto.nome}</h1>
           <p className={styles.descricao}>{produto.descricao}</p>
-          <div>
-            <span className={styles.preco}>{produto.preco}</span>
-          </div>
+          
 
+          {/* Botões */}
           <div className={styles.botoes}>
-            <button className={styles.botaoContato}>Entrar em Contato <Link to="/Contato"></Link></button>
+            {/* Botão de contato (WhatsApp ou página de contato) */}
+            <a
+              href="https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20AUONE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.botaoContato}
+            >
+              Entrar em Contato
+            </a>
+
+            {/* Botão secundário */}
             <button className={styles.botaoInfo}>Mais Informações</button>
           </div>
 
+          {/* Recursos */}
           <div className={styles.recursos}>
             <h3 className={styles.recursosTitulo}>Recursos Principais:</h3>
             <ul className={styles.recursosLista}>
