@@ -1,8 +1,9 @@
-import './Hero.modules.css';
+
 import logoFooter from '../assets/logoVerde.png';
 import CookieBanner from "../components/CookieBanner";
-//import TopButton from './TopButton';
+
 import SectionDownload from './SectionDownload';
+import Chatbot from '../components/Assistente';
 
 
 import { useRef } from 'react';
@@ -100,6 +101,9 @@ export function Hero() {
   </div>
 
         <SectionDownload />
+
+
+         <Chatbot />
 
 
         {/* Seção Comunidade Ativa */}

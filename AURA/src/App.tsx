@@ -41,6 +41,7 @@ export default function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/privacidade" element={<PrivacyPolicy />} />
+          <Route path="/chatbot" element={<Chatbot />} />
           <Route
             path="/simulador"
             element={
@@ -52,8 +53,8 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* O Chatbot e o Footer ficam fora do <main> para não rolarem com a página, se desejado */}
-      <Chatbot />
+      {/* O Footer ficam fora do <main> para não rolarem com a página, se desejado */}
+     
       {showFooter && <Footer />}
     </div>
   );

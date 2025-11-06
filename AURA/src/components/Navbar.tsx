@@ -1,7 +1,7 @@
 import { useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import './NavBar.modules.css';
 import { AuthContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 export function Navbar() {
   const auth = useContext(AuthContext);
@@ -14,12 +14,12 @@ export function Navbar() {
 
   return (
     <header className="Nav-bar">
-      <nav className="navBar">
-        <a href="/" className="LinhaNav">Inicio</a>
-        <a href="#" className="LinhaNav">Contato</a>
-        <a href="/sobre" className="LinhaNav">Sobre</a>
-        <a href="#" className='LinhaNav'>Produto</a>
-        <a href="/simulador" className="LinhaNav">Simulador</a>
+      <nav className="navBar" aria-label="Navegação principal">
+        <Link to="/" className="LinhaNav">Início</Link>
+        <Link to="/contato" className="LinhaNav">Contato</Link>
+        <Link to="/sobre" className="LinhaNav">Sobre</Link>
+        <Link to="/produto" className="LinhaNav">Produto</Link>
+        <Link to="/simulador" className="LinhaNav">Simulador</Link>
       </nav>
 
       <div className="navButtons">
@@ -27,8 +27,8 @@ export function Navbar() {
           <button className="navButton" onClick={handleLogout}>Logout</button>
         ) : (
           <>
-            <a href="/login" className="navButton">Login</a>
-            <a href="/cadastro" className="navButton">Cadastro</a>
+            <Link to="/login" className="navButton">Login</Link>
+            <Link to="/cadastro" className="navButton">Cadastro</Link>
           </>
         )}
       </div>
