@@ -1,22 +1,30 @@
-// src/App.tsx
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import { ModalProvider } from './context/ModalContext';
+
+import { Navbar } from './components/Navbar';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
-import RedefinirSenha from './pages/Redefinirsenha/RedefinirSenha';
-import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
-import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
-import Sobre from './pages/Sobre/sobreHistoria'
+
+import Sobre from './pages/Sobre/sobreHistoria';
 import Simulador from './pages/Simulador/Simulador';
 import { PrivateRoute } from './components/PrivateRoute';
-import { Navbar } from './components/Navbar';
+
 import { Footer } from './components/Footer';
 import Chatbot from './components/Assistente';
 import PrivacyPolicy from './pages/Politica/PrivacyPolicy';
+
+import RedefinirSenha from './pages/Redefinirsenha/RedefinirSenha';
+import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
+import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
 import { AuthProvider } from './context/AuthContext';
 
-export default function App() {
+import FeedbackModal from './components/ContatoModal';
+import { useModal } from './context/ModalContext';
+
+function AppContent() {
   const location = useLocation();
+  const { isContactOpen, closeContact } = useModal();
 
   const noFooterRoutes = ['/cadastro', '/login', '/redefinir-senha', '/redefinir/nova-senha', '/redefinir/confirmar-codigo', '/simulador'];
   const noNavbarRoutes = ['/cadastro', '/login', '/redefinir-senha', '/redefinir/nova-senha', '/redefinir/confirmar-codigo'];
@@ -25,12 +33,9 @@ export default function App() {
   const showNavbar = !noNavbarRoutes.includes(location.pathname.toLowerCase());
 
   return (
-    // 1. Container principal que organiza tudo em uma coluna flexível
-    // e garante que a altura mínima seja a da tela.
     <div className="flex flex-col min-h-screen">
       {showNavbar && <Navbar />}
 
-      {/* 2. Conteúdo principal que "cresce" para ocupar o espaço disponível */}
       <main className="flex-grow">
         <Routes>
           <Route path="/redefinir/nova-senha" element={<NovaSenha />} />
@@ -38,6 +43,7 @@ export default function App() {
           <Route path="/redefinir-senha" element={<RedefinirSenha />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          {/* ❌ Removido: <Route path="/contato" element={<Contato isOpen={false} onClose={() => {}} />} /> */}
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/privacidade" element={<PrivacyPolicy />} />
@@ -53,9 +59,18 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* O Footer ficam fora do <main> para não rolarem com a página, se desejado */}
-     
       {showFooter && <Footer />}
+      <FeedbackModal isOpen={isContactOpen} onClose={closeContact} />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <ModalProvider>
+        <AppContent />
+      </ModalProvider>
+    </AuthProvider>
   );
 }

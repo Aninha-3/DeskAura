@@ -13,6 +13,9 @@ import monitoramento from '../assets/grafico1.png';
 import alertas from '../assets/grafico2.png';
 import relatorios from '../assets/grafico3.png';
 
+
+
+
 export function Hero() {
   const aboutRef = useRef(null);
   const { scrollYProgress } = useScroll({
