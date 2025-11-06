@@ -6,15 +6,8 @@ import { Navbar } from './components/Navbar';
 import Login from './pages/Login/Login';
 import Cadastro from './pages/Cadastro/Cadastro';
 
-
-import Sobre from './pages/Sobre/sobreHistoria';
-
-import RedefinirSenha from './pages/Redefinirsenha/RedefinirSenha';
-import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
-import Produto from './pages/Produto/Produto';
-import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
 import Sobre from './pages/Sobre/sobreHistoria'
-
+import Produto from './pages/Produto/Produto';
 import Simulador from './pages/Simulador/Simulador';
 import { PrivateRoute } from './components/PrivateRoute';
 
@@ -54,7 +47,7 @@ function AppContent() {
           {/* ❌ Removido: <Route path="/contato" element={<Contato isOpen={false} onClose={() => {}} />} /> */}
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sobre" element={<Sobre />} />
-          <Route path="/Produto" element={<Produto />} />
+          <Route path="/produto" element={<Produto />} />
           <Route path="/privacidade" element={<PrivacyPolicy />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route
