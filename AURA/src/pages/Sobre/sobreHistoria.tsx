@@ -5,11 +5,13 @@ import {
   FaSatellite,
   FaLeaf,
   FaBell,
-  FaRocket
+  FaRocket,
+  FaRegClock
 } from 'react-icons/fa';
 import { PiTargetBold } from "react-icons/pi";
+import { FiActivity } from "react-icons/fi";
+import { BsDatabase } from "react-icons/bs";
 
-// 1. IMPORTAÇÃO CRÍTICA
 import Aurora from '../../components/aurora/aurora';
 
 
@@ -30,8 +32,12 @@ export default function SobreHistoria() {
 
       {/*SEÇÃO HERO (COM EFEITO AURORA) */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-black z-0">
-          <Aurora />
+        <div className="absolute inset-0 bg-white z-0">
+          <Aurora
+            amplitude={1}
+            distance={-0.5}
+            enableMouseInteraction={true}
+          />
         </div>
 
         <motion.div
@@ -42,7 +48,7 @@ export default function SobreHistoria() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-serif"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-green-900 mb-6 font-serif"
           >
             Transformando a Agricultura com Tecnologia
           </motion.h1>
@@ -50,7 +56,7 @@ export default function SobreHistoria() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-white font-light"
+            className="text-xl md:text-2xl text-green-900 font-light"
           >
             Inovação e sustentabilidade para o agronegócio brasileiro
           </motion.p>
@@ -62,33 +68,49 @@ export default function SobreHistoria() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 font-serif">
+              <h2 className="md:text-5xl font-bold text-gray-800 mb-6 font-serif">
                 O que fazemos?
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Desenvolvemos um sistema de **monitoramento ambiental inteligente**, utilizando sensores
+              <p className="text-3x1 text-gray-600 leading-relaxed mb-6">
+                Desenvolvemos um sistema de <strong> monitoramento ambiental inteligente </strong>, utilizando sensores
                 integrados a plataformas embarcadas (Arduino, ESP32 e LoRa).
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Nosso sistema coleta informações em **tempo real** sobre temperatura, umidade, luminosidade
+              <p className="text-3x1 text-gray-600 leading-relaxed">
+                Nosso sistema coleta informações em <strong>tempo real</strong> sobre temperatura, umidade, luminosidade
                 e outras variáveis essenciais, enviando os dados para a nuvem, onde algoritmos processam
-                e geram **recomendações personalizadas** para o produtor.
+                e geram <strong>recomendações personalizadas</strong> para o produtor.
               </p>
             </div>
 
             {/* BOXES DE DADOS */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="text-center p-6 bg-green-50 rounded-lg border border-green-200">
-                <div className="text-2xl md:text-3xl font-bold text-green-600 mb-2">98%</div>
-                <div className="text-sm text-gray-600 font-medium">Precisão dos dados</div>
+              <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-600">
+                <div className="text-green-600 flex justify-center items-center">
+                  <FiActivity className="h-8 w-8 " />
+                </div>
+                <div className="md:text-3xl font-bold text-green-600 mb-2">98%</div>
+                <div className="text-2x1 text-muted-foreground/80 font-medium">Precisão dos dados</div>
+                <p className="text-sm text-gray-600 pt-1">Sensores calibrados com alta acurácia</p>
               </div>
-              <div className="text-center p-6 bg-green-50 rounded-lg border border-green-200">
-                <div className="text-2xl md:text-3xl font-bold text-green-600 mb-2">24/7</div>
-                <div className="text-sm text-gray-600 font-medium">Monitoramento</div>
+              <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-600">
+                <div className="text-green-600 flex justify-center items-center">
+                  <FaRegClock className="h-8 w-8" />
+                </div>
+                <div className="md:text-3xl font-bold text-green-600 mb-2">24/7</div>
+                <div className="text-2x1 text-muted-foreground/800 font-medium">
+                  Monitoramento
+                  <br />
+                  <br />
+                </div>
+                <p className="text-sm text-gray-600 pt-1">Coleta de dados ininterrupta</p>
               </div>
-              <div className="text-center p-6 bg-green-50 rounded-lg border border-green-200">
-                <div className="text-2xl md:text-3xl font-bold text-green-600 mb-2">+100</div>
-                <div className="text-sm text-gray-600 font-medium">Variáveis analisadas</div>
+              <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-600">
+                <div className="text-green-600 flex justify-center items-center ">
+                  <BsDatabase className="h-8 w-8" />
+                </div>
+                <div className="md:text-3xl font-bold text-green-600 mb-2">+100</div>
+                <div className="text-2x1 text-muted-foreground/80 font-medium">Variáveis analisadas</div>
+                <p className="text-sm text-gray-600 pt-1">Dados completos do ambiente</p>
               </div>
             </div>
           </div>
@@ -105,11 +127,11 @@ export default function SobreHistoria() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Nossa História</h2>
               <p className="text-lg text-green-100 leading-relaxed mb-6">
-                O **AURA** nasceu com a missão de levar **tecnologia sustentável** a todos os produtores,
+                O <strong>AURA</strong> nasceu com a missão de levar <strong>tecnologia sustentável</strong> a todos os produtores,
                 garantindo monitoramento confiável de água, luz e nutrientes para suas lavouras.
               </p>
               <p className="text-lg text-green-100 leading-relaxed mb-8">
-                Assim, unimos **inovação** e **praticidade** em uma solução acessível que transforma
+                Assim, unimos <strong>inovação</strong> e <strong>praticidade</strong> em uma solução acessível que transforma
                 o futuro da agricultura.
               </p>
               <div className="flex flex-wrap gap-3">

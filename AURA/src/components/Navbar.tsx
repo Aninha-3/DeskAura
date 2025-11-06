@@ -18,7 +18,7 @@ export function Navbar() {
       <nav className="navBar" aria-label="Navegação principal">
         <Link to="/" className="LinhaNav">Início</Link>
         <Link to="/sobre" className="LinhaNav">Sobre</Link>
-        <Link to="/produto" className="LinhaNav">Produto</Link>
+        <Link to="/Produto" className="LinhaNav">Produto</Link>
         <Link to="/simulador" className="LinhaNav">Simulador</Link>
       </nav>
 

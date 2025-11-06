@@ -1,0 +1,152 @@
+:root {
+  --verde-escuro: #042B00;
+  --verde-medio: #2E8B57;
+  --verde-claro: #58A975;
+  --fundo-claro: #C8D9CE;
+}
+
+.container {
+  max-width: 72rem; /* equivalente ao max-w-6xl */
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Montserrat Alternates', sans-serif;
+
+  /* 🔑 garante que a página ocupe toda a altura da tela */
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* centraliza verticalmente */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-direction: row;
+  }
+}
+
+.imageSection {
+  flex: 1;
+  background-color: var(--fundo-claro);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--verde-escuro);
+}
+
+.descricao {
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+  color: var(--verde-escuro);
+  opacity: 0.85;
+}
+
+.preco {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--verde-escuro);
+}
+
+.botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .botoes {
+    flex-direction: row;
+  }
+}
+
+.botaoContato {
+  flex: 1;
+  padding: 1rem 2rem;
+  background-color: var(--verde-escuro);
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid var(--verde-escuro);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.botaoContato:hover {
+  background-color: #031a00;
+  transform: translateY(-2px);
+}
+
+.botaoInfo {
+  flex: 1;
+  padding: 1rem 2rem;
+  background-color: var(--fundo-claro);
+  color: var(--verde-escuro);
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: 1px solid var(--fundo-claro);
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.botaoInfo:hover {
+  background-color: #b0c5b6;
+  transform: translateY(-2px);
+}
+
+.recursos {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--fundo-claro);
+}
+
+.recursosTitulo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--verde-escuro);
+}
+
+.recursosLista {
+  list-style: disc;
+  padding-left: 1rem;
+  color: var(--verde-escuro);
+  opacity: 0.85;
+}
