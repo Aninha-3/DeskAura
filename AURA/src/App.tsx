@@ -20,7 +20,7 @@ import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
 import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
 import { AuthProvider } from './context/AuthContext';
 
-import FeedbackModal from './components/ContatoModal';
+import FeedbackModal from './components/contat';
 import { useModal } from './context/ModalContext';
 
 function AppContent() {

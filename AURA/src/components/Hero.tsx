@@ -2,6 +2,7 @@ import logoFooter from '../assets/logoVerde.png';
 import CookieBanner from "../components/CookieBanner";
 import SectionDownload from './SectionDownload';
 import Chatbot from '../components/Assistente';
+import Feedback from './contat';
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -165,6 +166,9 @@ export function Hero() {
           </button>
         </div>
       </motion.div>
+      <div>
+        <Feedback/>
+      </div>
 
     </div>
   );
