@@ -2,9 +2,10 @@ import React, { useState, useContext } from "react";
 import { loginUsuario } from '../../services.ts/api';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate, Link } from "react-router-dom";
-import { SlArrowLeft } from "react-icons/sl";
+
 // Importe o novo arquivo de estilo
 import styles from './Login.module.css';
+import logoVerde from '../../assets/letraA.png';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -34,11 +35,15 @@ function Login() {
   return (
     // Aplicando a classe do container principal
     <div className={styles.login_container}>
-       <button className={styles.login_voltar} onClick={() => navigate(-1)}>
-        <SlArrowLeft size={25} />
+      <button className={styles.login_voltar} onClick={() => navigate('/')}>
+        <img
+          src={logoVerde}
+          alt="Logo da Empresa"
+          className={styles.logo_img}
+        />
       </button>
       <h1 className={styles.login_titulo}>Login</h1>
-       
+
       <form onSubmit={handleLoginSubmit} className={styles.login_formulario}>
         <input
           type="email"
