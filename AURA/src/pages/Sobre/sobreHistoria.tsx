@@ -36,7 +36,7 @@ export default function SobreHistoria() {
         <div className="absolute inset-0 bg-white z-0">
           <Aurora
             amplitude={1}
-            distance={-0.5}
+            distance={1}
             enableMouseInteraction={true}
           />
         </div>
@@ -69,7 +69,7 @@ export default function SobreHistoria() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="md:text-5xl font-bold text-gray-800 mb-6 font-serif">
+              <h2 className="md:text-5xl font-bold text-green-900 mb-6 font-serif">
                 O que fazemos?
               </h2>
               <p className="text-3x1 text-gray-600 leading-relaxed mb-6">
@@ -85,19 +85,19 @@ export default function SobreHistoria() {
 
             {/* BOXES DE DADOS */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-600">
-                <div className="text-green-600 flex justify-center items-center">
+              <div className="text-center p-6 rounded-lg border-2 border-green-900">
+                <div className="text-green-900 flex justify-center items-center">
                   <FiActivity className="h-8 w-8 " />
                 </div>
-                <div className="md:text-3xl font-bold text-green-600 mb-2">98%</div>
+                <div className="md:text-3xl font-bold text-green-900 mb-2">98%</div>
                 <div className="text-2x1 text-muted-foreground/80 font-medium">Precisão dos dados</div>
                 <p className="text-sm text-gray-600 pt-1">Sensores calibrados com alta acurácia</p>
               </div>
-              <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-600">
-                <div className="text-green-600 flex justify-center items-center">
+              <div className="text-center p-6 rounded-lg border-2 border-green-900">
+                <div className="text-green-900 flex justify-center items-center">
                   <FaRegClock className="h-8 w-8" />
                 </div>
-                <div className="md:text-3xl font-bold text-green-600 mb-2">24/7</div>
+                <div className="md:text-3xl font-bold text-green-900 mb-2">24/7</div>
                 <div className="text-2x1 text-muted-foreground/800 font-medium">
                   Monitoramento
                   <br />
@@ -105,11 +105,11 @@ export default function SobreHistoria() {
                 </div>
                 <p className="text-sm text-gray-600 pt-1">Coleta de dados ininterrupta</p>
               </div>
-              <div className="text-center p-6 bg-green-50 rounded-lg border-2 border-green-600">
-                <div className="text-green-600 flex justify-center items-center ">
+              <div className="text-center p-6 rounded-lg border-2 border-green-900">
+                <div className="text-green-900 flex justify-center items-center ">
                   <BsDatabase className="h-8 w-8" />
                 </div>
-                <div className="md:text-3xl font-bold text-green-600 mb-2">+100</div>
+                <div className="md:text-3xl font-bold text-green-900 mb-2">+100</div>
                 <div className="text-2x1 text-muted-foreground/80 font-medium">Variáveis analisadas</div>
                 <p className="text-sm text-gray-600 pt-1">Dados completos do ambiente</p>
               </div>
@@ -123,15 +123,15 @@ export default function SobreHistoria() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className=" flex items-center justify-center">
-              <img src={History} alt="Historia" className="rounded-2xl" />
+              <img src={History} alt="Historia" className="rounded-2xl w-500" />
             </div>
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Nossa História</h2>
-              <p className="text-lg text-green-100 leading-relaxed mb-3">
-                O <strong className="text-green-300">AURA</strong> nasceu com uma missão clara: democratizar a
-                <strong className=" "> tecnologia sustentável </strong>para todos os produtores rurais.
+              <p className="text-lg text-green-100 leading-relaxed mb-6">
+                O <strong >AURA</strong> nasceu com uma missão clara: democratizar a
+                <strong > tecnologia sustentável </strong>para todos os produtores rurais.
               </p>
-              <div className="pl-6 border-l-4 space-y-4 text-green-100 text-lg mb-3">
+              <div className="pl-6 border-l-4 space-y-4 text-green-100 text-lg mb-6">
                 <p>
                   Acreditamos que <strong> todo agricultor </strong> deve ter acesso a <strong> monitoramento confiável </strong> de água, luz e nutrientes.
                   Para isso, unimos <strong> inovação tecnológica e praticidade, </strong> criando uma <strong> solução acessível </strong> que impulsiona a agricultura brasileira.
@@ -165,73 +165,127 @@ export default function SobreHistoria() {
         </div>
       </section>
 
-      {/* 4. NOSSOS DIFERENCIAIS */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16 font-serif">
-            Nossos Diferenciais
-          </h2>
+{/* 4. NOSSOS DIFERENCIAIS*/}
+<section className="py-20 px-6 bg-gray-50">
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-3xl md:text-4xl font-bold text-center text-green-900 mb-16 font-serif">
+      Por Que Escolher AURA? Nossos Diferenciais
+    </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {/* O grid de 2 colunas permanece para o formato retangular mais largo */}
+    <div className="grid md:grid-cols-2 gap-8">
 
-            {/* Cartão 1: Resultados em tempo real */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <FaChartLine className="text-xl text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Resultados em tempo real</h3>
-              <p className="text-gray-600">Monitoramento contínuo com atualizações instantâneas para decisões ágeis.</p>
-            </div>
-
-            {/* Cartão 2: Capacitação do produtor */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <PiTargetBold className="text-xl text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Capacitação do produtor</h3>
-              <p className="text-gray-600">Dados confiáveis para otimizar recursos e aumentar a produtividade e eficiência.</p>
-            </div>
-
-            {/* Cartão 3: Dados precisos */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <FaSatellite className="text-xl text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Dados precisos</h3>
-              <p className="text-gray-600">Informações específicas do seu ambiente agrícola com sensores de alta fidelidade.</p>
-            </div>
-
-            {/* Cartão 4: Sustentabilidade e Ecologia */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <FaLeaf className="text-xl text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Sustentabilidade e Ecologia</h3>
-              <p className="text-gray-600">Recomendações focadas na economia de recursos hídricos e energéticos.</p>
-            </div>
-
-            {/* Cartão 5: Alerta Inteligente */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <FaBell className="text-xl text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Alerta Inteligente</h3>
-              <p className="text-gray-600">Notificações automáticas sobre anomalias ou condições críticas na lavoura.</p>
-            </div>
-
-            {/* Cartão 6: Inovação Acessível */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <FaRocket className="text-xl text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Inovação Acessível</h3>
-              <p className="text-gray-600">Tecnologia de ponta a custos justos, democratizando a agricultura 4.0.</p>
-            </div>
-
+      {/* Cartão 1: Esquerda para Direita (DELAY 0) */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      >
+        <div className="flex items-start mb-3">
+          {/* Fundo do Ícone REMOVIDO */}
+          <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+            <FaChartLine className="text-lg text-green-800" />
           </div>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Decisões em Tempo Real (RTD)</h3>
         </div>
-      </section>
+        <p className="text-gray-600 pl-14">Acesso contínuo aos dados da lavoura. Identifique problemas e tome decisões ágeis com insights instantâneos para máxima eficiência.</p>
+      </motion.div>
 
+      {/* Cartão 2: Direita para Esquerda (DELAY 0.1) - Linha de cima */}
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      >
+        <div className="flex items-start mb-3">
+          {/* Fundo do Ícone REMOVIDO */}
+          <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+            <PiTargetBold className="text-lg text-green-800" />
+          </div>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Otimização de Recursos</h3>
+        </div>
+        <p className="text-gray-600 pl-14">Recomendações precisas para a aplicação exata de água e fertilizantes, reduzindo custos em até 30% e minimizando o desperdício.</p>
+      </motion.div>
+
+      {/* Cartão 3: Esquerda para Direita (DELAY 0.2) - Linha de baixo */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      >
+        <div className="flex items-start mb-3">
+          {/* Fundo do Ícone REMOVIDO */}
+          <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+            <FaSatellite className="text-lg text-green-800" />
+          </div>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Dados Científicos de Campo</h3>
+        </div>
+        <p className="text-gray-600 pl-14">Sensores de alta fidelidade e conectividade LoRa para coletar informações hiperlocais e gerar um diagnóstico agronômico confiável.</p>
+      </motion.div>
+
+      {/* Cartão 4: Direita para Esquerda (DELAY 0.3) - Linha de baixo */}
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      >
+        <div className="flex items-start mb-3">
+          {/* Fundo do Ícone REMOVIDO */}
+          <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+            <FaLeaf className="text-lg text-green-800" />
+          </div>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Sustentabilidade Comprovada</h3>
+        </div>
+        <p className="text-gray-600 pl-14">Promovemos a gestão hídrica e energética inteligente, garantindo maior produtividade com o menor impacto ambiental no seu cultivo.</p>
+      </motion.div>
+      
+      {/* Cartão 5: Esquerda para Direita (DELAY 0.4) - Nova linha */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      >
+        <div className="flex items-start mb-3">
+          {/* Fundo do Ícone REMOVIDO */}
+          <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+            <FaBell className="text-lg text-green-800" />
+          </div>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Alerta Preditivo Imediato</h3>
+        </div>
+        <p className="text-gray-600 pl-14">Receba notificações automáticas sobre anomalias (clima, pragas ou falhas) antes que elas causem perdas críticas na lavoura.</p>
+      </motion.div>
+
+      {/* Cartão 6: Direita para Esquerda (DELAY 0.5) - Nova linha */}
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      >
+        <div className="flex items-start mb-3">
+          {/* Fundo do Ícone REMOVIDO */}
+          <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+            <FaRocket className="text-lg text-green-800" />
+          </div>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Tecnologia Simples e Acessível</h3>
+        </div>
+        <p className="text-gray-600 pl-14">Democratizamos a Agricultura 4.0: hardware robusto, fácil instalação e plataforma intuitiva a custos justos para todos os produtores.</p>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
     </div>
   );
 }

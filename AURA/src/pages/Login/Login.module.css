@@ -18,6 +18,12 @@
   transition: color 0.2s;
 }
 
+.logo_img {
+  width: 12vh;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 /* Container principal do formulário de login */
 .login_container {
   display: flex;

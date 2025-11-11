@@ -2,15 +2,17 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { cadastrarUsuario } from "../../services.ts/api";
 import { AuthContext } from '../../context/AuthContext';
-import { SlArrowLeft } from "react-icons/sl";
-import styles from './Cadastro.module.css'; // Lembre-se de ter o CSS correspondente
+import styles from './Cadastro.module.css';
+
+// Importa o logo (ajuste o caminho conforme onde está seu arquivo)
+import logoVerde from '../../assets/letraA.png';
 
 function Cadastro() {
   // Estados do formulário
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState(""); // <-- Campo importante para UX
+  const [confirmarSenha, setConfirmarSenha] = useState("");
 
   // Estados de controle da interface
   const [mensagemErro, setMensagemErro] = useState("");
@@ -42,7 +44,7 @@ function Cadastro() {
       // Chama a API para cadastrar
       const resposta = await cadastrarUsuario(nome, email, senha);
 
-      // Sua nova lógica de auto-login!
+      // Auto-login
       auth?.login({ user: resposta.user, token: resposta.token });
 
       setMensagemSucesso("Cadastro realizado com sucesso! Redirecionando...");
@@ -55,18 +57,23 @@ function Cadastro() {
     } catch (error: any) {
       const erroApi = error?.response?.data?.error || "Erro ao cadastrar usuário.";
       setMensagemErro(erroApi);
-      setCarregando(false); // Garante que o carregamento pare em caso de erro
+      setCarregando(false);
     }
-    // Não precisamos de `finally` pois o `setCarregando(false)` já é chamado no erro,
-    // e no sucesso o usuário será redirecionado, então o estado do botão não importa.
   };
 
   return (
     <div className={styles.cadastro_container}>
-      <button className={styles.cadastro_voltar} onClick={() => navigate(-1)}>
-        <SlArrowLeft size={25} />
+      {/* Botão de voltar com logo */}
+      <button className={styles.logo_container} onClick={() => navigate('/')}>
+        <img
+          src={logoVerde}
+          alt="Logo da Empresa"
+          className={styles.logo_img}
+        />
       </button>
+
       <h1 className={styles.cadastro_titulo}>Cadastro</h1>
+
       <form onSubmit={handleSubmit} className={styles.cadastro_formulario}>
         <input
           className={styles.cadastro_input}
@@ -79,7 +86,7 @@ function Cadastro() {
         />
         <input
           className={styles.cadastro_input}
-          type="email" // <-- Corrigido para 'email' para melhor semântica e validação do navegador
+          type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -104,8 +111,9 @@ function Cadastro() {
           required
           disabled={carregando}
         />
+
         <div className={styles.cadastro_subtexto}>
-           <p>Já tem uma conta? <Link to="/login">Login</Link></p>
+          <p>Já tem uma conta? <Link to="/login">Login</Link></p>
         </div>
 
         {mensagemErro && <p className={styles.cadastro_mensagemErro}>{mensagemErro}</p>}

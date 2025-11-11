@@ -27,7 +27,7 @@
   /* Garante que o container não cole nas bordas em telas médias */
 }
 
-.cadastro_voltar {
+.logo_container {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -52,6 +52,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.logo_img {
+  width: 12vh;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 .cadastro_input {
