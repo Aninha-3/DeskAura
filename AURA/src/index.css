@@ -21,8 +21,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-<<<<<<< HEAD
-=======
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -62,7 +61,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
->>>>>>> 0b133215ede2834ec7323f093c9421b30a31eda2
+
 
 @media (prefers-color-scheme: light) {
   :root {

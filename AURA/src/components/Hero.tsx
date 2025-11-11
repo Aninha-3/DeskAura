@@ -140,7 +140,7 @@ export function Hero() {
 
       {/* Seção Comunidade Ativa */}
       <motion.div
-        className="comunidadeContent bg-gradient-to-r from-green-700 to-green-800 rounded-3xl p-8 mt-20 text-white mb-6"
+        className="comunidadeContent bg-gradient-to-r from-green-800 to-green-900 rounded-3xl p-8 mt-20 text-white mb-6"
         variants={fadeInVariants}
         initial="initial"
         whileInView="whileInView"
@@ -158,7 +158,7 @@ export function Hero() {
             </p>
           </div>
           <button
-            className="comunidadeButton bg-white text-green-900 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300"
+            className="comunidadeButton bg-white text-[#042b00] font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300"
             onClick={() => window.location.href = "/comunidade"}
           >
             Acessar Comunidade
