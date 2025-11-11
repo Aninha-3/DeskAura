@@ -32,7 +32,6 @@ interface FormInputProps {
 
 /**
  * Componente de Input com Label Flutuante
- * Tipado explicitamente com React.FC<FormInputProps>.
  */
 const FormInput: React.FC<FormInputProps> = ({ 
     label, 
@@ -46,15 +45,16 @@ const FormInput: React.FC<FormInputProps> = ({
 }) => {
   const isTextarea = type === 'textarea';
 
-  // Classes dinâmicas para cores arbitrárias
+  // Classes dinâmicas para cores arbitrárias e padding REDUZIDO (py-3 px-4)
   const inputClasses = `
-    w-full p-4 border-2 rounded-xl 
+    w-full py-3 px-4 border-2 rounded-xl 
     bg-white text-[${PrimaryDark}] 
     placeholder-transparent focus:outline-none 
     focus:ring-0 transition duration-300 peer
     ${hasError ? 'border-red-500' : 'border-gray-300 focus:border-[' + PrimaryBase + ']'}
   `;
 
+  // Classes para o label flutuante com ajuste de translateY para o novo padding
   const labelClasses = `
     absolute top-0 left-4 
     text-sm text-gray-500 
@@ -62,7 +62,7 @@ const FormInput: React.FC<FormInputProps> = ({
     bg-white px-1 transition-all duration-300
     pointer-events-none
     -translate-y-1/2 scale-75 
-    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[28px] peer-placeholder-shown:text-base
+    peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-[20px] peer-placeholder-shown:text-base
     peer-focus:text-[${PrimaryBase}] peer-focus:scale-75 peer-focus:-translate-y-1/2 peer-focus:text-sm
   `;
 
@@ -72,8 +72,8 @@ const FormInput: React.FC<FormInputProps> = ({
         <textarea
           id={id}
           name={name}
-          rows={rows || 5}
-          className={`${inputClasses} min-h-[120px]`}
+          rows={rows || 4} // Reduzido para 4 linhas padrão
+          className={`${inputClasses} min-h-[80px]`} // Altura mínima reduzida
           placeholder=" "
           value={value}
           onChange={onChange as (e: ChangeEvent<HTMLTextAreaElement>) => void}
@@ -98,7 +98,7 @@ const FormInput: React.FC<FormInputProps> = ({
 };
 
 // Componente principal do Formulário de Contato
-export default function contate() {
+export default function App() { // Renomeado para App
   // Estado local para controlar os valores dos inputs
   const [formData, setFormData] = useState<FormData>({ 
     name: '',
@@ -127,7 +127,7 @@ export default function contate() {
     if (name in formData) {
       setFormData(prev => ({
         ...prev,
-        [name]: value,
+        [name as keyof FormData]: value,
       }));
     }
   }, [formData]);
@@ -225,12 +225,19 @@ export default function contate() {
   const isDisabled = submissionState.isSubmitting || submissionState.isSucceeded;
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 font-['Inter']">
+    // Container principal com a imagem de fundo das caixas de plantação
+    <div 
+      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-['Inter']"
+    >
+      <div>
+ 
+      </div>
       <div
         className={`
           w-full max-w-2xl p-8 rounded-2xl shadow-2xl 
-          bg-white text-[${PrimaryDark}] 
-          border border-gray-200
+          // Fundo branco com pouca transparência para dar destaque à imagem de fundo
+          bg-white/95 text-[${PrimaryDark}] 
+          border border-gray-200 backdrop-blur-sm
         `}
         role="form"
         aria-labelledby="form-title"
@@ -271,7 +278,7 @@ export default function contate() {
             id="message"
             name="message"
             type="textarea"
-            rows={5}
+            rows={4} // Usando 4 linhas
             value={formData.message}
             onChange={handleChange}
             hasError={submissionState.isError && !formData.message.trim()}
@@ -285,7 +292,7 @@ export default function contate() {
               opacity: isDisabled ? 0.6 : 1 
             }}
             className={`
-              w-full py-4 px-6 text-white font-bold rounded-lg shadow-xl 
+              w-full py-3 px-6 text-white font-bold rounded-lg shadow-xl 
               hover:bg-[${PrimaryLight}] 
               focus:ring-4 focus:ring-[${PrimaryBase}] focus:ring-opacity-50 
               transition duration-300 ease-in-out transform hover:scale-[1.005]

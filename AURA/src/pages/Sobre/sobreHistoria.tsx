@@ -11,8 +11,6 @@ import {
 import { PiTargetBold } from "react-icons/pi";
 import { FiActivity } from "react-icons/fi";
 import { BsDatabase } from "react-icons/bs";
-
-import Aurora from '../../components/aurora/aurora';
 import History from '../../assets/nossaHistoria.jpg'
 
 
@@ -34,11 +32,7 @@ export default function SobreHistoria() {
       {/*SEÇÃO HERO (COM EFEITO AURORA) */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-white z-0">
-          <Aurora
-            amplitude={1}
-            distance={0}
-            enableMouseInteraction={true}
-          />
+
         </div>
 
         <motion.div
