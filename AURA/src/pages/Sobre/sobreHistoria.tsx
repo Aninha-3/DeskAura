@@ -36,7 +36,7 @@ export default function SobreHistoria() {
         <div className="absolute inset-0 bg-white z-0">
           <Aurora
             amplitude={1}
-            distance={1}
+            distance={0}
             enableMouseInteraction={true}
           />
         </div>
@@ -166,122 +166,91 @@ export default function SobreHistoria() {
       </section>
 
 {/* 4. NOSSOS DIFERENCIAIS*/}
-<section className="py-20 px-6 bg-gray-50">
+<section className="py-20 px-6 bg-gray-50"> {/* Fundo branco/muito claro */}
   <div className="max-w-6xl mx-auto">
     <h2 className="text-3xl md:text-4xl font-bold text-center text-green-900 mb-16 font-serif">
-      Por Que Escolher AURA? Nossos Diferenciais
+      Nossos Diferenciais
     </h2>
 
-    {/* O grid de 2 colunas permanece para o formato retangular mais largo */}
     <div className="grid md:grid-cols-2 gap-8">
 
-      {/* Cartão 1: Esquerda para Direita (DELAY 0) */}
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      {/* Cartão 1: Decisões em Tempo Real (RTD) */}
+      <div
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300"
       >
         <div className="flex items-start mb-3">
-          {/* Fundo do Ícone REMOVIDO */}
           <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-            <FaChartLine className="text-lg text-green-800" />
+            <FaChartLine className="text-lg text-green-800" /> {/* Ícone Verde Escuro */}
           </div>
-          <h3 className="text-xl font-bold text-green-900 mt-1">Decisões em Tempo Real (RTD)</h3>
+          <h3 className="text-xl font-bold text-green-900 mt-1">Decisões em Tempo Real (RTD)</h3> {/* Título Verde Escuro */}
         </div>
-        <p className="text-gray-600 pl-14">Acesso contínuo aos dados da lavoura. Identifique problemas e tome decisões ágeis com insights instantâneos para máxima eficiência.</p>
-      </motion.div>
+        <p className="text-gray-600 pl-14">Acesso contínuo aos dados da lavoura. Identifique problemas e tome decisões ágeis com insights instantâneos para máxima eficiência.</p> {/* Parágrafo Cinza */}
+      </div>
 
-      {/* Cartão 2: Direita para Esquerda (DELAY 0.1) - Linha de cima */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      {/* Cartão 2: Otimização de Recursos */}
+      <div
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300"
       >
         <div className="flex items-start mb-3">
-          {/* Fundo do Ícone REMOVIDO */}
           <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
             <PiTargetBold className="text-lg text-green-800" />
           </div>
           <h3 className="text-xl font-bold text-green-900 mt-1">Otimização de Recursos</h3>
         </div>
         <p className="text-gray-600 pl-14">Recomendações precisas para a aplicação exata de água e fertilizantes, reduzindo custos em até 30% e minimizando o desperdício.</p>
-      </motion.div>
+      </div>
 
-      {/* Cartão 3: Esquerda para Direita (DELAY 0.2) - Linha de baixo */}
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      {/* Cartão 3: Dados Científicos de Campo */}
+      <div
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300"
       >
         <div className="flex items-start mb-3">
-          {/* Fundo do Ícone REMOVIDO */}
           <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
             <FaSatellite className="text-lg text-green-800" />
           </div>
           <h3 className="text-xl font-bold text-green-900 mt-1">Dados Científicos de Campo</h3>
         </div>
         <p className="text-gray-600 pl-14">Sensores de alta fidelidade e conectividade LoRa para coletar informações hiperlocais e gerar um diagnóstico agronômico confiável.</p>
-      </motion.div>
+      </div>
 
-      {/* Cartão 4: Direita para Esquerda (DELAY 0.3) - Linha de baixo */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      {/* Cartão 4: Sustentabilidade Comprovada */}
+      <div
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300"
       >
         <div className="flex items-start mb-3">
-          {/* Fundo do Ícone REMOVIDO */}
           <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
             <FaLeaf className="text-lg text-green-800" />
           </div>
           <h3 className="text-xl font-bold text-green-900 mt-1">Sustentabilidade Comprovada</h3>
         </div>
         <p className="text-gray-600 pl-14">Promovemos a gestão hídrica e energética inteligente, garantindo maior produtividade com o menor impacto ambiental no seu cultivo.</p>
-      </motion.div>
-      
-      {/* Cartão 5: Esquerda para Direita (DELAY 0.4) - Nova linha */}
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      </div>
+
+      {/* Cartão 5: Alerta Preditivo Imediato */}
+      <div
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300"
       >
         <div className="flex items-start mb-3">
-          {/* Fundo do Ícone REMOVIDO */}
           <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
             <FaBell className="text-lg text-green-800" />
           </div>
           <h3 className="text-xl font-bold text-green-900 mt-1">Alerta Preditivo Imediato</h3>
         </div>
         <p className="text-gray-600 pl-14">Receba notificações automáticas sobre anomalias (clima, pragas ou falhas) antes que elas causem perdas críticas na lavoura.</p>
-      </motion.div>
+      </div>
 
-      {/* Cartão 6: Direita para Esquerda (DELAY 0.5) - Nova linha */}
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-green-500/50"
+      {/* Cartão 6: Tecnologia Simples e Acessível */}
+      <div
+        className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300"
       >
         <div className="flex items-start mb-3">
-          {/* Fundo do Ícone REMOVIDO */}
           <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
             <FaRocket className="text-lg text-green-800" />
           </div>
           <h3 className="text-xl font-bold text-green-900 mt-1">Tecnologia Simples e Acessível</h3>
         </div>
         <p className="text-gray-600 pl-14">Democratizamos a Agricultura 4.0: hardware robusto, fácil instalação e plataforma intuitiva a custos justos para todos os produtores.</p>
-      </motion.div>
+      </div>
 
     </div>
   </div>
