@@ -2,8 +2,7 @@
   --primary: #214632;
   --primary-dark: #195433;
   --primary-light: #042B00;
-  --primmary-lighter: #1c4e16;
-  --secondary: #f0abfc;
+  --primary-lighter: #1c4e16;
   --text-dark: #1e293b;
   --text-light: #d9d9d9b6;
   --bg-light: #f8fafc;
@@ -13,32 +12,32 @@
   --error: #a02828;
 }
 
-
-
 .container {
   position: fixed;
   bottom: 24px;
   right: 24px;
   z-index: 1000;
+  font-family: 'Inter', sans-serif;
 }
 
 .floatingButton {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  border: 1px solid #042B00;
+  border: 1px solid var(--primary-light);
   padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 12px #C8D9CE, 0 0 10px ;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 12px #C8D9CE;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
 }
 
 .floatingButton:hover {
   transform: scale(1.08);
   box-shadow: 0 0 10px #C8D9CE, 0 0 10px #2E8B57;
+  background: var(--primary-light);
 }
 
 .buttonImage {
@@ -66,12 +65,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 .chatWindow {
@@ -88,23 +83,17 @@
   right: 0;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 0.3s forwards;
+  animation: fadeInUp 0.5s ease-out forwards;
   border: 1px solid #e2e8f0;
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .header {
-  background: linear-gradient(135deg, var(--primary), var(--primmary-lighter));
+  background: linear-gradient(135deg, var(--primary), var(--primary-lighter));
   color: white;
   padding: 16px;
   display: flex;
@@ -118,9 +107,7 @@
   border-radius: 50%;
   margin-right: 12px;
   object-fit: cover;
-  object-position: center;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  display: block;
 }
 
 .headerContent {
@@ -130,9 +117,9 @@
 }
 
 .header h3 {
-  color: --bot-bubble;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  color: white;
 }
 
 .status {
@@ -179,11 +166,11 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  color: #f1f5f9;
+  color: #1e293b;
 }
 
-.welcomeMessage {
-  text-align: center;
+.welcomeMessage,
+.questionMessage {
   padding: 12px;
   background: var(--primary-dark);
   border-radius: 12px;
@@ -191,16 +178,7 @@
   color: #f1f5f9;
 }
 
-.questionMessage{
-  text-align: left;
-  padding: 12px;
-  background: var(--primary-dark);
-  border-radius: 12px;
-  font-size: 14px;
-  color: #e4ebf3;
-}
-
-.questionMessage .titleMessage{
+.questionMessage .titleMessage {
   text-align: center;
   font-weight: bold;
   margin-bottom: 8px;
@@ -213,31 +191,24 @@
 }
 
 @keyframes messageFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .botIcon {
-  color: var(--primmary-lighter);
+  color: var(--primary-lighter);
   margin-right: 8px;
 }
 
 .messageContent {
   padding: 0.6rem 2.5rem;
-
-  border-radius: 18px;;
+  border-radius: 18px;
   word-wrap: break-word;
   white-space: pre-wrap;
   background: var(--user-bubble);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0);
-  font-size: 14px;
-  color: #000000 !important;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #000 !important;
 }
 
 .messageTime {
@@ -245,7 +216,7 @@
   opacity: 0.6;
   margin-top: 4px;
   text-align: right;
-  color: #000000;
+  color: #000;
 }
 
 .message.user {
@@ -254,22 +225,12 @@
 }
 
 .message.user .messageContent {
-  background: var(--text-light);
-  color: #000000 !important;
-  border-bottom-right-radius: 4px;
-  border: #a3b3a2 solid 2px;
-}
-
-.message.user p {
-  color: #000000;
-}
-
-.message.user .messageTime {
-  color: rgba(255, 255, 255, 0.292);
+  background: #e2e8f0;
+  color: #1e293b !important;
+  border: 1px solid #cbd5e1;
 }
 
 .message.assistant {
-  color: #f1f5f9;
   margin-right: auto;
 }
 
@@ -283,7 +244,6 @@
   color: #f1f5f9;
 }
 
-/* Mensagem para criação de tabelas */
 .markdownTableWrapper {
   overflow-x: auto;
   max-width: 100%;
@@ -298,12 +258,10 @@
 
 .markdown th,
 .markdown td {
-  min-height: 100%;
   border: 1px solid #444;
   padding: 8px;
   text-align: left;
   white-space: nowrap;
-  color: #f1f5f9;
 }
 
 .markdown th {
@@ -338,14 +296,8 @@
 }
 
 @keyframes typingAnimation {
-  0%, 100% {
-    opacity: 0.4;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(-3px);
-  }
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
 }
 
 .inputForm {
@@ -369,89 +321,6 @@
 }
 
 .inputForm input:focus {
-  border-color: var(--primary-light);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-}
-
-.inputForm button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.inputForm button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-}
-
-.inputForm button:disabled {
-  background: #cbd5e1;
-  cursor: not-allowed;
-}
-
-.sendIcon {
-  font-size: 18px;
-}
-
-.messages::-webkit-scrollbar {
-  width: 6px;
-}
-
-.messages::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-}
-
-.messages::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 480px) {
-  .container {
-    right: 16px;
-    bottom: 16px;
-  }
-
-  .chatWindow {
-    width: calc(100vw - 32px);
-    height: 70vh;
-    bottom: 80px;
-    right: 16px;
-    border-radius: 12px;
-  }
-
-  .floatingButton {
-    width: 56px;
-    height: 56px;
-  }
-}
-
-.chatWindow::after {
-  content: '';
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 120px;
-  font-weight: bold;
-  opacity: 0.03;
-  pointer-events: none;
-}
-
-/* Para fazer com que todas as mensagens do assistente sejam pretas */
-.message.assistant .messageContent * {
-  color: #fff !important;
-}
-
-/* Mensagem de erro */
-.errorMessage .messageContent {
-  background: var(--error);
-  color: #fff !important;
+  border-color: var(--primary);
+  box-shadow: 0 0 8px rgba(33, 70, 50, 0.116);
 }

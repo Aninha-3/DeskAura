@@ -1,5 +1,6 @@
 import { TbDownload } from "react-icons/tb";
 import phoneImage from '../assets/download.gif';
+import { motion } from 'framer-motion';
 
 export function SectionDownload() {
   const containerBg = 'bg-gray-100';
@@ -11,24 +12,48 @@ export function SectionDownload() {
     { value: '5k+', label: 'Fazendas Ativas' },
   ];
 
+  const fadeInVariants = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section 
+    <motion.section 
       className={`w-screen py-12 md:py-20 ${containerBg} flex flex-col items-center justify-center`}
       style={{ fontFamily: 'Monteserrat Alternative, sans-serif' }}
+      variants={fadeInVariants}
+      initial="initial"
+      whileInView="whileInView"
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.5 }}
     >
 
       {/* Título Principal */}
-      <div className="text-center max-w-3xl px-4">
+      <motion.div
+        className="text-center max-w-3xl px-4"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 0.1 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold text-[#042B00] mb-4 leading-tight">
           Transforme sua fazenda com o App AUONE
         </h1>
         <p className="text-base md:text-lg text-gray-600 mb-10">
           Disponível para iOS e Android. Comece a revolucionar sua gestão agrícola agora mesmo.
         </p>
-      </div>
+      </motion.div>
 
       {/* Cartão Verde Principal */}
-      <div className="flex justify-center w-full px-4">
+      <motion.div
+        className="flex justify-center w-full px-4"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <div className={`w-full max-w-6xl ${cardBg} rounded-xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center justify-between`}>
 
           {/* Conteúdo de Texto e Botões */}
@@ -63,15 +88,27 @@ export function SectionDownload() {
           </div>
 
         </div>
-      </div>
+      </motion.div>
 
       {/* Seção de Estatísticas Centralizada */}
-      <div className="mt-12 w-full flex justify-center">
+      <motion.div
+        className="mt-12 w-full flex justify-center"
+        variants={fadeInVariants}
+        initial="initial"
+        whileInView="whileInView"
+        transition={{ duration: 0.8, delay: 0.3 }}
+        viewport={{ once: true, amount: 0.5 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl w-full">
           {stats.map((stat, index) => (
-            <div
+            <motion.div
               key={index}
               className="flex flex-col items-center justify-center text-center text-gray-800"
+              variants={fadeInVariants}
+              initial="initial"
+              whileInView="whileInView"
+              transition={{ duration: 0.8, delay: 0.4 + index * 0.2 }}
+              viewport={{ once: true, amount: 0.5 }}
             >
               <h3 className="text-4xl md:text-5xl font-bold text-green-700">
                 {stat.value}
@@ -79,12 +116,12 @@ export function SectionDownload() {
               <p className="text-sm md:text-base text-gray-600 mt-1">
                 {stat.label}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-    </section>
+    </motion.section>
   );
 }
 
