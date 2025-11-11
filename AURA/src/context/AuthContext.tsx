@@ -11,6 +11,7 @@ interface User {
 interface AuthContextData {
   user: User | null;
   token: string | null;
+  isLoggedIn: boolean; // <-- adicionamos aqui
   login: (data: { user: User; token: string }) => void;
   logout: () => void;
 }
@@ -46,7 +47,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        token,
+        isLoggedIn: !!user && !!token, // <-- aqui definimos se está logado
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

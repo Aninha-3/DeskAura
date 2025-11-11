@@ -20,12 +20,8 @@ import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
 import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
 import { AuthProvider } from './context/AuthContext';
 
-import FeedbackModal from './components/ContatoModal';
-import { useModal } from './context/ModalContext';
-
 function AppContent() {
   const location = useLocation();
-  const { isContactOpen, closeContact } = useModal();
 
   const noFooterRoutes = ['/cadastro', '/login', '/redefinir-senha', '/redefinir/nova-senha', '/redefinir/confirmar-codigo', '/simulador'];
   const noNavbarRoutes = ['/cadastro', '/login', '/redefinir-senha', '/redefinir/nova-senha', '/redefinir/confirmar-codigo'];
@@ -44,7 +40,6 @@ function AppContent() {
           <Route path="/redefinir-senha" element={<RedefinirSenha />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          {/* ❌ Removido: <Route path="/contato" element={<Contato isOpen={false} onClose={() => {}} />} /> */}
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/produto" element={<Produto />} />
@@ -62,7 +57,6 @@ function AppContent() {
       </main>
 
       {showFooter && <Footer />}
-      <FeedbackModal isOpen={isContactOpen} onClose={closeContact} />
     </div>
   );
 }

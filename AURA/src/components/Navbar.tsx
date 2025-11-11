@@ -15,13 +15,15 @@ export function Navbar() {
 
   return (
     <header className="Navbar">
+      {/* Links principais */}
       <nav className="navBar" aria-label="Navegação principal">
         <Link to="/" className="LinhaNav">Início</Link>
         <Link to="/sobre" className="LinhaNav">Sobre</Link>
-        <Link to="/Produto" className="LinhaNav">Produto</Link>
+        <Link to="/produto" className="LinhaNav">Produto</Link>
         <Link to="/simulador" className="LinhaNav">Simulador</Link>
       </nav>
 
+      {/* Botões de login/logout */}
       <div className="navButtons">
         {auth?.isLoggedIn ? (
           <button className="navButton" onClick={handleLogout}>Logout</button>
