@@ -1,11 +1,14 @@
+// src/pages/Perfil/Perfil.tsx
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { getPerfil } from "../../services.ts/api"; // ✅ Corrigido o import
 import styles from "./perfil.module.css";
 
 // Ícones
 import { FiMail, FiPhone, FiMapPin, FiBarChart2 } from "react-icons/fi";
-import { IoCartOutline, IoLeafOutline } from 'react-icons/io5';
-import { GiPotato, GiBank, GiPeas } from 'react-icons/gi';
+import { IoCartOutline, IoLeafOutline } from "react-icons/io5";
+import { GiPotato, GiBank, GiPeas } from "react-icons/gi";
 
 // --- Tipos ---
 interface Simulacao {
@@ -33,7 +36,7 @@ export function Perfil() {
   const [erro, setErro] = useState("");
 
   useEffect(() => {
-    const fetchPerfil = async () => {
+    const carregarPerfil = async () => {
       try {
         if (!auth?.token) {
           setErro("Usuário não autenticado.");
@@ -41,19 +44,22 @@ export function Perfil() {
           return;
         }
 
-        // Ajuste o endpoint conforme seu backend
-        const resposta = await fetch("https://deskaura-backend.onrender.com/api/perfil", {
-          headers: {
-            Authorization: `Bearer ${auth.token}`,
-          },
+        // ✅ Busca o perfil do backend
+        const data = await getPerfil();
+
+        // 🔒 Garante que sempre exista simulacoes como array
+        setUsuario({
+          nome: data.nome || "Usuário",
+          email: data.email || "sem email",
+          telefone: data.telefone || "(00) 00000-0000",
+          localizacao: data.localizacao || "Não informado",
+          simulacoes: data.simulacoes || [],
         });
-
-        if (!resposta.ok) throw new Error("Erro ao carregar perfil");
-
-        const data = await resposta.json();
-        setUsuario(data);
       } catch (err: any) {
-        // Mock fallback
+        console.error("Erro ao buscar perfil:", err);
+        setErro("Não foi possível carregar do backend, mostrando dados mockados.");
+
+        // 🧱 Fallback mockado
         setUsuario({
           nome: "João Silva",
           email: "joao.silva@email.com",
@@ -67,13 +73,12 @@ export function Perfil() {
             { id: 5, cultura: "Alface", solo: "Arenoso", score: 19, data: "19 de fev. de 2024", iconBgColorClass: styles.icon_bg_green_light },
           ],
         });
-        setErro("Não foi possível carregar do backend, mostrando dados mockados.");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPerfil();
+    carregarPerfil();
   }, [auth?.token]);
 
   if (loading) return <p>Carregando perfil...</p>;
@@ -88,9 +93,13 @@ export function Perfil() {
         <HistorySummaryCard />
 
         <div className={styles.simulacoes_list}>
-          {usuario.simulacoes.map((simulacao) => (
-            <SimulationItem key={simulacao.id} simulacao={simulacao} />
-          ))}
+          {usuario?.simulacoes?.length ? (
+            usuario.simulacoes.map((simulacao) => (
+              <SimulationItem key={simulacao.id} simulacao={simulacao} />
+            ))
+          ) : (
+            <p>Nenhuma simulação encontrada.</p>
+          )}
         </div>
       </main>
 
@@ -112,7 +121,7 @@ function PerfilHeader() {
 function UserInfoCard({ usuario }: { usuario: Usuario }) {
   return (
     <section className={`${styles.card} ${styles.user_info_card}`}>
-      <img 
+      <img
         src="https://via.placeholder.com/80"
         alt="Foto de perfil"
         className={styles.user_avatar}
@@ -164,11 +173,11 @@ function SimulationItem({ simulacao }: { simulacao: Simulacao }) {
 // --- Helpers ---
 function getCultureIcon(cultura: string) {
   switch (cultura.toLowerCase()) {
-    case 'cenoura': return <IoCartOutline size={20} />;
-    case 'batata': return <GiPotato size={20} />;
-    case 'feijão': return <GiBank size={20} />;
-    case 'ervilha': return <GiPeas size={20} />;
-    case 'alface': return <IoLeafOutline size={20} />;
+    case "cenoura": return <IoCartOutline size={20} />;
+    case "batata": return <GiPotato size={20} />;
+    case "feijão": return <GiBank size={20} />;
+    case "ervilha": return <GiPeas size={20} />;
+    case "alface": return <IoLeafOutline size={20} />;
     default: return <IoLeafOutline size={20} />;
   }
 }
@@ -178,4 +187,3 @@ function getScoreColorClass(score: number): string {
   if (score >= 30) return styles.badge_warning;
   return styles.badge_danger;
 }
-  
