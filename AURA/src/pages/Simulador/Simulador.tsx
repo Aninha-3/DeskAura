@@ -1,177 +1,89 @@
 import { useState } from "react";
-import { Bar } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import styles from "./Simulador.module.css";
-import FormSimulador from '../../components/FormSimulador';
-import ResultadoSimulador from '../../components/ResultadoSimulador';
-
-// Registrando componentes do Chart.js
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { salvarSimulacao } from "../../services.ts/api";
+import styles from "./simulador.module.css";
 
 export default function Simulador() {
-  const [resultado, setResultado] = useState<any[]>([]);
-  const [chartData, setChartData] = useState<any>(null);
+  const [cultura, setCultura] = useState("");
+  const [solo, setSolo] = useState("");
+  const [resultado, setResultado] = useState<number | null>(null);
+  const [msg, setMsg] = useState("");
 
-  function gerarSugestoes(data: any) {
-    const suggestions = [
-      {
-        nome: data.desejo || "Alface",
-        terra: data.tipoSolo || "arenoso",
-        ph: data.nivelPh || "neutro",
-        insolacao: data.insolacao || "alta",
-        compatibilidade: Math.floor(Math.random() * 41) + 60,
-      },
-      {
-        nome: "Tomate",
-        terra: "argiloso",
-        ph: "neutro",
-        insolacao: "alta",
-        compatibilidade: 85,
-      },
-      {
-        nome: "Cenoura",
-        terra: "arenoso",
-        ph: "neutro",
-        insolacao: "média",
-        compatibilidade: 75,
-      },
-      {
-        nome: "Feijão",
-        terra: "argiloso",
-        ph: "levemente ácido",
-        insolacao: "alta",
-        compatibilidade: 80,
-      },
-      {
-        nome: "Batata",
-        terra: "arenoso",
-        ph: "ácido",
-        insolacao: "média",
-        compatibilidade: 70,
-      },
-      {
-        nome: "Couve",
-        terra: "argiloso",
-        ph: "neutro",
-        insolacao: "alta",
-        compatibilidade: 90,
-      }
-    ];
+  const calcularScore = () => {
+    const score = Math.floor(Math.random() * 100);
+    setResultado(score);
+    return score;
+  };
 
-    const chart = {
-      labels: suggestions.map((s) => s.nome),
-      datasets: [
-        {
-          label: "Compatibilidade (%)",
-          data: suggestions.map((s) => s.compatibilidade),
-          backgroundColor: '#077354',
-          borderColor: '#365040ff',
-          borderWidth: 1,
-          borderRadius: 8,
-        },
-      ],
-    };
-
-    setResultado(suggestions);
-    setChartData(chart);
-  }
-
-  function resetar() {
-    setResultado([]);
-    setChartData(null);
-  }
-
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'top' as const,
-        labels: {
-          font: { size: 14, family: 'Segoe UI' }
-        }
-      },
-      tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-        bodyFont: { family: 'Segoe UI' },
-        titleFont: { family: 'Segoe UI' }
-      },
-      title: { display: false },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 100,
-        ticks: {
-          callback: function(value: any) {
-            return value + '%';
-          },
-          font: { family: 'Segoe UI' }
-        },
-        grid: { color: '#e0e0e0', borderColor: '#e0e0e0' }
-      },
-      x: {
-        ticks: { font: { family: 'Segoe UI' } },
-        grid: { display: false }
-      }
-    },
+  const handleSimular = async () => {
+    if (!cultura || !solo) {
+      setMsg("Por favor, selecione cultura e tipo de solo antes de simular.");
+      return;
+    }
+    const score = calcularScore();
+    try {
+      await salvarSimulacao(cultura, solo, score);
+      setMsg("✅ Simulação salva com sucesso!");
+    } catch {
+      setMsg("❌ Erro ao salvar simulação.");
+    }
   };
 
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Simulador de Plantio Inteligente</h1>
-        <p className={styles.subtitle}>
-          {!resultado.length 
-            ? "Descubra o que plantar em seu tipo de terra e receba orientações personalizadas"
-            : "Descubra o que plantar em seu tipo de terra e receba orientações personalizadas"
-          }
-        </p>
-      </header>
+      <div className={styles.contentWrapper}>
+        <header className={styles.header}>
+          <h1 className={styles.title}>Simulador de Plantio</h1>
+          <p className={styles.subtitle}>
+            Escolha a cultura e o tipo de solo para gerar uma previsão de score.
+          </p>
+        </header>
 
-      {!resultado.length ? (
-        <FormSimulador setResultado={gerarSugestoes} />
-      ) : (
-        <div className={styles.resultsContainer}>
-          <ResultadoSimulador resultado={resultado} resetar={resetar} />
-          
-          {chartData && (
-            <div className={styles.chartContainer}>
-              <h3 className={styles.chartTitle}>Compatibilidade das Culturas</h3>
-              <div style={{ height: '400px' }}>
-                <Bar data={chartData} options={chartOptions} />
-              </div>
+        <div className={styles.formContainer}>
+          <h2 className={styles.formTitle}>Preencha as informações</h2>
+
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Cultura</label>
+            <select
+              value={cultura}
+              onChange={(e) => setCultura(e.target.value)}
+              className={styles.formSelect}
+            >
+              <option value="">Selecione a cultura</option>
+              <option value="Milho">Milho</option>
+              <option value="Soja">Soja</option>
+              <option value="Feijão">Feijão</option>
+            </select>
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Tipo de Solo</label>
+            <select
+              value={solo}
+              onChange={(e) => setSolo(e.target.value)}
+              className={styles.formSelect}
+            >
+              <option value="">Selecione o tipo de solo</option>
+              <option value="Arenoso">Arenoso</option>
+              <option value="Argiloso">Argiloso</option>
+            </select>
+          </div>
+
+          <button onClick={handleSimular} className={styles.analyzeButton}>
+            Simular
+          </button>
+
+          {resultado !== null && (
+            <div className={styles.resultContainer}>
+              <h2 className={styles.resultsTitle}>Resultado</h2>
+              <p>
+                Score estimado: <strong>{resultado}%</strong>
+              </p>
             </div>
           )}
 
-          <div className={styles.soilPreparation}>
-            <h3 className={styles.soilPreparationTitle}>Data de Preparação para o Solo</h3>
-            <p className={styles.soilPreparationDate}>
-              {new Date().toLocaleDateString('pt-BR', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </p>
-          </div>
+          {msg && <p style={{ textAlign: "center", marginTop: "10px" }}>{msg}</p>}
         </div>
-      )}
+      </div>
     </div>
   );
 }

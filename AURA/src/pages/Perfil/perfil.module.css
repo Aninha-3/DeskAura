@@ -1,228 +1,93 @@
-/* --- Variáveis de Cor (para fácil manutenção) --- */
 :root {
-  --color-bg-page: #f4f5f7;        /* Fundo cinza claro da página */
-  --color-bg-card: #ffffff;         /* Fundo branco dos cards */
-  --color-header: #072a1a;          /* Verde bem escuro do header */
-  --color-text-primary: #1f2937;    /* Texto principal (preto suave) */
-  --color-text-secondary: #6b7280;  /* Texto secundário (cinza) */
-  --color-shadow: rgba(0, 0, 0, 0.05); /* Sombra suave dos cards */
-
-  /* Cores dos Badges */
-  --color-success: #16a34a;       /* Verde (Scores altos) */
-  --color-success-bg: #e9f7ec;    /* Fundo do verde */
-  --color-warning: #f59e0b;       /* Amarelo/Laranja (Scores médios) */
-  --color-warning-bg: #fff8e1;    /* Fundo do amarelo */
-  --color-danger: #dc2626;        /* Vermelho (Scores baixos) */
-  --color-danger-bg: #fbebed;     /* Fundo do vermelho */
+  --color-bg: #f4f5f7;
+  --color-card: #ffffff;
+  --color-header: #072a1a;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-success: #16a34a;
+  --color-success-hover: #15803d;
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Layout da Página --- */
-.perfil_page {
-  background-color: var(--color-bg-page);
+.perfil_container {
+  background-color: var(--color-bg);
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-/* --- 1. Header (Faixa Verde) --- */
-.perfil_header {
-  background-color: var(--color-header);
-  color: white;
-  padding: 32px 24px;
-  text-align: center;
-}
-
-.perfil_header h1 {
-  margin: 0 0 8px 0;
-  font-size: 2.25rem; /* 36px */
-  font-weight: 700;
-}
-
-.perfil_header p {
-  margin: 0;
-  font-size: 1rem; /* 16px */
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-/* --- Container Principal (onde ficam os cards) --- */
-.perfil_content {
-  max-width: 800px;
-  margin: -50px auto 0 auto; /* Puxa os cards para "cima" da faixa verde */
-  padding: 0 16px 32px 16px;
-  position: relative;
-  z-index: 10;
-}
-
-/* --- Estilo de Card Genérico --- */
-.card {
-  background-color: var(--color-bg-card);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px var(--color-shadow);
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  margin-bottom: 16px; /* Espaçamento entre os cards */
-  gap: 16px;
-}
-
-/* --- 2. Card de Informações do Usuário --- */
-.user_info_card {
-  align-items: flex-start; /* Alinha avatar no topo */
-}
-
-.user_avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.user_details {
-  flex-grow: 1;
-}
-
-.user_details h3 {
-  margin: 0 0 12px 0;
-  font-size: 1.75rem; /* 28px */
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.user_details p {
-  margin: 6px 0;
-  color: var(--color-text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.95rem;
-}
-
-.user_details p svg {
-  font-size: 1.1rem; /* 18px */
-  flex-shrink: 0;
-}
-
-/* --- 3. Card de Resumo do Histórico --- */
-.summary_card {
-  /* Usa .card */
-}
-
-.summary_text {
-  flex-grow: 1; /* Empurra o badge para a direita */
-}
-
-.summary_text h4,
-.simulacao_details h4 {
-  margin: 0 0 4px 0;
-  font-size: 1.1rem; /* 18px */
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.summary_text p,
-.simulacao_details p {
-  margin: 0;
-  font-size: 0.9rem; /* 14px */
-  color: var(--color-text-secondary);
-}
-
-/* --- 4. Lista e Itens de Simulação --- */
-.simulacoes_list {
+  padding: 60px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Espaço entre os itens da lista */
-}
-
-/* Zera a margem do último card da lista */
-.simulacoes_list .card {
-  margin-bottom: 0;
-}
-
-.simulacao_item {
-  /* Usa .card */
-  padding: 16px 20px; /* Um pouco menor que o card de usuário */
-}
-
-.simulacao_details {
-  flex-grow: 1;
-}
-
-/* --- Círculos dos Ícones --- */
-.icon_wrapper {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  font-family: "Inter", sans-serif;
 }
 
-.icon_wrapper svg {
-  font-size: 1.25rem; /* 20px */
-}
-
-/* Classes de cor dos ícones (baseadas no TSX) */
-.icon_bg_orange {
-  background-color: #fff0e6;
-  color: #ff6a00;
-}
-.icon_bg_brown {
-  background-color: #f3efeB;
-  color: #795548;
-}
-.icon_bg_green_light {
-  background-color: var(--color-success-bg);
-  color: var(--color-success);
-}
-.icon_bg_green_dark {
-  background-color: #e6f3f0;
-  color: #0b7a5e; /* Um verde mais escuro */
-}
-
-/* --- Badges (Scores e % de Crescimento) --- */
-.badge {
-  padding: 4px 12px;
-  border-radius: 999px; /* Formato de pílula */
-  font-size: 0.9rem; /* 14px */
+.perfil_container h1 {
+  font-size: 2rem;
   font-weight: 700;
-  margin-left: auto; /* Mágica! Joga o badge para a direita */
-  flex-shrink: 0;
+  color: var(--color-header);
+  margin-bottom: 10px;
 }
 
-.badge_success {
-  background-color: var(--color-success-bg);
-  color: var(--color-success);
-}
-
-.badge_warning {
-  background-color: var(--color-warning-bg);
-  color: var(--color-warning);
-}
-
-.badge_danger {
-  background-color: var(--color-danger-bg);
-  color: var(--color-danger);
-}
-
-/* --- Estados de Loading e Erro --- */
-.loading_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-size: 1.2rem;
+.perfil_container p {
   color: var(--color-text-secondary);
-  background-color: var(--color-bg-page);
+  font-size: 1rem;
+  margin: 5px 0 15px 0;
 }
 
-.fetch_error {
-  text-align: center;
-  color: var(--color-danger);
-  margin: 16px auto;
-  max-width: 800px;
-  padding: 0 16px;
+.botao_editar {
+  display: inline-block;
+  background-color: var(--color-success);
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.botao_editar:hover {
+  background-color: var(--color-success-hover);
+}
+
+h2 {
+  margin-top: 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-header);
+  margin-bottom: 16px;
+}
+
+/* Lista de simulações */
+ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+li {
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+li span {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
 }

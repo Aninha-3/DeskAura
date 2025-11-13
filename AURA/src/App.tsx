@@ -20,6 +20,7 @@ import RedefinirSenha from './pages/Redefinirsenha/RedefinirSenha';
 import ConfirmarCodigo from './pages/Redefinirsenha/ConfirmarCod/ConfirmarCod';
 import NovaSenha from './pages/Redefinirsenha/NovaSenha/NovaSenha';
 import { AuthProvider } from './context/AuthContext';
+import EditarSenha from './pages/Perfil/EditarSenha';
 
 function AppContent() {
   const location = useLocation();
@@ -47,6 +48,8 @@ function AppContent() {
           <Route path="/perfil" element={<Perfil />} />    
           <Route path="/privacidade" element={<PrivacyPolicy />} />
           <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/editar-senha" element={<EditarSenha />} />
+
           <Route
             path="/simulador"
             element={
