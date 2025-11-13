@@ -24,8 +24,8 @@ export function Navbar() {
         <Link to="/sobre" className="LinhaNav">Sobre</Link>
         <Link to="/produto" className="LinhaNav">Produto</Link>
         <Link to="/simulador" className="LinhaNav">Simulador</Link>
-        <div className="botaoperfil">
-          {auth?.isLoggedIn && <Link to="/perfil" className="LinhaNav"><CgProfile size={26} /></Link>}
+        <div className="botao-perfil">
+          {auth?.isLoggedIn && <Link to="/perfil" ><CgProfile size={26} /></Link>}
         </div>
       </nav>
 

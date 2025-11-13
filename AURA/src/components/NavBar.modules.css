@@ -18,14 +18,15 @@
 /* Container do menu */
 .navBar {
   margin-left: 20px;
+  color: #fff;
   display: flex;
   gap: 30px;
 }
 
-.botaoperfil {
-  margin-right: 22vh;
+.botao-perfil {
   display: flex;
-  align-items: center;
+  gap: 15px;
+  margin-right: 20px;
 }
 
 /* Links do menu */
