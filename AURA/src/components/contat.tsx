@@ -227,7 +227,7 @@ export default function App() { // Renomeado para App
   return (
     // Container principal com a imagem de fundo das caixas de plantação
     <div 
-      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-['Inter']"
+      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-montserrat"
     >
       <div>
  
