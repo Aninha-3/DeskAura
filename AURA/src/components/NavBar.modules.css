@@ -22,6 +22,12 @@
   gap: 30px;
 }
 
+.botaoperfil {
+  margin-right: 22vh;
+  display: flex;
+  align-items: center;
+}
+
 /* Links do menu */
 .LinhaNav {
   text-decoration: none;

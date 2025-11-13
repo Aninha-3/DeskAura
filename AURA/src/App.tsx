@@ -9,6 +9,7 @@ import Cadastro from './pages/Cadastro/Cadastro';
 import Sobre from './pages/Sobre/sobreHistoria'
 import Produto from './pages/Produto/Produto';
 import Simulador from './pages/Simulador/Simulador';
+import { Perfil } from './pages/Perfil/perfil';
 import { PrivateRoute } from './components/PrivateRoute';
 
 import { Footer } from './components/Footer';
@@ -43,6 +44,7 @@ function AppContent() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/produto" element={<Produto />} />
+          <Route path="/perfil" element={<Perfil />} />    
           <Route path="/privacidade" element={<PrivacyPolicy />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route

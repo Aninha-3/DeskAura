@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { CgProfile } from "react-icons/cg";
 import './NavBar.modules.css';
 
 import { IoLogOutOutline } from "react-icons/io5";
@@ -23,6 +24,9 @@ export function Navbar() {
         <Link to="/sobre" className="LinhaNav">Sobre</Link>
         <Link to="/produto" className="LinhaNav">Produto</Link>
         <Link to="/simulador" className="LinhaNav">Simulador</Link>
+        <div className="botaoperfil">
+          {auth?.isLoggedIn && <Link to="/perfil" className="LinhaNav"><CgProfile size={26} /></Link>}
+        </div>
       </nav>
 
       {/* Botões de login/logout */}
