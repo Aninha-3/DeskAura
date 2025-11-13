@@ -142,7 +142,7 @@ export function Hero() {
             className="bg-white text-[#042b00] font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300"
             onClick={() => window.location.href = "/comunidade"}
           >
-            Acessar Comunidade
+            Acessar a comunidade
           </button>
         </div>
       </motion.div>

@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './NavBar.modules.css';
 
+import { IoLogOutOutline } from "react-icons/io5";
+
 import { AuthContext } from '../context/AuthContext';
 
 export function Navbar() {
@@ -26,7 +28,9 @@ export function Navbar() {
       {/* Botões de login/logout */}
       <div className="navButtons">
         {auth?.isLoggedIn ? (
-          <button className="navButton" onClick={handleLogout}>Logout</button>
+          <button className="navButton" onClick={handleLogout}>
+            <IoLogOutOutline size={22} />
+          </button>
         ) : (
           <>
             <Link to="/login" className="navButton">Login</Link>
