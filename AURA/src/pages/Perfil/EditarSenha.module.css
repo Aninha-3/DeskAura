@@ -1,91 +1,127 @@
 .editarSenha_container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f8fafc;
-  padding: 20px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
 }
 
 .editarSenha_card {
-  background: #fff;
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
   width: 100%;
   max-width: 420px;
   text-align: center;
+  animation: fadeIn 0.5s ease;
+  transition: transform 0.2s ease;
+}
+
+.editarSenha_card:hover {
+  transform: translateY(-3px);
 }
 
 .editarSenha_title {
-  font-size: 1.8rem;
-  color: #1a202c;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+  font-size: 1.9rem;
+  color: #111827;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .editarSenha_form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
 }
 
 .editarSenha_input {
-  padding: 0.9rem 1rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
   font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s ease;
+  background-color: #f9fafb;
+  transition: all 0.25s ease;
 }
 
 .editarSenha_input:focus {
   border-color: #16a34a;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15);
+  outline: none;
 }
 
 .editarSenha_button {
-  background: #16a34a;
-  color: #fff;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #ffffff;
   border: none;
-  padding: 0.9rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .editarSenha_button:hover {
-  background: #15803d;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  transform: translateY(-2px);
 }
 
 .editarSenha_button:disabled {
   background: #9ca3af;
   cursor: not-allowed;
+  transform: none;
 }
 
 .editarSenha_mensagemErro {
-  color: #dc2626;
+  color: #b91c1c;
   background: #fee2e2;
-  border-radius: 8px;
-  padding: 0.6rem;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 0.75rem;
   font-size: 0.95rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
 }
 
 .editarSenha_mensagemSucesso {
   color: #166534;
   background: #dcfce7;
-  border-radius: 8px;
-  padding: 0.6rem;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 0.75rem;
   font-size: 0.95rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.3s ease;
 }
 
 .editarSenha_voltar {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   font-size: 0.9rem;
   color: #2563eb;
-  text-decoration: underline;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
   cursor: pointer;
+}
+
+.editarSenha_voltar:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Animação de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
