@@ -1,18 +1,32 @@
+:root {
+   --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-header: #042B00;
+  --color-header-hover: #2E8B57;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #64748b;
+  --color-success: #2ecc71;
+  --color-danger: #e74c3c;
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container principal */
 .editarSenha_container {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%);
-  padding: 2rem;
+  min-height: calc(100vh - 140px); /* espaço para navbar + footer */
+  background: var(--color-bg);
+  padding: 60px 20px;
   font-family: "Inter", sans-serif;
 }
 
+/* Card */
 .editarSenha_card {
-  background: #ffffff;
+  background: var(--color-card);
   padding: 2.5rem 3rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
   width: 100%;
   max-width: 420px;
   text-align: center;
@@ -24,22 +38,24 @@
   transform: translateY(-3px);
 }
 
+/* Título */
 .editarSenha_title {
-  font-size: 1.9rem;
-  color: #111827;
+  font-size: 1.8rem;
+  color: var(--color-header);
   margin-bottom: 2rem;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 
+/* Formulário */
 .editarSenha_form {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1rem;
 }
 
 .editarSenha_input {
-  padding: 1rem 1.1rem;
+  padding: 0.9rem 1rem;
   border: 1.5px solid #d1d5db;
   border-radius: 10px;
   font-size: 1rem;
@@ -48,14 +64,15 @@
 }
 
 .editarSenha_input:focus {
-  border-color: #16a34a;
+  border-color: var(--color-success);
   background-color: #ffffff;
   box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15);
   outline: none;
 }
 
+/* Botão */
 .editarSenha_button {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: var(--color-success);
   color: #ffffff;
   border: none;
   padding: 1rem;
@@ -67,7 +84,7 @@
 }
 
 .editarSenha_button:hover {
-  background: linear-gradient(135deg, #22c55e, #15803d);
+  background: var(--color-success-hover);
   transform: translateY(-2px);
 }
 
@@ -77,8 +94,9 @@
   transform: none;
 }
 
+/* Mensagens */
 .editarSenha_mensagemErro {
-  color: #b91c1c;
+  color: var(--color-danger);
   background: #fee2e2;
   border: 1px solid #fecaca;
   border-radius: 10px;
@@ -89,7 +107,7 @@
 }
 
 .editarSenha_mensagemSucesso {
-  color: #166534;
+  color: var(--color-success-hover);
   background: #dcfce7;
   border: 1px solid #bbf7d0;
   border-radius: 10px;
@@ -99,6 +117,7 @@
   animation: fadeIn 0.3s ease;
 }
 
+/* Link voltar */
 .editarSenha_voltar {
   margin-top: 1.5rem;
   font-size: 0.9rem;
@@ -114,7 +133,7 @@
   text-decoration: underline;
 }
 
-/* Animação de entrada suave */
+/* Animação */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -123,5 +142,20 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .editarSenha_card {
+    padding: 2rem 1.5rem;
+  }
+
+  .editarSenha_title {
+    font-size: 1.5rem;
+  }
+
+  .editarSenha_button {
+    width: 100%;
   }
 }
