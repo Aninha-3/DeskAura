@@ -15,8 +15,9 @@ function Cadastro() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
 
   // Estados de controle da interface
+  // Mantidos para as mensagens de validação de *frontend* (senha não coincide, etc.)
   const [mensagemErro, setMensagemErro] = useState("");
-  const [mensagemSucesso, setMensagemSucesso] = useState("");
+  const [mensagemSucesso, setMensagemSucesso] = useState(""); // Não é usado no try, mas pode ser útil no futuro.
   const [carregando, setCarregando] = useState(false);
 
   // Contexto e Navegação
@@ -41,23 +42,26 @@ function Cadastro() {
     setCarregando(true);
 
     try {
-      // Chama a API para cadastrar
-      const resposta = await cadastrarUsuario(nome, email, senha);
-
-      // Auto-login
-      auth?.login({ user: resposta.user, token: resposta.token });
-
-      setMensagemSucesso("Cadastro realizado com sucesso! Redirecionando...");
-
-      // Redireciona para a página principal após um breve delay
-      setTimeout(() => {
-        navigate('/simulador');
-      }, 1500);
+        const resposta = await cadastrarUsuario(nome, email, senha);
+        auth?.login({ user: resposta.user, token: resposta.token });
+        
+        // Mensagem de sucesso da API via alert
+        alert("Cadastro realizado com sucesso! Redirecionando...");
+        
+        // Não é necessário setCarregando(false) aqui, pois o navigate será executado.
+        
+        setTimeout(() => {
+          navigate('/simulador');
+        }, 1500);
 
     } catch (error: any) {
-      const erroApi = error?.response?.data?.error || "Erro ao cadastrar usuário.";
-      setMensagemErro(erroApi);
-      setCarregando(false);
+        const erroApi = error?.response?.data?.error || "Erro ao cadastrar usuário.";
+        
+        // Mensagem de erro da API via alert
+        alert(erroApi);
+        
+        // ⭐️ CORREÇÃO: Reseta o carregamento em caso de erro para permitir nova tentativa
+        setCarregando(false); 
     }
   };
 
@@ -116,7 +120,9 @@ function Cadastro() {
           <p>Já tem uma conta? <Link to="/login">Login</Link></p>
         </div>
 
+        {/* 💡 Mensagens de erro de validação de frontend */}
         {mensagemErro && <p className={styles.cadastro_mensagemErro}>{mensagemErro}</p>}
+        {/* O mensagemSucesso não é mais exibido para a API, mas pode ficar aqui */}
         {mensagemSucesso && <p className={styles.cadastro_mensagemSucesso}>{mensagemSucesso}</p>}
 
         <button type="submit" className={styles.cadastro_botao} disabled={carregando}>

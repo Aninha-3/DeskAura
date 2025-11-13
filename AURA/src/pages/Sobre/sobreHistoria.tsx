@@ -233,8 +233,8 @@ export default function SobreHistoria() {
               className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 text-center"
             >
               <div className="flex items-start mb-3">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <FaBell className="text-base text-green-800" />
+                <div className=" w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
+                  <FaBell className="text-base text-green-800 " />
                 </div>
                 <h3 className="text-lg font-bold text-green-900 mt-1">Alerta Preditivo Imediato</h3>
               </div>
@@ -242,7 +242,7 @@ export default function SobreHistoria() {
 
             {/* Cartão 6 */}
             <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 text-center"
+              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 "
             >
               <div className="flex items-start mb-3">
                 <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
