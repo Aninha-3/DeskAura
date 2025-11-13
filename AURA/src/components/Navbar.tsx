@@ -24,17 +24,20 @@ export function Navbar() {
         <Link to="/sobre" className="LinhaNav">Sobre</Link>
         <Link to="/produto" className="LinhaNav">Produto</Link>
         <Link to="/simulador" className="LinhaNav">Simulador</Link>
-        <div className="botao-perfil">
-          {auth?.isLoggedIn && <Link to="/perfil" ><CgProfile size={26} /></Link>}
-        </div>
       </nav>
 
       {/* Botões de login/logout */}
       <div className="navButtons">
         {auth?.isLoggedIn ? (
-          <button className="navButton" onClick={handleLogout}>
-            <IoLogOutOutline size={22} />
-          </button>
+          <>
+            <button className="navButton">
+              <Link to="/perfil"><CgProfile size={26} /></Link>
+            </button>
+        
+            <button className="navButton" onClick={handleLogout}>
+              <IoLogOutOutline size={24} />
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login" className="navButton">Login</Link>
