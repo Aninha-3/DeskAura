@@ -47,11 +47,13 @@ export function Perfil() {
 
   return (
     <div className={styles.perfil_container}>
+      {/* Cabeçalho */}
       <div className={styles.perfil_header}>
         <h1>Perfil de {usuario.nome}</h1>
         <p>{usuario.email}</p>
       </div>
 
+      {/* Card de informações pessoais */}
       <div className={styles.perfil_card}>
         <h2>Informações Pessoais</h2>
         <p>
@@ -66,16 +68,23 @@ export function Perfil() {
         </Link>
       </div>
 
+      {/* Lista de simulações */}
       <h2>Suas Simulações</h2>
       {usuario.simulacoes?.length ? (
         <ul>
           {usuario.simulacoes.map((sim: Simulacao) => (
-            <li key={sim.id}>
+            <li
+              key={sim.id}
+              className={
+                sim.score >= 70 ? styles.aprovado : styles.reprovado
+              }
+            >
               <div>
                 <strong>{sim.cultura}</strong> — {sim.solo}
               </div>
               <span>
-                {sim.score}% | {new Date(sim.data).toLocaleDateString()}
+                {sim.score}% | {new Date(sim.data).toLocaleDateString()} |{" "}
+                {sim.score >= 70 ? "Selo: Aprovado" : "Selo: Reprovado"}
               </span>
             </li>
           ))}
