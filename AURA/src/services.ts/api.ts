@@ -57,15 +57,20 @@ export async function getPerfil() {
 // === ALTERAR SENHA ===
 export async function atualizarSenha(senhaAntiga: string, novaSenha: string) {
   const token = localStorage.getItem("token");
+
   return await fetchAPI("/atualizar-senha", {
     method: "PUT",
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ senhaAntiga, novaSenha }),
+    body: JSON.stringify({
+      senhaAtual: senhaAntiga, // ✅ agora o backend recebe o nome certo
+      novaSenha,
+    }),
   });
 }
+
 
 // === SALVAR SIMULAÇÃO ===
 export async function salvarSimulacao(cultura: string, solo: string, score: number) {
