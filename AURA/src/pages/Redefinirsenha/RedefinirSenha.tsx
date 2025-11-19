@@ -1,39 +1,34 @@
-import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import styles from './redefinir.senha.module.css';
-import { Link } from "react-router-dom";
 import { SlArrowLeft } from "react-icons/sl";
+import { solicitarCodigo } from "../../services.ts/api";
 
 function RedefinirSenha() {
   const [email, setEmail] = useState('');
   const [mensagem, setMensagem] = useState('');
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState('');
-
   const navigate = useNavigate();
 
-  const handleResetSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleResetSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
-    setMensagem('');
     setErro('');
+    setMensagem('');
 
     try {
-      // Chamada ao backend para solicitar redefinição
-      // await fetch("https://seu-backend.onrender.com/auth/forgot-password", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ email }),
-      // });
+      await solicitarCodigo(email);
 
-      setMensagem('Se o e-mail estiver cadastrado, você receberá um código em breve.');
+      sessionStorage.setItem("recoverEmail", email);
 
-      // redireciona para a tela de confirmar código após 1,5s
+      setMensagem("Se o e-mail existir, você receberá o código em instantes.");
+
       setTimeout(() => navigate("/redefinir/confirmar-codigo"), 1500);
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setErro('Ocorreu um erro ao processar sua solicitação. Tente novamente mais tarde.');
+      setErro(error.message || "Erro ao solicitar código.");
     } finally {
       setLoading(false);
     }
@@ -44,26 +39,29 @@ function RedefinirSenha() {
       <button className={styles.redefinir_voltar} onClick={() => navigate(-1)}>
         <SlArrowLeft size={25} />
       </button>
+
       <h2 className={styles.redefinir_titulo}>Redefinir Senha</h2>
-      <p>Digite seu e-mail para receber o código de redefinição.</p>
+      <p>Digite seu e-mail para enviar o código.</p>
+
       <form onSubmit={handleResetSubmit} className={styles.redefinir_form}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            disabled={loading}
-          />
-        </div>
+        <label>Email:</label>
+        <input
+          type="email"
+          placeholder="Seu email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          disabled={loading}
+          required
+        />
+
         <button type="submit" disabled={loading}>
-          {loading ? 'Enviando...' : 'Enviar Código'}
+          {loading ? "Enviando..." : "Enviar Código"}
         </button>
+
         {mensagem && <p className={styles.redefinir_sucesso}>{mensagem}</p>}
         {erro && <p className={styles.redefinir_erro}>{erro}</p>}
       </form>
+
       <div className={styles.redefinir_voltarLogin}>
         <Link to="/login">Voltar para o Login</Link>
       </div>

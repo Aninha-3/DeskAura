@@ -54,7 +54,7 @@ export async function getPerfil() {
   });
 }
 
-// === ALTERAR SENHA ===
+// === ALTERAR SENHA (perfil logado) ===
 export async function atualizarSenha(senhaAntiga: string, novaSenha: string) {
   const token = localStorage.getItem("token");
 
@@ -64,17 +64,45 @@ export async function atualizarSenha(senhaAntiga: string, novaSenha: string) {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      senhaAtual: senhaAntiga, // ✅ agora o backend recebe o nome certo
-      novaSenha,
-    }),
+    body: JSON.stringify({ senhaAtual: senhaAntiga, novaSenha }),
   });
 }
 
+// ============================================
+// === NOVO FLUXO DE RECUPERAÇÃO DE SENHA =====
+// ============================================
+
+// 1️⃣ Solicitar código
+export async function solicitarCodigo(email: string) {
+  return await fetchAPI("/esqueci-senha", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
+}
+
+// 2️⃣ Validar código
+export async function verificarCodigo(email: string, codigo: string) {
+  return await fetchAPI("/validar-codigo", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, codigo }),
+  });
+}
+
+// 3️⃣ Redefinir senha
+export async function redefinirSenha(email: string, novaSenha: string) {
+  return await fetchAPI("/redefinir-senha", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, novaSenha }),
+  });
+}
 
 // === SALVAR SIMULAÇÃO ===
 export async function salvarSimulacao(cultura: string, solo: string, score: number) {
   const token = localStorage.getItem("token");
+
   return await fetchAPI("/simulacoes", {
     method: "POST",
     headers: {
@@ -88,6 +116,7 @@ export async function salvarSimulacao(cultura: string, solo: string, score: numb
 // === LISTAR SIMULAÇÕES ===
 export async function listarSimulacoes() {
   const token = localStorage.getItem("token");
+
   return await fetchAPI("/simulacoes", {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },

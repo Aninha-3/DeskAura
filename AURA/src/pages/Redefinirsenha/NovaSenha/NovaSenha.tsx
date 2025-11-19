@@ -1,36 +1,36 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./NovaSenha.module.css";
 import { SlArrowLeft } from "react-icons/sl";
+import { redefinirSenha } from "../../../services.ts/api";
 
 function NovaSenha() {
-  const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [mensagem, setMensagem] = useState("");
+  const [novaSenha, setNovaSenha] = useState("");
+  const [confirmSenha, setConfirmSenha] = useState("");
   const [erro, setErro] = useState("");
+  const [mensagem, setMensagem] = useState("");
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+  const email = sessionStorage.getItem("recoverEmail");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     setErro("");
     setMensagem("");
-
-    if (senha !== confirmarSenha) {
-      setErro("As senhas não coincidem.");
-      setLoading(false);
-      return;
-    }
+    setLoading(true);
 
     try {
-      // Chamada ao backend para redefinir senha
-      // await fetch("https://seu-backend.onrender.com/auth/reset-password", {...})
+      if (!email) throw new Error("Fluxo inválido. Volte ao início.");
+      if (novaSenha !== confirmSenha) throw new Error("As senhas não coincidem.");
 
-      setMensagem("Senha redefinida com sucesso!");
-      setTimeout(() => navigate("/login"), 2000);
-    } catch (err) {
-      setErro("Erro ao redefinir senha. Tente novamente.");
+      await redefinirSenha(email, novaSenha);
+
+      setMensagem("Senha alterada com sucesso!");
+
+      setTimeout(() => navigate("/login"), 1500);
+    } catch (err: any) {
+      setErro(err.message || "Erro ao alterar senha.");
     } finally {
       setLoading(false);
     }
@@ -41,28 +41,33 @@ function NovaSenha() {
       <button className={styles.redefinir_voltar} onClick={() => navigate(-1)}>
         <SlArrowLeft size={25} />
       </button>
+
       <h2 className={styles.redefinir_titulo}>Nova Senha</h2>
-      <p>Digite sua nova senha abaixo.</p>
+      <p>Escolha sua nova senha.</p>
+
       <form onSubmit={handleSubmit} className={styles.redefinir_form}>
         <input
           type="password"
           placeholder="Nova senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          disabled={loading}
+          value={novaSenha}
+          onChange={(e) => setNovaSenha(e.target.value)}
           required
+          disabled={loading}
         />
+
         <input
           type="password"
-          placeholder="Confirmar nova senha"
-          value={confirmarSenha}
-          onChange={(e) => setConfirmarSenha(e.target.value)}
-          disabled={loading}
+          placeholder="Confirmar senha"
+          value={confirmSenha}
+          onChange={(e) => setConfirmSenha(e.target.value)}
           required
+          disabled={loading}
         />
+
         <button type="submit" disabled={loading}>
-          {loading ? "Salvando..." : "Redefinir Senha"}
+          {loading ? "Salvando..." : "Salvar Nova Senha"}
         </button>
+
         {mensagem && <p className={styles.redefinir_sucesso}>{mensagem}</p>}
         {erro && <p className={styles.redefinir_erro}>{erro}</p>}
       </form>
