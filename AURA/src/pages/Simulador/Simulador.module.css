@@ -1,0 +1,126 @@
+:root {
+  --verde-escuro: #2d5016;
+  --verde-medio: #58a975;
+  --verde-claro: #7abf5f;
+  --cinza-texto: #444;
+  --cinza-claro: #f9f9f9;
+}
+
+/* CONTAINER PRINCIPAL */
+.simuladorContainer {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* TÍTULO */
+.simuladorContainer h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
+  -webkit-text-fill-color: transparent;
+}
+
+.simuladorContainer p {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+/* FORMULÁRIO */
+.simuladorContainer .form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* LABELS */
+.simuladorContainer .form label {
+  font-weight: 600;
+  color: var(--verde-escuro);
+  font-size: 1.05rem;
+}
+
+/* INPUTS E SELECTS */
+.simuladorContainer .form input,
+.simuladorContainer .form select {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #c8d9ce;
+  background: #fdfefe;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  color: var(--cinza-texto);
+}
+
+.simuladorContainer .form input:hover,
+.simuladorContainer .form select:hover {
+  border-color: var(--verde-claro);
+}
+
+.simuladorContainer .form input:focus,
+.simuladorContainer .form select:focus {
+  outline: none;
+  border-color: var(--verde-medio);
+  box-shadow: 0 0 0 4px rgba(88, 169, 117, 0.25);
+}
+
+/* BOTÃO */
+.simuladorContainer button {
+  background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(45,80,22,0.35);
+}
+
+.simuladorContainer button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(45,80,22,0.45);
+}
+
+/* RESULTADO */
+.simuladorContainer .resultadoBox {
+  margin-top: 30px;
+  padding: 25px;
+  background: var(--cinza-claro);
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.simuladorContainer .resultadoBox h2 {
+  color: var(--verde-escuro);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  .simuladorContainer {
+    padding: 15px;
+  }
+
+  .simuladorContainer .form input,
+  .simuladorContainer .form select {
+    font-size: 0.95rem;
+  }
+
+  .simuladorContainer button {
+    font-size: 1rem;
+  }
+}
