@@ -43,7 +43,7 @@ const Produto = () => {
             </a>
 
             {/* Botão secundário */}
-            <button className={styles.botaoInfo}>Mais Informações</button>
+            
           </div>
 
           {/* Recursos */}
