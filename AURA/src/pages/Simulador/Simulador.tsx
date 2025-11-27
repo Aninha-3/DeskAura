@@ -3,8 +3,15 @@ import { useState } from "react";
 import { salvarSimulacao } from "../../services.ts/api";
 import styles from "./Simulador.module.css";
 
+type FormType = {
+  cultura: string;
+  solo: string;
+  adubo: string;
+  regiao: string;
+};
+
 export default function Simulador() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormType>({
     cultura: "milho",
     solo: "Latossolo",
     adubo: "organico",
@@ -20,7 +27,7 @@ export default function Simulador() {
   }
 
   // Função para normalizar os valores antes de enviar
-  function normalizarValores(form: typeof form) {
+  function normalizarValores(form: FormType) {
     return {
       cultura: form.cultura.charAt(0).toUpperCase() + form.cultura.slice(1),
       solo: form.solo,
