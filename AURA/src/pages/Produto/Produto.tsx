@@ -1,4 +1,4 @@
-import React from "react";
+
 import styles from "./Produto.module.css";
 
 const Produto = () => {
@@ -8,7 +8,7 @@ const Produto = () => {
       "Kit de irrigação automatizada 'faça você mesmo' (DIY). Monitore a umidade do solo e regue suas plantas de forma inteligente com este sistema baseado em microcontrolador.",
     
     imagemUrl:
-      "https://placehold.co/600x600/e2e8f0/4a5568?text=Imagem+do+AUONE",
+      "/src/assets/auone.png",
     altText: "Kit de irrigação automatizada AUONE",
   };
 
@@ -16,13 +16,11 @@ const Produto = () => {
     <div className={styles.container}>
       <div className={styles.card}>
         {/* Coluna da Imagem */}
-        <div className={styles.imageSection}>
           <img
             src={produto.imagemUrl}
             alt={produto.altText}
             className={styles.image}
           />
-        </div>
 
         {/* Coluna do Conteúdo */}
         <div className={styles.content}>
