@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import historia from '../../assets/nossaHistoria.jpg';
+import Fundo from '../../assets/tcc-sobre.webp'
 import {
   FaChartLine,
   FaSatellite,
@@ -34,32 +35,43 @@ export default function SobreHistoria() {
     <div ref={containerRef} className=" font-montserrat overflow-x-hidden">
 
       {/* SEÇÃO HERO (COM EFEITO AURORA) */}
-      <section className="relative h-screen flex items-center justify-center ">
-        <div className="absolute inset-0 bg-white z-0">
-          {/* Espaço para o seu efeito Aurora ou background */}
-        </div>
+      <section>
+        <div className="min-h-screen relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${Fundo})`}}
+        />
+      </div>
 
-        <motion.div
-          className="relative z-20 text-center px-6 max-w-4xl"
-          style={{ y: yParallax }}
-        >
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-green-900 mb-6 "
-          >
-            Transformando a Agricultura com Tecnologia
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-green-900 font-light"
-          >
-            Inovação e sustentabilidade para o agronegócio brasileiro
-          </motion.p>
-        </motion.div>
+      {/* Conteúdo da página */}
+      <div className="relative z-10">
+
+        {/* Seção Hero */}
+        <main className="container mx-auto px-6 py-32">
+          <div className="max-w-4xl mx-auto text-center relative">
+
+            <h1
+              className="text-6xl md:text-7xl font-bold mb-6 leading-tight text-balance"
+              style={{
+                color: "white",
+              }}
+            >
+              Transformando a Agricultura com Tecnologia
+            </h1>
+            <p
+              className="text-xl md:text-2xl font-medium text-balance"
+              style={{
+                color: "white",
+              }}
+            >
+              Inovação e sustentabilidade para o agronegócio brasileiro
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+
       </section>
 
       {/* 2. O QUE FAZEMOS - CORES PADRONIZADAS */}
