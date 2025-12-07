@@ -3,18 +3,23 @@
   --verde-medio: #58a975;
   --verde-claro: #7abf5f;
   --cinza-texto: #444;
-  --cinza-claro: #f9f9f9;
+  --cinza-claro: #f4f6f5;
+  --cinza-borda: #dfe6e2;
+
+  /* Gradiente suave apenas para o botão */
+  --gradiente-botao: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
 }
 
 /* CONTAINER PRINCIPAL */
 .simuladorContainer {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 720px;
+  margin: 45px auto;
+  padding: 35px;
   background: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-  font-family: 'Montserrat', sans-serif;
+  border: 1px solid var(--cinza-borda);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+  font-family: "Montserrat", sans-serif;
 }
 
 /* TÍTULO */
@@ -22,46 +27,48 @@
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, var(--verde-claro), var(--verde-escuro));
-  -webkit-text-fill-color: transparent;
+  color: var(--verde-escuro);
+  margin-bottom: 18px;
 }
 
+/* SUBTÍTULO */
 .simuladorContainer p {
   text-align: center;
   color: #555;
-  margin-bottom: 25px;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  margin-bottom: 30px;
 }
 
 /* FORMULÁRIO */
 .simuladorContainer .form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
-/* LABELS */
+/* LABEL */
 .simuladorContainer .form label {
   font-weight: 600;
   color: var(--verde-escuro);
-  font-size: 1.05rem;
+  margin-bottom: 4px;
+  font-size: 1rem;
 }
 
-/* INPUTS E SELECTS */
+/* INPUT / SELECT */
 .simuladorContainer .form input,
 .simuladorContainer .form select {
   padding: 14px 16px;
   border-radius: 12px;
-  border: 1px solid #c8d9ce;
-  background: #fdfefe;
+  border: 1px solid var(--cinza-borda);
+  background: #fafafa;
   font-size: 1rem;
-  transition: 0.3s ease;
+  transition: all 0.25s ease;
   color: var(--cinza-texto);
 }
 
 .simuladorContainer .form input:hover,
 .simuladorContainer .form select:hover {
+  background: #ffffff;
   border-color: var(--verde-claro);
 }
 
@@ -69,55 +76,54 @@
 .simuladorContainer .form select:focus {
   outline: none;
   border-color: var(--verde-medio);
-  box-shadow: 0 0 0 4px rgba(88, 169, 117, 0.25);
+  box-shadow: 0 0 0 3px rgba(88, 169, 117, 0.22);
 }
 
 /* BOTÃO */
 .simuladorContainer button {
-  background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+  background: var(--gradiente-botao);
   color: white;
   border: none;
-  padding: 16px;
+  padding: 15px;
   font-size: 1.1rem;
   font-weight: 700;
-  text-transform: uppercase;
   border-radius: 14px;
   cursor: pointer;
-  transition: 0.3s;
-  margin-top: 20px;
+  transition: 0.25s ease;
   width: 100%;
-  box-shadow: 0 6px 20px rgba(45,80,22,0.35);
+  margin-top: 10px;
+  box-shadow: 0 6px 20px rgba(45, 80, 22, 0.32);
 }
 
 .simuladorContainer button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(45,80,22,0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(45, 80, 22, 0.42);
 }
 
 /* RESULTADO */
 .simuladorContainer .resultadoBox {
-  margin-top: 30px;
-  padding: 25px;
-  background: var(--cinza-claro);
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  margin-top: 35px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .simuladorContainer .resultadoBox h2 {
   color: var(--verde-escuro);
-  font-size: 1.6rem;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 14px;
 }
 
 /* RESPONSIVIDADE */
 @media (max-width: 600px) {
   .simuladorContainer {
-    padding: 15px;
+    padding: 22px;
   }
 
-  .simuladorContainer .form input,
-  .simuladorContainer .form select {
-    font-size: 0.95rem;
+  .simuladorContainer h1 {
+    font-size: 1.7rem;
   }
 
   .simuladorContainer button {

@@ -10,10 +10,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="w-full overflow-x-hidden"> {/* Container principal para evitar overflow */}
+    <div className="w-full overflow-x-hidden"> 
       <div style={{
         position: "relative",
-        width: "100%", // Mudado de 100vw para 100%
+        width: "100%", 
         height: "100vh",
         overflow: "hidden"
       }}>

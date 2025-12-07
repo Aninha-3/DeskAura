@@ -39,21 +39,33 @@ export default function Simulador() {
     };
   }
 
-  async function enviarSimulacao() {
-    setErro(null);
-    setResultado(null);
-    try {
-      setLoading(true);
-      const dataToSend = normalizarValores(form);
-      const data = await salvarSimulacao(dataToSend);
-      setResultado(data);
-    } catch (err: any) {
-      console.error("Erro salvarSimulacao:", err);
-      setErro(err.message || "Erro ao processar simulação");
-    } finally {
-      setLoading(false);
-    }
+ async function enviarSimulacao() {
+  setErro(null);
+  setResultado(null);
+  try {
+    setLoading(true);
+
+    const dataToSend = {
+      ...normalizarValores(form),
+      chuva_mm: 120,
+      temperatura: 25,
+      ph: 6.2,
+      nitrogenio: 40,
+      fosforo: 30,
+      potassio: 50,
+      risco_pragas: 10,
+    };
+
+    const data = await salvarSimulacao(dataToSend);
+    setResultado(data);
+  } catch (err: any) {
+    console.error("Erro salvarSimulacao:", err);
+    setErro(err.message || "Erro ao processar simulação");
+  } finally {
+    setLoading(false);
   }
+}
+
 
   return (
     <div className={styles.simuladorContainer}>
