@@ -12,7 +12,9 @@ function NovaSenha() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
   const email = sessionStorage.getItem("recoverEmail");
+  const token = sessionStorage.getItem("recoverToken");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,10 +23,14 @@ function NovaSenha() {
     setLoading(true);
 
     try {
-      if (!email) throw new Error("Fluxo inválido. Volte ao início.");
-      if (novaSenha !== confirmSenha) throw new Error("As senhas não coincidem.");
+      if (!email || !token) throw new Error("Fluxo inválido. Volte ao início.");
 
-      await redefinirSenha(email, novaSenha);
+      if (novaSenha !== confirmSenha) {
+        throw new Error("As senhas não coincidem.");
+      }
+
+      // ENVIA OS 3 PARÂMETROS AGORA
+      await redefinirSenha(email, token, novaSenha);
 
       setMensagem("Senha alterada com sucesso!");
 

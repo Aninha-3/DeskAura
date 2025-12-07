@@ -6,15 +6,14 @@
 }
 
 .container {
-  max-width: 72rem; /* equivalente ao max-w-6xl */
+  max-width: 72rem; 
   margin: 0 auto;
+  margin-top: 60px ;
   padding: 2rem;
   font-family: 'Montserrat Alternates', sans-serif;
-
-  /* 🔑 garante que a página ocupe toda a altura da tela */
   min-height: 100vh;
   display: flex;
-  align-items: center; /* centraliza verticalmente */
+  align-items: center; 
 }
 
 .card {

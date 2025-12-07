@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import historia from '../../assets/nossaHistoria.jpg';
 import Fundo from '../../assets/tcc-sobre.webp'
 import {
@@ -21,14 +20,6 @@ import { BsDatabase } from "react-icons/bs";
 export default function SobreHistoria() {
 
   const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
 
   return (
     // Mantendo overflow-x-hidden no contêiner principal
