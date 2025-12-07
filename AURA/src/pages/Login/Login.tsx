@@ -3,16 +3,16 @@ import { loginUsuario } from '../../services.ts/api';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate, Link } from "react-router-dom";
 
-// Importe o novo arquivo de estilo
 import styles from './Login.module.css';
 import logoVerde from '../../assets/letraA.png';
-
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setSenha] = useState('');
+  const [mostrarSenha, setMostrarSenha] = useState(false);
   const [mensagem, setMensagem] = useState('');
-  const [carregando, setCarregando] = useState(false); // Adicionado para desabilitar o botão
+  const [carregando, setCarregando] = useState(false);
+
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -24,7 +24,6 @@ function Login() {
     try {
       const data = await loginUsuario(email, password);
       auth?.login({ user: data.user, token: data.token });
-      // Mensagem de sucesso é opcional, pois o redirect é imediato
       navigate('/simulador');
     } catch (error) {
       console.error(error);
@@ -34,18 +33,16 @@ function Login() {
   };
 
   return (
-    // Aplicando a classe do container principal
     <div className={styles.login_container}>
       <button className={styles.login_voltar} onClick={() => navigate('/')}>
-        <img
-          src={logoVerde}
-          alt="Logo da Empresa"
-          className={styles.logo_img}
-        />
+        <img src={logoVerde} alt="Logo" className={styles.logo_img} />
       </button>
+
       <h1 className={styles.login_titulo}>Login</h1>
 
       <form onSubmit={handleLoginSubmit} className={styles.login_formulario}>
+        
+        {/* Campo de email */}
         <input
           type="email"
           value={email}
@@ -56,16 +53,25 @@ function Login() {
           disabled={carregando}
         />
 
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-          placeholder="Senha"
-          className={styles.login_input}
-          disabled={carregando}
-        />
+        {/* Campo de senha com olhinho */}
+        <div className={styles.senha_container}>
+          <input
+            type={mostrarSenha ? "text" : "password"}
+            value={password}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+            placeholder="Senha"
+            className={styles.login_input}
+            disabled={carregando}
+          />
 
+          <span
+            className={styles.olhoIcone}
+            onClick={() => setMostrarSenha(!mostrarSenha)}
+          >
+            {mostrarSenha ? "🙈" : "👁️"}
+          </span>
+        </div>
 
         {mensagem && <p className={styles.login_mensagemErro}>{mensagem}</p>}
 
