@@ -68,7 +68,7 @@ export function SectionDownload() {
             {/* Botões de Download */}
             <div className="flex justify-center md:justify-start">
               <a
-                href="#"
+                href="https://expo.dev/artifacts/eas/ZYndTjcb8bBQb56KFMRiR.apk"
                 style={{ textDecoration: 'none', color: 'white' }}
                 className="flex items-center justify-center bg-[#042b00] hover:bg-gray-700 text-[#f4f4f4] px-6 py-3 font-semibold rounded-lg transition duration-300 shadow-lg"
               >
