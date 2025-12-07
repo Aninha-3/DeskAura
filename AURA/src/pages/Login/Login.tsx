@@ -3,6 +3,8 @@ import { loginUsuario } from '../../services.ts/api';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate, Link } from "react-router-dom";
 
+import { Eye, EyeOff } from "lucide-react";
+
 import styles from './Login.module.css';
 import logoVerde from '../../assets/letraA.png';
 
@@ -41,8 +43,7 @@ function Login() {
       <h1 className={styles.login_titulo}>Login</h1>
 
       <form onSubmit={handleLoginSubmit} className={styles.login_formulario}>
-        
-        {/* Campo de email */}
+
         <input
           type="email"
           value={email}
@@ -53,7 +54,7 @@ function Login() {
           disabled={carregando}
         />
 
-        {/* Campo de senha com olhinho */}
+        {/* Campo de senha com ícone */}
         <div className={styles.senha_container}>
           <input
             type={mostrarSenha ? "text" : "password"}
@@ -65,12 +66,17 @@ function Login() {
             disabled={carregando}
           />
 
-          <span
-            className={styles.olhoIcone}
+          <button
+            type="button"
+            className={styles.olhoBotao}
             onClick={() => setMostrarSenha(!mostrarSenha)}
           >
-            {mostrarSenha ? "🙈" : "👁️"}
-          </span>
+            {mostrarSenha ? (
+              <EyeOff size={20} />
+            ) : (
+              <Eye size={20} />
+            )}
+          </button>
         </div>
 
         {mensagem && <p className={styles.login_mensagemErro}>{mensagem}</p>}
