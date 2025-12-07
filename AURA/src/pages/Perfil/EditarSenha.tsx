@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { atualizarSenha } from "../../services.ts/api";
-import styles from "./editarSenha.module.css";
+import styles from "./EditarSenha.module.css";
 
 export default function EditarSenha() {
   const [senhaAntiga, setSenhaAntiga] = useState("");
