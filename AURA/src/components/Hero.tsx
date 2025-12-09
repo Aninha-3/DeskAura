@@ -109,9 +109,11 @@ export function Hero() {
                 className='text-lg text-gray-600 leading-relaxed'
                 style={{ y: yParallax }}
               >
-                Na AURA, acreditamos que a inovação é a chave para transformar o campo. Utilizamos tecnologias de ponta como inteligência artificial, IoT e conectividade via LoRa para oferecer soluções precisas e acessíveis.
-                <br /><br />
-                Nossa plataforma é projetada para evoluir com você, integrando novos sensores, algoritmos e funcionalidades que acompanham as demandas do agronegócio moderno. Com a AURA, o futuro da agricultura está ao seu alcance.
+               Na AURA, acreditamos que a inovação é a força que impulsiona a transformação do campo. Utilizamos tecnologias avançadas como inteligência artificial, IoT e conectividade via Bluetooth para garantir soluções precisas, acessíveis e compatíveis com diferentes cenários de uso.
+
+<br /><br />
+
+Nossa plataforma foi criada para crescer ao seu lado, permitindo a integração de novos sensores, algoritmos e recursos que acompanham as necessidades do agronegócio moderno. Com a AURA, o futuro da agricultura inteligente está sempre ao seu alcance.
               </motion.p>
             </div>
           </div>

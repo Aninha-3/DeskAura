@@ -76,7 +76,7 @@ export default function SobreHistoria() {
               {/* Texto base agora é cinza mais escuro (text-gray-700) e palavras-chave em verde (text-green-900) */}
               <p className=" md:text-lg text-gray-700 leading-relaxed mb-6">
                 Desenvolvemos um sistema de <strong className="text-green-900">monitoramento ambiental inteligente</strong>, utilizando sensores
-                integrados a plataformas embarcadas (Arduino, ESP32 e LoRa).
+                integrados a plataformas embarcadas (Arduino e ESP32).
               </p>
               {/* Segundo parágrafo com a mesma padronização */}
               <p className=" md:text-lg text-gray-700 leading-relaxed">
@@ -174,90 +174,6 @@ export default function SobreHistoria() {
         </div>
       </section>
 
-      {/* 4. NOSSOS DIFERENCIAIS - SEM ALTERAÇÕES DE COR */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-green-900 mb-16 font-montserrat">
-            Nossos Diferenciais
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-
-            {/* Cartão 1 */}
-            <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60 transition-all duration-300 text-center"
-            >
-              <div className="flex items-start mb-3">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <FaChartLine className="text-base text-green-800" />
-                </div>
-                <h3 className="text-lg font-bold text-green-900 mt-1">Decisões em Tempo Real (RTD)</h3>
-              </div>
-            </div>
-
-            {/* Cartão 2 */}
-            <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 text-center"
-            >
-              <div className="flex items-start mb-3">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <PiTargetBold className="text-base text-green-800" />
-                </div>
-                <h3 className="text-lg font-bold text-green-900 mt-1">Otimização de Recursos</h3>
-              </div>
-            </div>
-
-            {/* Cartão 3 */}
-            <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 text-center"
-            >
-              <div className="flex items-start mb-3">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <FaSatellite className="text-base text-green-800" />
-                </div>
-                <h3 className="text-lg font-bold text-green-900 mt-1">Dados Científicos de Campo</h3>
-              </div>
-            </div>
-
-            {/* Cartão 4 */}
-            <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 text-center"
-            >
-              <div className="flex items-start mb-3">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <FaLeaf className="text-base text-green-800" />
-                </div>
-                <h3 className="text-lg font-bold text-green-900 mt-1">Sustentabilidade Comprovada</h3>
-              </div>
-            </div>
-
-            {/* Cartão 5 */}
-            <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 text-center"
-            >
-              <div className="flex items-start mb-3">
-                <div className=" w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <FaBell className="text-base text-green-800 " />
-                </div>
-                <h3 className="text-lg font-bold text-green-900 mt-1">Alerta Preditivo Imediato</h3>
-              </div>
-            </div>
-
-            {/* Cartão 6 */}
-            <div
-              className="bg-white rounded-2xl p-6 shadow-lg border border-green-800/60  transition-all duration-300 "
-            >
-              <div className="flex items-start mb-3">
-                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center mr-4">
-                  <FaRocket className="text-base text-green-800" />
-                </div>
-                <h3 className="text-lg font-bold text-green-900 mt-1">Tecnologia Simples e Acessível</h3>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
