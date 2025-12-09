@@ -31,18 +31,18 @@ export function Hero() {
       <Chatbot />
 
       {/* Seção Plataforma de Monitoramento */}
-      <section className="plataformaCursos py-20 bg-gray-50">
-        <motion.h2
-          className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-center text-gray-900 mb-16 leading-tight"
-          variants={fadeInVariants}
-          initial="initial"
-          whileInView="whileInView"
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          A AURA é uma plataforma de <span className="text-[#2E8B57]">Monitoramento Inteligente</span><br />
-          com acesso a recursos avançados
-        </motion.h2>
+   <section className="plataformaCursos py-20 bg-gray-50">
+  <motion.h2
+    className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-center text-gray-900 mb-16 leading-tight"
+    variants={fadeInVariants}
+    initial="initial"
+    whileInView="whileInView"
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true, amount: 0.5 }}
+  >
+    A AURA é uma plataforma de <span className="text-[#2E8B57]">Monitoramento Inteligente</span><br />
+    com acesso a recursos avançados
+  </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-6 md:px-12 lg:px-20">
           {[{
@@ -109,11 +109,11 @@ export function Hero() {
                 className='text-lg text-gray-600 leading-relaxed'
                 style={{ y: yParallax }}
               >
-               Na AURA, acreditamos que a inovação é a força que impulsiona a transformação do campo. Utilizamos tecnologias avançadas como inteligência artificial, IoT e conectividade via Bluetooth para garantir soluções precisas, acessíveis e compatíveis com diferentes cenários de uso.
+                Na AURA, acreditamos que a inovação é a força que impulsiona a transformação do campo. Utilizamos tecnologias avançadas como inteligência artificial, IoT e conectividade via Bluetooth para garantir soluções precisas, acessíveis e compatíveis com diferentes cenários de uso.
 
-<br /><br />
+                <br /><br />
 
-Nossa plataforma foi criada para crescer ao seu lado, permitindo a integração de novos sensores, algoritmos e recursos que acompanham as necessidades do agronegócio moderno. Com a AURA, o futuro da agricultura inteligente está sempre ao seu alcance.
+                Nossa plataforma foi criada para crescer ao seu lado, permitindo a integração de novos sensores, algoritmos e recursos que acompanham as necessidades do agronegócio moderno. Com a AURA, o futuro da agricultura inteligente está sempre ao seu alcance.
               </motion.p>
             </div>
           </div>
@@ -142,14 +142,15 @@ Nossa plataforma foi criada para crescer ao seu lado, permitindo a integração 
           </p>
           <button
             className="bg-white text-[#042b00] font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300"
-            onClick={() => window.location.href = "/comunidade"}
+            onClick={() => window.location.href = "https://www.facebook.com/people/Aura-Aura/pfbid02wVLyDRKkHZ3V6XZVuBNai8Z9H84c53YcLzGwugDLkid9bvgd2z2UTR4L1aaU6J4Zl/"}
           >
             Acessar a comunidade
           </button>
+
         </div>
       </motion.div>
       <div>
-        <Feedback/>
+        <Feedback />
       </div>
 
     </div>
